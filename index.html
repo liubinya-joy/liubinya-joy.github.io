@@ -5,11 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1">
-
-  <meta name="description"
-        content="JoyBinya by Binya Liu — physician-scientist bridging clinical experience, medical research and trustworthy healthcare AI.">
-
   <meta name="theme-color" content="#f6faff">
+  <meta name="description"
+        content="JoyBinya by Binya Liu: clinical AI research, patient-centered benchmarks, and healthcare innovation.">
 
   <title>JoyBinya | Clinical AI & Health Innovation</title>
 
@@ -17,12 +15,11 @@
     :root {
       --ink: #213b55;
       --muted: #586f83;
-      --accent: #367ba9;
-      --silver: #a1b6c8;
+      --blue: #367ba9;
       --line: #dce6ef;
       --paper: #f6faff;
-      --surface: #ffffff;
       --soft: #e9f4fc;
+      --white: #ffffff;
     }
 
     * {
@@ -35,12 +32,10 @@
 
     body {
       margin: 0;
-      color: var(--ink);
       background: var(--paper);
-      font-family: -apple-system, BlinkMacSystemFont,
+      color: var(--ink);
+      font: 17px/1.7 -apple-system, BlinkMacSystemFont,
         "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 17px;
-      line-height: 1.7;
     }
 
     a {
@@ -49,44 +44,41 @@
     }
 
     a:focus-visible {
-      outline: 3px solid var(--silver);
+      outline: 3px solid #80b5dd;
       outline-offset: 4px;
     }
 
     .container {
       width: min(100% - 56px, 1100px);
-      margin: 0 auto;
+      margin: auto;
     }
 
     /* NAVIGATION */
 
     .topbar {
+      background: rgba(255,255,255,.88);
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, .82);
-      backdrop-filter: blur(14px);
     }
 
     .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 24px;
     }
 
     .logo {
       font-size: 29px;
       font-weight: 800;
-      letter-spacing: -1.15px;
-      line-height: 1;
-      color: var(--ink);
+      letter-spacing: -1.2px;
     }
 
     .nav-links {
       display: flex;
-      gap: 27px;
       align-items: center;
       flex-wrap: wrap;
+      gap: 24px;
     }
 
     .nav-links a {
@@ -96,114 +88,47 @@
     }
 
     .nav-links a:hover,
+    .pub-title:hover,
     .text-link:hover {
-      color: var(--accent);
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.28fr .72fr;
-      align-items: center;
-      gap: 60px;
-      padding: 112px 0 108px;
-    }
-
-    .hero::before {
-      content: "";
-      pointer-events: none;
-      position: absolute;
-      width: 540px;
-      height: 540px;
-      right: -115px;
-      top: -86px;
-      background: radial-gradient(
-        circle,
-        rgba(206, 232, 250, .36),
-        rgba(232, 244, 252, 0) 70%
-      );
-      z-index: -1;
-    }
-
-    .hero-copy,
-    .hero-art {
-      position: relative;
-    }
-
-    .eyebrow {
-      margin: 0 0 16px;
-      font-size: 13px;
-      font-weight: 750;
-      color: var(--accent);
-      letter-spacing: 1.7px;
-      text-transform: uppercase;
-    }
-
-    .hero .eyebrow {
-      font-size: clamp(15px, 1.55vw, 17px);
-      letter-spacing: .7px;
-      text-transform: none;
-      margin-bottom: 23px;
+      color: var(--blue);
     }
 
     h1, h2, h3, p {
       margin-top: 0;
     }
 
-    h1 {
-      font-size: clamp(42px, 5.1vw, 67px);
-      line-height: 1.11;
-      letter-spacing: -2.45px;
-      font-weight: 770;
-      margin: 0 0 28px;
-      text-wrap: balance;
+    h1, h2, h3 {
+      line-height: 1.2;
     }
 
-    .hero-description {
-      color: var(--muted);
-      font-size: 19px;
-      line-height: 1.77;
-      max-width: 670px;
-      margin: 0 0 19px;
-      text-wrap: pretty;
-    }
-
-    .keep-together {
-      white-space: nowrap;
-    }
-
-    .tagline {
-      color: #345e7d;
-      font-size: 16px;
+    .eyebrow {
+      color: var(--blue);
+      font-size: 13px;
+      letter-spacing: 1.6px;
       font-weight: 750;
-      margin-bottom: 28px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
     }
 
     /* BUTTONS */
 
     .button {
-      box-shadow: 0 4px 14px rgba(33, 59, 85, .10);
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      border-radius: 9px;
-      padding: 12px 23px;
+      padding: 12px 22px;
+      border-radius: 10px;
       background: var(--ink);
       color: white;
       font-size: 15px;
       font-weight: 750;
-      transition: background .2s ease;
     }
 
     .button:hover {
-      background: var(--accent);
+      background: var(--blue);
     }
 
     .button-light {
-      box-shadow: none;
       background: var(--soft);
       color: var(--ink);
       border: 1px solid #d3e6f4;
@@ -213,28 +138,74 @@
       background: #d8edf9;
     }
 
-    /* DECORATIVE CLINICAL AI VISUAL */
+    .text-link {
+      font-size: 14px;
+      color: var(--blue);
+      font-weight: 750;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.28fr .72fr;
+      align-items: center;
+      gap: 56px;
+      padding: 110px 0 104px;
+    }
+
+    .hero .eyebrow {
+      font-size: clamp(15px,1.6vw,17px);
+      letter-spacing: .5px;
+      text-transform: none;
+    }
+
+    h1 {
+      font-size: clamp(42px,5vw,66px);
+      letter-spacing: -2.4px;
+      margin-bottom: 27px;
+      text-wrap: balance;
+    }
+
+    .hero-description {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 650px;
+      line-height: 1.78;
+      text-wrap: pretty;
+    }
+
+    .tagline {
+      color: #345e7d;
+      font-weight: 750;
+      font-size: 16px;
+      margin: 0 0 28px;
+    }
+
+    .no-break {
+      white-space: nowrap;
+    }
+
+    /* HERO DECORATION */
 
     .hero-art {
-      position: relative;
       min-height: 350px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
     }
 
     .orbit {
       position: absolute;
-      inset: 15px 0;
-      margin: auto;
-      width: 298px;
-      height: 298px;
-      border: 1px solid #ccdeec;
+      width: 290px;
+      height: 290px;
       border-radius: 50%;
+      border: 1px solid #c8deee;
+      top: 29px;
+      left: 50%;
+      transform: translateX(-50%);
       background: radial-gradient(
-        circle at center,
-        rgba(208, 231, 247, .24) 0%,
-        transparent 65%
+        circle,
+        #e6f4fd 0%,
+        transparent 69%
       );
     }
 
@@ -249,14 +220,10 @@
     .orbit::after {
       content: "";
       position: absolute;
-      inset: 105px;
-      background: radial-gradient(
-        circle at 35% 35%,
-        #f8fcff,
-        #c5e4f6
-      );
-      box-shadow: 0 0 0 20px rgba(215, 234, 247, .28);
+      inset: 104px;
       border-radius: 50%;
+      background: #c5e4f6;
+      box-shadow: 0 0 0 18px rgba(215,234,247,.3);
     }
 
     .value {
@@ -264,154 +231,247 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 16px;
-      border: 1px solid #d8e5ef;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, .96);
-      box-shadow: 0 12px 35px rgba(32, 73, 116, .07);
-      font-size: 13px;
-      font-weight: 700;
       white-space: nowrap;
+      padding: 11px 15px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(30,70,105,.07);
+      font-weight: 700;
+      font-size: 13px;
     }
 
-    .value .dot {
-      width: 10px;
-      height: 10px;
+    .value::before {
+      content: "";
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      background: #7fb5db;
-      flex: none;
+      background: #8cbde0;
     }
 
-    .value.one {
-      top: 36px;
+    .v1 {
       left: 0;
+      top: 32px;
     }
 
-    .value.two {
+    .v2 {
       right: 0;
-      top: 150px;
+      top: 155px;
     }
 
-    .value.three {
-      bottom: 32px;
-      left: 11px;
+    .v3 {
+      bottom: 20px;
+      left: 10px;
     }
 
-    .value.three .dot {
-      background: #a6b6c6;
-    }
-
-    /* SECTIONS */
+    /* SHARED SECTIONS */
 
     .section {
       border-top: 1px solid var(--line);
-      padding: 84px 0;
+      padding: 80px 0;
     }
 
     .section-heading {
+      max-width: 830px;
+      margin: 0 auto 38px;
       text-align: center;
-      max-width: 810px;
-      margin: 0 auto 40px;
     }
 
-    .section-heading h2 {
-      font-size: clamp(30px, 3.8vw, 40px);
-      line-height: 1.18;
+    h2 {
+      font-size: clamp(30px,3.7vw,40px);
       letter-spacing: -1.2px;
       text-wrap: balance;
+      margin: 0;
     }
 
     .section-subtitle {
-      margin: 15px auto 0;
-      max-width: 640px;
-      font-size: 16px;
       color: var(--muted);
+      font-size: 17px;
+      margin: 15px auto 0;
+      max-width: 710px;
+    }
+
+    .center {
+      text-align: center;
     }
 
     /* PROJECT CARDS */
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2,minmax(0,1fr));
       gap: 24px;
     }
 
     .card {
-      background: linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #fcfdff 100%
-      );
+      background: #fff;
       border: 1px solid var(--line);
       border-radius: 19px;
-      padding: 34px;
-      min-height: 325px;
+      padding: 32px;
+      box-shadow: 0 12px 35px rgba(33,69,111,.04);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      box-shadow: 0 12px 36px rgba(33, 69, 111, .045);
     }
 
     .pill {
-      display: inline-block;
-      border-radius: 100px;
-      color: var(--accent);
-      background: var(--soft);
       padding: 5px 13px;
+      border-radius: 30px;
+      background: var(--soft);
+      color: var(--blue);
       font-size: 12px;
       font-weight: 750;
-      margin-bottom: 19px;
+      margin-bottom: 18px;
     }
 
     .card h3 {
       font-size: 25px;
-      line-height: 1.27;
-      letter-spacing: -.55px;
-      margin-bottom: 14px;
+      letter-spacing: -.5px;
+      margin-bottom: 13px;
     }
 
     .card p {
-      color: var(--muted);
       font-size: 16px;
-      line-height: 1.72;
+      color: var(--muted);
+      margin-bottom: 18px;
     }
 
-    .card-bottom {
+    .card-footer {
       margin-top: auto;
     }
 
-    .metric {
+    /* PREDIABETES BENCHMARK */
+
+    .benchmark-wrap {
+      background: linear-gradient(
+        145deg,
+        #eff8ff,
+        #fafdff
+      );
+      border: 1px solid #d6e8f5;
+      border-radius: 25px;
+      padding: 44px;
+    }
+
+    .benchmark-wrap .section-heading {
+      margin-bottom: 28px;
+    }
+
+    /* THREE FEATURED NUMBERS */
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 14px;
+    }
+
+    .metric-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 25px 19px;
+      text-align: center;
+    }
+
+    .metric-card.research {
+      background: #e4f1fd;
+      border-color: #c6dfef;
+    }
+
+    .metric-number {
       display: block;
-      color: var(--accent);
-      font-size: 35px;
-      line-height: 1.18;
+      font-size: clamp(31px,3.4vw,47px);
       font-weight: 800;
-      letter-spacing: -.8px;
+      line-height: 1.15;
+      color: var(--blue);
+      letter-spacing: -1.4px;
+      white-space: nowrap;
     }
 
-    .caption {
-      display: block;
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 1.65;
-      margin-top: 7px;
+    .metric-card.research .metric-number {
+      color: #24547f;
     }
 
-    .note {
-      display: block;
+    .metric-label {
+      font-size: 14px;
+      font-weight: 650;
+      line-height: 1.48;
+      margin: 12px 0 9px;
+    }
+
+    .metric-source {
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-      margin-top: 5px;
+      font-size: 12px;
     }
 
-    .soon {
-      color: var(--accent);
-      font-size: 17px;
-      font-weight: 750;
+    .source-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      margin: 13px 0 28px;
     }
 
-    /* ABOUT */
+    .source-note a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* RESEARCH STORY */
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 20px;
+    }
+
+    .story {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.8);
+    }
+
+    .story h3 {
+      font-size: 20px;
+      margin-bottom: 11px;
+    }
+
+    .story p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .vision {
+      text-align: center;
+      margin: 30px auto 0;
+      max-width: 750px;
+    }
+
+    .vision strong {
+      display: block;
+      color: var(--ink);
+      font-size: 19px;
+      margin-bottom: 9px;
+    }
+
+    .vision p {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .research-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 22px auto 0;
+      max-width: 750px;
+    }
+
+    /* ABOUT ME */
 
     .about-copy {
       max-width: 800px;
@@ -420,150 +480,130 @@
     }
 
     .about-copy p {
-      color: var(--muted);
       font-size: 18px;
-      line-height: 1.9;
-      margin-bottom: 19px;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 18px;
       text-wrap: pretty;
     }
 
-    .stats {
+    .experience {
       max-width: 860px;
-      margin: 43px auto 0;
+      margin: 40px auto 0;
       padding-top: 30px;
       border-top: 1px solid var(--line);
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
     }
 
-    .stat {
+    .experience > div {
       text-align: center;
-      padding: 8px 18px;
+      padding: 6px 20px;
     }
 
-    .stat + .stat {
+    .experience > div + div {
       border-left: 1px solid var(--line);
     }
 
-    .stat-number {
+    .experience strong {
       display: block;
-      color: var(--accent);
+      color: var(--blue);
       font-size: 43px;
-      font-weight: 800;
       line-height: 1.2;
     }
 
-    .stat-unit {
+    .experience span {
       display: block;
-      font-size: 13px;
-      font-weight: 750;
-      margin: 3px 0 7px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    .stat-label {
+    .experience b {
       display: block;
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.5;
+      font-size: 13px;
+      margin: 3px 0 7px;
     }
 
     /* PUBLICATIONS */
 
     .pub-list {
       max-width: 950px;
-      margin: 0 auto 31px;
+      margin: 0 auto 30px;
       border-top: 1px solid var(--line);
     }
 
     .pub {
+      padding: 24px 4px;
+      border-bottom: 1px solid var(--line);
       display: grid;
       grid-template-columns: 80px 1fr 20px;
-      gap: 23px;
+      gap: 22px;
       align-items: start;
-      padding: 25px 4px;
-      border-bottom: 1px solid var(--line);
     }
 
     .pub-year {
-      color: var(--accent);
-      font-weight: 750;
       font-size: 15px;
+      font-weight: 750;
+      color: var(--blue);
     }
 
     .pub-title {
       font-size: 17px;
       font-weight: 730;
       line-height: 1.5;
-      text-wrap: pretty;
-    }
-
-    .pub-title:hover {
-      color: var(--accent);
     }
 
     .pub-journal {
+      margin: 7px 0 0;
       color: var(--muted);
       font-size: 14px;
-      margin: 7px 0 0;
     }
 
     .pub-arrow {
-      color: var(--accent);
       font-size: 22px;
-      line-height: 1.1;
+      color: var(--blue);
     }
 
-    .center {
-      text-align: center;
-    }
-
-    /* CONTACT */
+    /* CONTACT AND FOOTER */
 
     .contact-copy {
-      max-width: 660px;
+      max-width: 640px;
       margin: 20px auto 26px;
-      color: var(--muted);
       font-size: 18px;
-      text-wrap: pretty;
+      color: var(--muted);
     }
 
     .footer {
-      border-top: 1px solid var(--line);
-      padding: 29px 0;
-      font-size: 13px;
-      color: var(--muted);
       text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding: 28px 14px;
+      font-size: 13px;
     }
 
-    /* RESPONSIVE */
+    /* MOBILE RESPONSIVE */
 
-    @media (max-width: 830px) {
+    @media (max-width: 860px) {
       .hero {
         grid-template-columns: 1fr;
-        gap: 0;
-        padding: 85px 0 80px;
+        padding: 80px 0;
       }
 
-      .hero-art,
-      .hero::before {
+      .hero-art {
         display: none;
-      }
-
-      .hero-copy {
-        max-width: 740px;
       }
     }
 
     @media (max-width: 670px) {
       .container {
-        width: min(100% - 36px, 1100px);
+        width: min(100% - 36px,1100px);
       }
 
       .nav {
         flex-direction: column;
         justify-content: center;
-        padding: 18px 0 15px;
         gap: 12px;
+        padding: 18px 0;
       }
 
       .logo {
@@ -571,7 +611,7 @@
       }
 
       .nav-links {
-        gap: 18px;
+        gap: 14px;
         justify-content: center;
       }
 
@@ -580,12 +620,12 @@
       }
 
       .hero {
-        padding: 73px 0 75px;
+        padding: 67px 0;
       }
 
       h1 {
-        font-size: clamp(38px, 9.5vw, 54px);
-        letter-spacing: -1.7px;
+        font-size: clamp(38px,9.3vw,53px);
+        letter-spacing: -1.6px;
       }
 
       .hero-description {
@@ -593,35 +633,51 @@
       }
 
       .section {
-        padding: 67px 0;
+        padding: 62px 0;
       }
 
-      .cards {
+      .cards,
+      .metric-grid,
+      .story-grid {
         grid-template-columns: 1fr;
       }
 
       .card {
-        min-height: 0;
-        padding: 27px;
+        padding: 26px;
+      }
+
+      .benchmark-wrap {
+        padding: 25px 17px;
+      }
+
+      .metric-card {
+        padding: 20px 15px;
+      }
+
+      .metric-number {
+        font-size: 39px;
+      }
+
+      .story {
+        padding: 20px;
       }
 
       .about-copy p {
         font-size: 16px;
       }
 
-      .stats {
+      .experience {
         grid-template-columns: 1fr;
-        gap: 23px;
-        padding-top: 28px;
+        gap: 24px;
       }
 
-      .stat + .stat {
-        border-left: none;
+      .experience > div + div {
+        border-left: 0;
       }
 
       .pub {
         grid-template-columns: 1fr 19px;
-        gap: 9px;
+        gap: 8px;
       }
 
       .pub-year {
@@ -641,10 +697,6 @@
       html {
         scroll-behavior: auto;
       }
-
-      .button {
-        transition: none;
-      }
     }
   </style>
 </head>
@@ -654,26 +706,30 @@
   <!-- HEADER -->
 
   <header class="topbar">
-    <nav class="container nav" aria-label="Main navigation">
+    <nav class="container nav"
+         aria-label="Main navigation">
+
       <a class="logo" href="#home">JoyBinya</a>
 
       <div class="nav-links">
         <a href="#projects">Projects</a>
+        <a href="#benchmark">Benchmark</a>
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </div>
+
     </nav>
   </header>
 
   <main class="container">
 
-    <!-- HERO -->
+    <!-- HOME -->
 
     <section class="hero" id="home"
              aria-labelledby="hero-title">
 
-      <div class="hero-copy">
+      <div>
 
         <p class="eyebrow">
           Binya Liu · Physician-Scientist · Clinical AI
@@ -687,7 +743,7 @@
           Drawing on clinical medicine, research, and teaching,
           I develop rigorous AI evaluations and practical tools
           to support better care and
-          <span class="keep-together">healthier, happier lives.</span>
+          <span class="no-break">healthier, happier lives.</span>
         </p>
 
         <p class="tagline">
@@ -695,29 +751,16 @@
         </p>
 
         <a class="button" href="#projects">
-          Explore my work
-          <span aria-hidden="true">&rarr;</span>
+          Explore my work &rarr;
         </a>
 
       </div>
 
       <div class="hero-art" aria-hidden="true">
         <div class="orbit"></div>
-
-        <div class="value one">
-          <span class="dot"></span>
-          Clinical insight
-        </div>
-
-        <div class="value two">
-          <span class="dot"></span>
-          Research rigor
-        </div>
-
-        <div class="value three">
-          <span class="dot"></span>
-          Human impact
-        </div>
+        <div class="value v1">Clinical insight</div>
+        <div class="value v2">Research rigor</div>
+        <div class="value v3">Human impact</div>
       </div>
 
     </section>
@@ -728,63 +771,221 @@
              aria-labelledby="projects-heading">
 
       <div class="section-heading">
-        <p class="eyebrow">Selected Projects</p>
+
+        <p class="eyebrow">
+          Selected Projects
+        </p>
 
         <h2 id="projects-heading">
           Research meets real-world impact.
         </h2>
+
       </div>
 
       <div class="cards">
 
         <article class="card">
 
-          <span class="pill">Clinical AI Benchmark</span>
+          <span class="pill">
+            Clinical AI Benchmark
+          </span>
 
-          <h3>Prediabetes AI Benchmark</h3>
+          <h3>
+            Prediabetes AI Benchmark
+          </h3>
 
           <p>
-            100 synthetic cases designed to evaluate care action,
-            urgency, information sufficiency, safety, and
-            patient communication.
+            Can AI help people understand when to get screened,
+            what to do next, and when to seek urgent care?
+            I designed 100 synthetic patient scenarios to find out.
           </p>
 
-          <div class="card-bottom">
-            <span class="metric">74 / 80</span>
-
-            <span class="caption">
-              Strict action-label agreement on held-out cases
-            </span>
-
-            <span class="note">
-              A benchmark agreement result, not a measure of
-              real-world clinical accuracy.
-            </span>
+          <div class="card-footer">
+            <a class="text-link" href="#benchmark">
+              Explore the benchmark &rarr;
+            </a>
           </div>
 
         </article>
 
         <article class="card">
 
-          <span class="pill">In Development</span>
+          <span class="pill">
+            In Development
+          </span>
 
-          <h3>Prediabetes Screening App</h3>
+          <h3>
+            Prediabetes Screening App
+          </h3>
 
           <p>
-            A planned healthcare application exploring
-            patient-friendly screening guidance,
-            risk communication, and safer next-step decisions.
+            A planned patient-friendly health application
+            exploring screening guidance,
+            risk communication, and safer next steps.
           </p>
 
-          <div class="card-bottom">
-            <span class="soon">Coming soon</span>
-
-            <span class="note">
+          <div class="card-footer">
+            <span class="text-link">Coming soon</span>
+            <br>
+            <small>
               Concept only — not a functioning medical application.
-            </span>
+            </small>
           </div>
 
         </article>
+
+      </div>
+
+    </section>
+
+    <!-- FEATURED PREDIABETES BENCHMARK -->
+
+    <section class="section" id="benchmark"
+             aria-labelledby="benchmark-heading">
+
+      <div class="benchmark-wrap">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Featured Research · Prediabetes AI Benchmark
+          </p>
+
+          <h2 id="benchmark-heading">
+            Earlier Awareness. Better Decisions. Healthier Lives.
+          </h2>
+
+          <p class="section-subtitle">
+            Prediabetes often has no obvious symptoms.
+            But early screening and healthier habits can help
+            prevent or delay type 2 diabetes.
+          </p>
+
+        </div>
+
+        <!-- THREE KEY NUMBERS -->
+
+        <div class="metric-grid">
+
+          <div class="metric-card">
+
+            <strong class="metric-number">
+              115.2M
+            </strong>
+
+            <p class="metric-label">
+              U.S. adults estimated to have prediabetes
+            </p>
+
+            <span class="metric-source">
+              CDC · 2026
+            </span>
+
+          </div>
+
+          <div class="metric-card">
+
+            <strong class="metric-number">
+              8 in 10
+            </strong>
+
+            <p class="metric-label">
+              U.S. adults with prediabetes who don't know
+              they have it
+            </p>
+
+            <span class="metric-source">
+              CDC · 2026
+            </span>
+
+          </div>
+
+          <div class="metric-card research">
+
+            <strong class="metric-number">
+              92.5%
+            </strong>
+
+            <p class="metric-label">
+              AI agreement with predefined next steps
+              in 80 held-out synthetic cases (74/80)
+            </p>
+
+            <span class="metric-source">
+              JoyBinya · Independent benchmark
+            </span>
+
+          </div>
+
+        </div>
+
+        <p class="source-note">
+          The first two figures are U.S. public-health estimates
+          from
+          <a
+            href="https://www.cdc.gov/diabetes/communication-resources/prediabetes-statistics.html"
+            target="_blank"
+            rel="noopener noreferrer">
+            CDC (2026) &nearr;
+          </a>.
+          The third is a benchmark result, not clinical accuracy.
+        </p>
+
+        <!-- RESEARCH STORY -->
+
+        <div class="story-grid">
+
+          <div class="story">
+
+            <h3>Why I Built It</h3>
+
+            <p>
+              As more people turn to AI for health information,
+              I wanted to know whether a GPT-based model could
+              recommend appropriate screening, judge urgency,
+              recognize missing information, and explain
+              the next step safely.
+            </p>
+
+          </div>
+
+          <div class="story">
+
+            <h3>What I Found</h3>
+
+            <p>
+              Across 80 unseen cases, 74 recommendations matched
+              the predefined next steps. The model also classified
+              all 8 cases in a small urgency check.
+              Physician review showed why safe clinical guidance
+              cannot be reduced to one score.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- VISION -->
+
+        <div class="vision">
+
+          <strong>My Vision</strong>
+
+          <p>
+            Help build trustworthy AI that encourages earlier
+            awareness, appropriate screening, timely care,
+            and informed choices for healthier lives.
+          </p>
+
+        </div>
+
+        <p class="research-note">
+          This evaluation used synthetic scenarios.
+          Its findings do not establish real-world clinical
+          accuracy, safety, or improved patient outcomes.
+          The benchmark is not a diagnostic tool
+          or medical advice.
+        </p>
 
       </div>
 
@@ -796,55 +997,57 @@
              aria-labelledby="about-heading">
 
       <div class="section-heading">
-        <p class="eyebrow">About Me</p>
+
+        <p class="eyebrow">
+          About Me
+        </p>
 
         <h2 id="about-heading">
           From Clinical Medicine to Healthcare AI
         </h2>
+
       </div>
 
       <div class="about-copy">
 
         <p>
-          Medicine has shaped my life since I entered medical
-          school at 17. Years of patient care, research, and
-          teaching have taught me that great healthcare requires
-          sound judgment, scientific rigor, and genuine empathy.
+          Medicine has shaped my life since I entered
+          medical school at 17.
+          Years of patient care, research, and teaching
+          have taught me that great healthcare requires
+          sound judgment, scientific rigor,
+          and genuine empathy.
         </p>
 
         <p>
-          Today, I bring these perspectives to healthcare AI—
-          building trustworthy evaluations and practical tools
-          that support clinicians, empower patients, and help
-          more people make informed decisions about their health.
+          Today, I bring these perspectives to healthcare AI —
+          building trustworthy evaluations and practical
+          tools that support clinicians, empower patients,
+          and help more people make informed decisions
+          about their health.
         </p>
 
       </div>
 
-      <div class="stats" aria-label="Professional experience">
+      <div class="experience"
+           aria-label="Professional experience">
 
-        <div class="stat">
-          <span class="stat-number">~10</span>
-          <span class="stat-unit">Years</span>
-          <span class="stat-label">
-            Clinical Training &amp; Patient Care
-          </span>
+        <div>
+          <strong>~10</strong>
+          <b>Years</b>
+          <span>Clinical Training &amp; Patient Care</span>
         </div>
 
-        <div class="stat">
-          <span class="stat-number">10+</span>
-          <span class="stat-unit">Years</span>
-          <span class="stat-label">
-            Medical Research
-          </span>
+        <div>
+          <strong>10+</strong>
+          <b>Years</b>
+          <span>Medical Research</span>
         </div>
 
-        <div class="stat">
-          <span class="stat-number">3+</span>
-          <span class="stat-unit">Years</span>
-          <span class="stat-label">
-            Medical Teaching
-          </span>
+        <div>
+          <strong>3+</strong>
+          <b>Years</b>
+          <span>Medical Teaching</span>
         </div>
 
       </div>
@@ -858,7 +1061,9 @@
 
       <div class="section-heading">
 
-        <p class="eyebrow">Research &amp; Publications</p>
+        <p class="eyebrow">
+          Research &amp; Publications
+        </p>
 
         <h2 id="publications-heading">
           A foundation in scientific inquiry.
@@ -880,18 +1085,20 @@
           <span class="pub-year">2026</span>
 
           <div>
+
             <a class="pub-title"
                href="https://doi.org/10.1016/j.ebiom.2026.106482"
                target="_blank"
                rel="noopener noreferrer">
               Decoding adenomyosis: integrative insights from
-              genetics, multiomics, and advanced
-              computational analyses
+              genetics, multiomics, and advanced computational
+              analyses
             </a>
 
             <p class="pub-journal">
               eBioMedicine
             </p>
+
           </div>
 
           <span class="pub-arrow"
@@ -899,13 +1106,14 @@
 
         </article>
 
-        <!-- 2025 AI and Endometriosis -->
+        <!-- 2025 AI RESEARCH -->
 
         <article class="pub">
 
           <span class="pub-year">2025</span>
 
           <div>
+
             <a class="pub-title"
                href="https://doi.org/10.1038/s44294-024-00052-w"
                target="_blank"
@@ -918,6 +1126,7 @@
             <p class="pub-journal">
               npj Women's Health
             </p>
+
           </div>
 
           <span class="pub-arrow"
@@ -925,13 +1134,14 @@
 
         </article>
 
-        <!-- 2025 AJOG Review -->
+        <!-- 2025 AJOG -->
 
         <article class="pub">
 
           <span class="pub-year">2025</span>
 
           <div>
+
             <a class="pub-title"
                href="https://doi.org/10.1016/j.ajog.2024.08.043"
                target="_blank"
@@ -943,6 +1153,7 @@
             <p class="pub-journal">
               American Journal of Obstetrics &amp; Gynecology
             </p>
+
           </div>
 
           <span class="pub-arrow"
@@ -960,8 +1171,7 @@
            href="https://scholar.google.com/citations?user=uD3QzZcAAAAJ&amp;hl=en"
            target="_blank"
            rel="noopener noreferrer">
-          View all publications on Google Scholar
-          <span aria-hidden="true">&nearr;</span>
+          View all publications on Google Scholar &nearr;
         </a>
 
       </div>
@@ -973,28 +1183,24 @@
     <section class="section center" id="contact"
              aria-labelledby="contact-heading">
 
-      <p class="eyebrow">Let's Connect</p>
+      <p class="eyebrow">
+        Let's Connect
+      </p>
 
-      <div class="section-heading" style="margin-bottom:0">
-
-        <h2 id="contact-heading">
-          Let's build more thoughtful healthcare AI.
-        </h2>
-
-      </div>
+      <h2 id="contact-heading">
+        Let's build more thoughtful healthcare AI.
+      </h2>
 
       <p class="contact-copy">
-        Open to opportunities and collaborations in
-        clinical AI research, evaluation, safety,
-        and health innovation.
+        Open to opportunities and collaborations in clinical
+        AI research, evaluation, safety, and health innovation.
       </p>
 
       <a class="button"
          href="https://github.com/liubinya-joy"
          target="_blank"
          rel="noopener noreferrer">
-        View my GitHub
-        <span aria-hidden="true">&nearr;</span>
+        View my GitHub &nearr;
       </a>
 
     </section>
