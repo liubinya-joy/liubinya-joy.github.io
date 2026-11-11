@@ -3,12 +3,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6faff">
-  <meta name="description"
-        content="JoyBinya by Binya Liu: clinical AI research, patient-centered benchmarks, and healthcare innovation.">
-
+  <meta name="description" content="JoyBinya by Binya Liu: clinical AI research, patient-centered benchmarks, and healthcare innovation.">
   <title>JoyBinya | Clinical AI & Health Innovation</title>
 
   <style>
@@ -22,13 +19,8 @@
       --white: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -38,10 +30,7 @@
         "Segoe UI", Helvetica, Arial, sans-serif;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     a:focus-visible {
       outline: 3px solid #80b5dd;
@@ -93,13 +82,8 @@
       color: var(--blue);
     }
 
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
-
-    h1, h2, h3 {
-      line-height: 1.2;
-    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.2; }
 
     .eyebrow {
       color: var(--blue);
@@ -124,9 +108,7 @@
       font-weight: 750;
     }
 
-    .button:hover {
-      background: var(--blue);
-    }
+    .button:hover { background: var(--blue); }
 
     .button-light {
       background: var(--soft);
@@ -134,9 +116,7 @@
       border: 1px solid #d3e6f4;
     }
 
-    .button-light:hover {
-      background: #d8edf9;
-    }
+    .button-light:hover { background: #d8edf9; }
 
     .text-link {
       font-size: 14px;
@@ -144,7 +124,7 @@
       font-weight: 750;
     }
 
-    /* HERO */
+    /* HOME */
 
     .hero {
       display: grid;
@@ -182,11 +162,9 @@
       margin: 0 0 28px;
     }
 
-    .no-break {
-      white-space: nowrap;
-    }
+    .no-break { white-space: nowrap; }
 
-    /* HERO DECORATION */
+    /* HERO VISUAL */
 
     .hero-art {
       min-height: 350px;
@@ -249,22 +227,11 @@
       background: #8cbde0;
     }
 
-    .v1 {
-      left: 0;
-      top: 32px;
-    }
+    .v1 { left: 0; top: 32px; }
+    .v2 { right: 0; top: 155px; }
+    .v3 { bottom: 20px; left: 10px; }
 
-    .v2 {
-      right: 0;
-      top: 155px;
-    }
-
-    .v3 {
-      bottom: 20px;
-      left: 10px;
-    }
-
-    /* SHARED SECTIONS */
+    /* SECTIONS */
 
     .section {
       border-top: 1px solid var(--line);
@@ -291,9 +258,7 @@
       max-width: 710px;
     }
 
-    .center {
-      text-align: center;
-    }
+    .center { text-align: center; }
 
     /* PROJECT CARDS */
 
@@ -336,13 +301,11 @@
       margin-bottom: 18px;
     }
 
-    .card-footer {
-      margin-top: auto;
-    }
+    .card-footer { margin-top: auto; }
 
-    /* PREDIABETES BENCHMARK */
+    /* MATCHING LIGHT BLUE PANELS */
 
-    .benchmark-wrap {
+    .feature-panel {
       background: linear-gradient(
         145deg,
         #eff8ff,
@@ -351,13 +314,37 @@
       border: 1px solid #d6e8f5;
       border-radius: 25px;
       padding: 44px;
+      box-shadow: 0 12px 38px rgba(33,69,111,.035);
     }
 
-    .benchmark-wrap .section-heading {
+    .feature-panel .section-heading {
       margin-bottom: 28px;
     }
 
-    /* THREE FEATURED NUMBERS */
+    /* BENCHMARK TITLE */
+
+    .benchmark-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      line-height: 1.2;
+    }
+
+    .benchmark-title-top {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: clamp(24px,4vw,52px);
+      font-size: clamp(24px,3vw,35px);
+    }
+
+    .benchmark-title-bottom {
+      color: var(--blue);
+      font-size: clamp(32px,4vw,44px);
+    }
+
+    /* BENCHMARK NUMBERS */
 
     .metric-grid {
       display: grid;
@@ -529,7 +516,10 @@
     .pub-list {
       max-width: 950px;
       margin: 0 auto 30px;
-      border-top: 1px solid var(--line);
+      padding: 0 22px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      border-radius: 18px;
     }
 
     .pub {
@@ -539,6 +529,10 @@
       grid-template-columns: 80px 1fr 20px;
       gap: 22px;
       align-items: start;
+    }
+
+    .pub:last-child {
+      border-bottom: 0;
     }
 
     .pub-year {
@@ -553,10 +547,23 @@
       line-height: 1.5;
     }
 
-    .pub-journal {
+    .pub-authors {
       margin: 7px 0 0;
-      color: var(--muted);
       font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .pub-authors strong {
+      font-weight: 800;
+      color: #2b6695;
+    }
+
+    .pub-journal {
+      margin: 4px 0 0;
+      color: #51687e;
+      font-size: 14px;
+      font-style: italic;
     }
 
     .pub-arrow {
@@ -581,7 +588,7 @@
       font-size: 13px;
     }
 
-    /* MOBILE RESPONSIVE */
+    /* MOBILE */
 
     @media (max-width: 860px) {
       .hero {
@@ -606,35 +613,24 @@
         padding: 18px 0;
       }
 
-      .logo {
-        font-size: 27px;
-      }
+      .logo { font-size: 27px; }
 
       .nav-links {
         gap: 14px;
         justify-content: center;
       }
 
-      .nav-links a {
-        font-size: 13px;
-      }
+      .nav-links a { font-size: 13px; }
 
-      .hero {
-        padding: 67px 0;
-      }
+      .hero { padding: 67px 0; }
 
       h1 {
         font-size: clamp(38px,9.3vw,53px);
         letter-spacing: -1.6px;
       }
 
-      .hero-description {
-        font-size: 17px;
-      }
-
-      .section {
-        padding: 62px 0;
-      }
+      .hero-description { font-size: 17px; }
+      .section { padding: 62px 0; }
 
       .cards,
       .metric-grid,
@@ -642,29 +638,19 @@
         grid-template-columns: 1fr;
       }
 
-      .card {
-        padding: 26px;
+      .card { padding: 26px; }
+      .feature-panel { padding: 28px 18px; }
+
+      .benchmark-title-top {
+        flex-direction: column;
+        gap: 2px;
       }
 
-      .benchmark-wrap {
-        padding: 25px 17px;
-      }
-
-      .metric-card {
-        padding: 20px 15px;
-      }
-
-      .metric-number {
-        font-size: 39px;
-      }
-
-      .story {
-        padding: 20px;
-      }
-
-      .about-copy p {
-        font-size: 16px;
-      }
+      .pub-list { padding: 0 15px; }
+      .metric-card { padding: 20px 15px; }
+      .metric-number { font-size: 39px; }
+      .story { padding: 20px; }
+      .about-copy p { font-size: 16px; }
 
       .experience {
         grid-template-columns: 1fr;
@@ -684,31 +670,22 @@
         grid-column: 1 / -1;
       }
 
-      .pub-title {
-        font-size: 16px;
-      }
-
-      .contact-copy {
-        font-size: 16px;
-      }
+      .pub-title { font-size: 16px; }
+      .contact-copy { font-size: 16px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+  <!-- NAVIGATION -->
 
   <header class="topbar">
-    <nav class="container nav"
-         aria-label="Main navigation">
-
+    <nav class="container nav" aria-label="Main navigation">
       <a class="logo" href="#home">JoyBinya</a>
 
       <div class="nav-links">
@@ -718,7 +695,6 @@
         <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </div>
-
     </nav>
   </header>
 
@@ -730,7 +706,6 @@
              aria-labelledby="hero-title">
 
       <div>
-
         <p class="eyebrow">
           Binya Liu · Physician-Scientist · Clinical AI
         </p>
@@ -753,7 +728,6 @@
         <a class="button" href="#projects">
           Explore my work &rarr;
         </a>
-
       </div>
 
       <div class="hero-art" aria-hidden="true">
@@ -771,28 +745,18 @@
              aria-labelledby="projects-heading">
 
       <div class="section-heading">
-
-        <p class="eyebrow">
-          Selected Projects
-        </p>
-
+        <p class="eyebrow">Selected Projects</p>
         <h2 id="projects-heading">
           Research meets real-world impact.
         </h2>
-
       </div>
 
       <div class="cards">
 
         <article class="card">
+          <span class="pill">Clinical AI Benchmark</span>
 
-          <span class="pill">
-            Clinical AI Benchmark
-          </span>
-
-          <h3>
-            Prediabetes AI Benchmark
-          </h3>
+          <h3>Prediabetes AI Benchmark</h3>
 
           <p>
             Can AI help people understand when to get screened,
@@ -805,23 +769,17 @@
               Explore the benchmark &rarr;
             </a>
           </div>
-
         </article>
 
         <article class="card">
+          <span class="pill">In Development</span>
 
-          <span class="pill">
-            In Development
-          </span>
-
-          <h3>
-            Prediabetes Screening App
-          </h3>
+          <h3>Prediabetes Screening App</h3>
 
           <p>
             A planned patient-friendly health application
-            exploring screening guidance,
-            risk communication, and safer next steps.
+            exploring screening guidance, risk communication,
+            and safer next steps.
           </p>
 
           <div class="card-footer">
@@ -831,19 +789,17 @@
               Concept only — not a functioning medical application.
             </small>
           </div>
-
         </article>
 
       </div>
-
     </section>
 
-    <!-- FEATURED PREDIABETES BENCHMARK -->
+    <!-- PREDIABETES BENCHMARK -->
 
     <section class="section" id="benchmark"
              aria-labelledby="benchmark-heading">
 
-      <div class="benchmark-wrap">
+      <div class="feature-panel">
 
         <div class="section-heading">
 
@@ -851,60 +807,52 @@
             Featured Research · Prediabetes AI Benchmark
           </p>
 
-          <h2 id="benchmark-heading">
-            Earlier Awareness. Better Decisions. Healthier Lives.
+          <h2 id="benchmark-heading" class="benchmark-title">
+
+            <span class="benchmark-title-top">
+              <span>Earlier Awareness</span>
+              <span>Better Decisions</span>
+            </span>
+
+            <span class="benchmark-title-bottom">
+              Healthier Lives
+            </span>
+
           </h2>
 
           <p class="section-subtitle">
             Prediabetes often has no obvious symptoms.
-            But early screening and healthier habits can help
-            prevent or delay type 2 diabetes.
+            But early screening and healthier habits
+            can help prevent or delay type 2 diabetes.
           </p>
 
         </div>
 
-        <!-- THREE KEY NUMBERS -->
-
         <div class="metric-grid">
 
           <div class="metric-card">
-
-            <strong class="metric-number">
-              115.2M
-            </strong>
+            <strong class="metric-number">115.2M</strong>
 
             <p class="metric-label">
               U.S. adults estimated to have prediabetes
             </p>
 
-            <span class="metric-source">
-              CDC · 2026
-            </span>
-
+            <span class="metric-source">CDC · 2026</span>
           </div>
 
           <div class="metric-card">
-
-            <strong class="metric-number">
-              8 in 10
-            </strong>
+            <strong class="metric-number">8 in 10</strong>
 
             <p class="metric-label">
-              U.S. adults with prediabetes who don't know
-              they have it
+              U.S. adults with prediabetes
+              who don't know they have it
             </p>
 
-            <span class="metric-source">
-              CDC · 2026
-            </span>
-
+            <span class="metric-source">CDC · 2026</span>
           </div>
 
           <div class="metric-card research">
-
-            <strong class="metric-number">
-              92.5%
-            </strong>
+            <strong class="metric-number">92.5%</strong>
 
             <p class="metric-label">
               AI agreement with predefined next steps
@@ -914,29 +862,25 @@
             <span class="metric-source">
               JoyBinya · Independent benchmark
             </span>
-
           </div>
 
         </div>
 
         <p class="source-note">
-          The first two figures are U.S. public-health estimates
-          from
-          <a
-            href="https://www.cdc.gov/diabetes/communication-resources/prediabetes-statistics.html"
-            target="_blank"
-            rel="noopener noreferrer">
+          The first two figures are U.S. public-health
+          estimates from
+          <a href="https://www.cdc.gov/diabetes/communication-resources/prediabetes-statistics.html"
+             target="_blank"
+             rel="noopener noreferrer">
             CDC (2026) &nearr;
           </a>.
-          The third is a benchmark result, not clinical accuracy.
+          The third is a benchmark result,
+          not clinical accuracy.
         </p>
-
-        <!-- RESEARCH STORY -->
 
         <div class="story-grid">
 
           <div class="story">
-
             <h3>Why I Built It</h3>
 
             <p>
@@ -946,29 +890,24 @@
               recognize missing information, and explain
               the next step safely.
             </p>
-
           </div>
 
           <div class="story">
-
             <h3>What I Found</h3>
 
             <p>
-              Across 80 unseen cases, 74 recommendations matched
-              the predefined next steps. The model also classified
-              all 8 cases in a small urgency check.
-              Physician review showed why safe clinical guidance
-              cannot be reduced to one score.
+              Across 80 unseen cases, 74 recommendations
+              matched the predefined next steps.
+              The model also classified all 8 cases
+              in a small urgency check.
+              Physician review showed why safe clinical
+              guidance cannot be reduced to one score.
             </p>
-
           </div>
 
         </div>
 
-        <!-- VISION -->
-
         <div class="vision">
-
           <strong>My Vision</strong>
 
           <p>
@@ -976,19 +915,16 @@
             awareness, appropriate screening, timely care,
             and informed choices for healthier lives.
           </p>
-
         </div>
 
         <p class="research-note">
           This evaluation used synthetic scenarios.
-          Its findings do not establish real-world clinical
-          accuracy, safety, or improved patient outcomes.
-          The benchmark is not a diagnostic tool
-          or medical advice.
+          Its findings do not establish real-world
+          clinical accuracy, safety, or improved patient outcomes.
+          The benchmark is not a diagnostic tool or medical advice.
         </p>
 
       </div>
-
     </section>
 
     <!-- ABOUT ME -->
@@ -996,186 +932,182 @@
     <section class="section" id="about"
              aria-labelledby="about-heading">
 
-      <div class="section-heading">
+      <div class="feature-panel">
 
-        <p class="eyebrow">
-          About Me
-        </p>
+        <div class="section-heading">
+          <p class="eyebrow">About Me</p>
 
-        <h2 id="about-heading">
-          From Clinical Medicine to Healthcare AI
-        </h2>
-
-      </div>
-
-      <div class="about-copy">
-
-        <p>
-          Medicine has shaped my life since I entered
-          medical school at 17.
-          Years of patient care, research, and teaching
-          have taught me that great healthcare requires
-          sound judgment, scientific rigor,
-          and genuine empathy.
-        </p>
-
-        <p>
-          Today, I bring these perspectives to healthcare AI —
-          building trustworthy evaluations and practical
-          tools that support clinicians, empower patients,
-          and help more people make informed decisions
-          about their health.
-        </p>
-
-      </div>
-
-      <div class="experience"
-           aria-label="Professional experience">
-
-        <div>
-          <strong>~10</strong>
-          <b>Years</b>
-          <span>Clinical Training &amp; Patient Care</span>
+          <h2 id="about-heading">
+            From Clinical Medicine to Healthcare AI
+          </h2>
         </div>
 
-        <div>
-          <strong>10+</strong>
-          <b>Years</b>
-          <span>Medical Research</span>
+        <div class="about-copy">
+
+          <p>
+            Medicine has shaped my life since I entered
+            medical school at 17.
+            Years of patient care, research, and teaching
+            have taught me that great healthcare requires
+            sound judgment, scientific rigor,
+            and genuine empathy.
+          </p>
+
+          <p>
+            Today, I bring these perspectives to healthcare AI —
+            building trustworthy evaluations and practical tools
+            that support clinicians, empower patients,
+            and help more people make informed decisions
+            about their health.
+          </p>
+
         </div>
 
-        <div>
-          <strong>3+</strong>
-          <b>Years</b>
-          <span>Medical Teaching</span>
+        <div class="experience"
+             aria-label="Professional experience">
+
+          <div>
+            <strong>~10</strong>
+            <b>Years</b>
+            <span>Clinical Training &amp; Patient Care</span>
+          </div>
+
+          <div>
+            <strong>10+</strong>
+            <b>Years</b>
+            <span>Medical Research</span>
+          </div>
+
+          <div>
+            <strong>3+</strong>
+            <b>Years</b>
+            <span>Medical Teaching</span>
+          </div>
+
         </div>
 
       </div>
-
     </section>
 
-    <!-- PUBLICATIONS -->
+    <!-- RESEARCH & PUBLICATIONS -->
 
     <section class="section" id="publications"
              aria-labelledby="publications-heading">
 
-      <div class="section-heading">
+      <div class="feature-panel">
 
-        <p class="eyebrow">
-          Research &amp; Publications
-        </p>
+        <div class="section-heading">
+          <p class="eyebrow">
+            Research &amp; Publications
+          </p>
 
-        <h2 id="publications-heading">
-          A foundation in scientific inquiry.
-        </h2>
+          <h2 id="publications-heading">
+            A foundation in scientific inquiry
+          </h2>
 
-        <p class="section-subtitle">
-          Selected publications exploring reproductive health,
-          multiomics, and emerging technologies in medicine.
-        </p>
+          <p class="section-subtitle">
+            Selected publications exploring reproductive health,
+            multiomics, and emerging technologies in medicine.
+          </p>
+        </div>
 
-      </div>
+        <div class="pub-list">
 
-      <div class="pub-list">
+          <!-- 2026 eBioMedicine -->
 
-        <!-- 2026 eBioMedicine -->
+          <article class="pub">
+            <span class="pub-year">2026</span>
 
-        <article class="pub">
+            <div>
+              <a class="pub-title"
+                 href="https://doi.org/10.1016/j.ebiom.2026.106482"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                Decoding adenomyosis: integrative insights
+                from genetics, multiomics, and advanced
+                computational analyses
+              </a>
 
-          <span class="pub-year">2026</span>
+              <p class="pub-authors">
+                <strong>Liu B</strong>, Irwin JC, Giudice LC
+              </p>
 
-          <div>
+              <p class="pub-journal">eBioMedicine</p>
+            </div>
 
-            <a class="pub-title"
-               href="https://doi.org/10.1016/j.ebiom.2026.106482"
-               target="_blank"
-               rel="noopener noreferrer">
-              Decoding adenomyosis: integrative insights from
-              genetics, multiomics, and advanced computational
-              analyses
-            </a>
+            <span class="pub-arrow"
+                  aria-hidden="true">&nearr;</span>
+          </article>
 
-            <p class="pub-journal">
-              eBioMedicine
-            </p>
+          <!-- 2025 npj Women's Health -->
 
-          </div>
+          <article class="pub">
+            <span class="pub-year">2025</span>
 
-          <span class="pub-arrow"
-                aria-hidden="true">&nearr;</span>
+            <div>
+              <a class="pub-title"
+                 href="https://doi.org/10.1038/s44294-024-00052-w"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                Real world perspectives on endometriosis
+                disease phenotyping through surgery,
+                omics, health data, and artificial intelligence
+              </a>
 
-        </article>
+              <p class="pub-authors">
+                Nezhat CR, Oskotsky TT, Robinson JF,
+                Fisher SJ, Tsuei A,
+                <strong>Liu B</strong>, et al.
+              </p>
 
-        <!-- 2025 AI RESEARCH -->
+              <p class="pub-journal">npj Women's Health</p>
+            </div>
 
-        <article class="pub">
+            <span class="pub-arrow"
+                  aria-hidden="true">&nearr;</span>
+          </article>
 
-          <span class="pub-year">2025</span>
+          <!-- 2025 AJOG -->
 
-          <div>
+          <article class="pub">
+            <span class="pub-year">2025</span>
 
-            <a class="pub-title"
-               href="https://doi.org/10.1038/s44294-024-00052-w"
-               target="_blank"
-               rel="noopener noreferrer">
-              Real world perspectives on endometriosis disease
-              phenotyping through surgery, omics, health data,
-              and artificial intelligence
-            </a>
+            <div>
+              <a class="pub-title"
+                 href="https://doi.org/10.1016/j.ajog.2024.08.043"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                Endometriosis and adenomyosis unveiled
+                through single-cell glasses
+              </a>
 
-            <p class="pub-journal">
-              npj Women's Health
-            </p>
+              <p class="pub-authors">
+                Giudice LC, <strong>Liu B</strong>, Irwin JC
+              </p>
 
-          </div>
+              <p class="pub-journal">
+                American Journal of Obstetrics &amp; Gynecology
+              </p>
+            </div>
 
-          <span class="pub-arrow"
-                aria-hidden="true">&nearr;</span>
+            <span class="pub-arrow"
+                  aria-hidden="true">&nearr;</span>
+          </article>
 
-        </article>
+        </div>
 
-        <!-- 2025 AJOG -->
+        <!-- GOOGLE SCHOLAR -->
 
-        <article class="pub">
-
-          <span class="pub-year">2025</span>
-
-          <div>
-
-            <a class="pub-title"
-               href="https://doi.org/10.1016/j.ajog.2024.08.043"
-               target="_blank"
-               rel="noopener noreferrer">
-              Endometriosis and adenomyosis unveiled
-              through single-cell glasses
-            </a>
-
-            <p class="pub-journal">
-              American Journal of Obstetrics &amp; Gynecology
-            </p>
-
-          </div>
-
-          <span class="pub-arrow"
-                aria-hidden="true">&nearr;</span>
-
-        </article>
-
-      </div>
-
-      <!-- GOOGLE SCHOLAR -->
-
-      <div class="center">
-
-        <a class="button button-light"
-           href="https://scholar.google.com/citations?user=uD3QzZcAAAAJ&amp;hl=en"
-           target="_blank"
-           rel="noopener noreferrer">
-          View all publications on Google Scholar &nearr;
-        </a>
+        <div class="center">
+          <a class="button button-light"
+             href="https://scholar.google.com/citations?user=uD3QzZcAAAAJ&amp;hl=en"
+             target="_blank"
+             rel="noopener noreferrer">
+            View all publications on Google Scholar &nearr;
+          </a>
+        </div>
 
       </div>
-
     </section>
 
     <!-- CONTACT -->
@@ -1183,17 +1115,16 @@
     <section class="section center" id="contact"
              aria-labelledby="contact-heading">
 
-      <p class="eyebrow">
-        Let's Connect
-      </p>
+      <p class="eyebrow">Let's Connect</p>
 
       <h2 id="contact-heading">
         Let's build more thoughtful healthcare AI.
       </h2>
 
       <p class="contact-copy">
-        Open to opportunities and collaborations in clinical
-        AI research, evaluation, safety, and health innovation.
+        Open to opportunities and collaborations
+        in clinical AI research, evaluation,
+        safety, and health innovation.
       </p>
 
       <a class="button"
@@ -1206,8 +1137,6 @@
     </section>
 
   </main>
-
-  <!-- FOOTER -->
 
   <footer class="footer">
     &copy; 2026 Binya Liu · JoyBinya ·
