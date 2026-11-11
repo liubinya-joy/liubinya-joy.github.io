@@ -1,69 +1,265 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JoyBinya | Clinical AI & Health Innovation</title>
-<meta name="description" content="Binya Liu's personal site: clinical AI research, benchmarks, and healthcare applications.">
-<style>
-:root{font-family:Arial,sans-serif;color:#203b38;background:#fafbf8}
-*{box-sizing:border-box}
-body{margin:0;line-height:1.65}
-nav,main,footer{max-width:1050px;margin:auto;padding:24px}
-nav{display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:27px;font-weight:800;letter-spacing:-1px}
-.logo span{color:#dc9942}
-a{color:inherit;text-decoration:none}
-nav .links a{margin-left:18px;font-size:14px}
-.hero{padding:85px 0 70px}
-.eyebrow{text-transform:uppercase;letter-spacing:2px;color:#63867b;font-size:12px;font-weight:700}
-h1{font-size:clamp(36px,6vw,68px);line-height:1.12;letter-spacing:-2px;max-width:800px}
-h2{font-size:30px;line-height:1.25}
-.intro{max-width:690px;color:#51635e;font-size:19px}
-.pill{display:inline-block;background:#e8f3ed;padding:7px 13px;border-radius:50px;font-size:12px;font-weight:700}
-.btn{display:inline-block;background:#244e47;color:white;padding:12px 21px;border-radius:8px;margin-top:20px}
-section{padding:45px 0;border-top:1px solid #dce7df}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{padding:29px;border:1px solid #d9e5dc;border-radius:18px;background:white}
-.card h3{font-size:23px;line-height:1.25}
-.card p,section p{color:#52615d}
-.metric{font-size:28px;font-weight:800;color:#257b70}
-small{color:#647570}
-footer{border-top:1px solid #dce7df;color:#65746f;font-size:13px}
-@media(max-width:600px){nav{display:block}.links{margin-top:10px}nav .links a{margin-left:0;margin-right:13px}.hero{padding:50px 0}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JoyBinya by Binya Liu — clinical AI research, benchmarks, and healthcare innovation.">
+  <title>JoyBinya | Clinical AI & Health Innovation</title>
+  <style>
+    :root {
+      --ink: #203b38;
+      --muted: #566a63;
+      --accent: #28776c;
+      --line: #dce8e0;
+      --paper: #f9fbf8;
+      --card: #ffffff;
+      --soft: #eaf4ee;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+    .site-header { border-bottom: 1px solid var(--line); }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      min-height: 88px;
+    }
+    .logo { font-size: 29px; font-weight: 800; letter-spacing: -1.2px; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 30px; }
+    .nav-links a { font-size: 15px; font-weight: 600; color: var(--muted); }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+
+    .hero {
+      text-align: center;
+      padding: 110px 0 100px;
+    }
+    .eyebrow {
+      margin: 0 0 20px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 750;
+      letter-spacing: 1.5px;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+    .hero .eyebrow {
+      font-size: clamp(15px, 1.8vw, 18px);
+      letter-spacing: 1px;
+      text-transform: none;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 900px;
+      margin: 0 auto 28px;
+      font-size: clamp(40px, 6.5vw, 68px);
+      font-weight: 750;
+      line-height: 1.12;
+      letter-spacing: -2.3px;
+    }
+    .hero-description {
+      max-width: 750px;
+      margin: 0 auto 22px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.75;
+    }
+    .tagline { margin: 0 0 26px; font-size: 17px; font-weight: 700; }
+    .button {
+      display: inline-block;
+      border-radius: 10px;
+      padding: 13px 25px;
+      background: var(--ink);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .button:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .section { padding: 80px 0; border-top: 1px solid var(--line); }
+    .section-heading { text-align: center; max-width: 780px; margin: 0 auto 40px; }
+    h2 {
+      margin: 0;
+      font-size: clamp(29px, 4vw, 39px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 9px 35px rgba(27, 67, 52, .035);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .pill {
+      display: inline-block;
+      margin-bottom: 23px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: var(--soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    h3 { font-size: 25px; line-height: 1.3; letter-spacing: -.5px; margin-bottom: 14px; }
+    .card p { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
+    .card-bottom { margin-top: auto; padding-top: 10px; }
+    .metric { display: block; color: var(--accent); font-size: 35px; font-weight: 800; line-height: 1.3; }
+    .metric-caption { display: block; margin: 5px 0 8px; font-size: 14px; font-weight: 700; }
+    .note { display: block; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .coming-soon { color: var(--accent); font-size: 17px; font-weight: 700; }
+
+    .about-copy { max-width: 790px; margin: 0 auto; text-align: center; }
+    .about-copy p { color: var(--muted); font-size: 18px; line-height: 1.85; margin-bottom: 22px; }
+    .experience {
+      margin: 44px auto 0;
+      padding: 32px 15px;
+      max-width: 850px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+    .experience-item { padding: 4px 18px; text-align: center; }
+    .experience-item + .experience-item { border-left: 1px solid var(--line); }
+    .experience-number { display: block; color: var(--accent); font-size: 43px; font-weight: 800; line-height: 1.2; }
+    .experience-years { display: block; margin: 4px 0 7px; font-size: 14px; font-weight: 700; }
+    .experience-label { display: block; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+    .contact { text-align: center; }
+    .contact-copy { max-width: 680px; margin: 24px auto 12px; color: var(--muted); font-size: 18px; }
+    .footer { border-top: 1px solid var(--line); text-align: center; color: var(--muted); padding: 30px 20px; font-size: 14px; }
+
+    @media (max-width: 700px) {
+      .container { padding: 0 20px; }
+      .nav { flex-direction: column; justify-content: center; gap: 5px; padding: 16px 0; }
+      .logo { font-size: 27px; }
+      .nav-links { gap: 22px; }
+      .nav-links a { font-size: 14px; }
+      .hero { padding: 75px 0 78px; }
+      h1 { letter-spacing: -1.3px; }
+      .section { padding: 65px 0; }
+      .cards { grid-template-columns: 1fr; }
+      .card { padding: 28px; }
+      .about-copy p { font-size: 17px; }
+      .experience { gap: 25px; grid-template-columns: 1fr; padding: 28px 0 0; }
+      .experience-item + .experience-item { border-left: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+    }
+  </style>
 </head>
 <body>
-<nav><a href="#home" class="logo">JoyBinya</a><div class="links"><a href="#work">Projects</a><a href="#about">About</a><a href="#contact">Contact</a></div></nav>
-<main>
-<div id="home" class="hero">
-<p class="eyebrow">Binya Liu · Physician-Scientist · Clinical AI</p>
-<h1>Making clinical AI safer, smarter, and more human.</h1>
-<p class="intro">I bring clinical judgment and scientific rigor to AI evaluation and healthcare applications — with a belief that better science can help people live healthier, happier lives.</p>
-<p><strong>Science for Health. Joy for Life.</strong></p>
-<a class="btn" href="#work">Explore my work →</a>
-</div>
-<section id="work">
-<p class="eyebrow">Selected Projects</p>
-<h2>Research meets real-world impact.</h2>
-<div class="cards">
-<div class="card"><span class="pill">Benchmark</span><h3>Prediabetes AI Benchmark</h3><p>100 synthetic cases designed to evaluate care action, urgency, information sufficiency, safety and patient communication.</p><div class="metric">74 / 80</div><small>Strict action-label agreement in held-out evaluation. Not a measure of real-world clinical accuracy.</small></div>
-<div class="card"><span class="pill">In Development</span><h3>Prediabetes Screening App</h3><p>A planned patient-friendly AI application for screening guidance and safer next-step decisions.</p><small>Concept only — not a functioning medical application.</small></div>
-</div>
-</section>
-<section id="about">
-<p class="eyebrow">My Background</p>
-<h2>From clinical medicine to clinical AI.</h2>
-<p>My background spans obstetrics, gynecology and reproductive medicine in Shanghai, translational research at UCSF, and independent clinical AI evaluation projects.</p>
-<p>I am interested in developing rigorous benchmarks and practical AI tools that respect clinical uncertainty, patient safety and human experience.</p>
-</section>
-<section id="contact">
-<p class="eyebrow">Let's Connect</p>
-<h2>Interested in reliable healthcare AI?</h2>
-<p>Open to opportunities and collaborations in clinical AI research, evaluation, safety and health innovation.</p>
-<a class="btn" href="https://github.com/liubinya-joy">View GitHub Profile →</a>
-</section>
-</main>
-<footer>© 2026 Binya Liu · JoyBinya · Independent research and projects.</footer>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="logo" href="#home">JoyBinya</a>
+      <div class="nav-links">
+        <a href="#work">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home" aria-labelledby="home-heading">
+      <p class="eyebrow">Binya Liu · Physician-Scientist · Clinical AI</p>
+      <h1 id="home-heading">Making clinical AI safer, smarter, and more human.</h1>
+      <p class="hero-description">I bring clinical judgment and scientific rigor to AI evaluation and healthcare applications — with a belief that better science can help people live healthier, happier lives.</p>
+      <p class="tagline">Science for Health. Joy for Life.</p>
+      <a class="button" href="#work">Explore my work &rarr;</a>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="work-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Selected Projects</p>
+        <h2 id="work-heading">Research meets real-world impact.</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="pill">Benchmark</span>
+          <h3>Prediabetes AI Benchmark</h3>
+          <p>100 synthetic cases designed to evaluate care action, urgency, information sufficiency, safety, and patient communication.</p>
+          <div class="card-bottom">
+            <span class="metric">74 / 80</span>
+            <span class="metric-caption">Strict action-label agreement on held-out cases</span>
+            <span class="note">A benchmark result, not a measure of real-world clinical accuracy.</span>
+          </div>
+        </article>
+        <article class="card">
+          <span class="pill">In Development</span>
+          <h3>Prediabetes Screening App</h3>
+          <p>A planned healthcare application exploring patient-friendly screening guidance, risk communication, and safer next-step decisions.</p>
+          <div class="card-bottom">
+            <span class="coming-soon">Coming soon</span>
+            <span class="note">Concept only — not a functioning medical application.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <div class="section-heading">
+        <p class="eyebrow">About Me</p>
+        <h2 id="about-heading">From Clinical Medicine to Healthcare AI</h2>
+      </div>
+      <div class="about-copy">
+        <p>Medicine has shaped my life since I entered medical school at 17. As an attending physician in China, researcher, and medical educator, I’ve learned that great healthcare requires both scientific rigor and genuine empathy.</p>
+        <p>Now, I bring these experiences to healthcare AI — building trustworthy tools that support clinicians, empower patients, and help more people live healthier, happier lives.</p>
+      </div>
+      <div class="experience" aria-label="Professional experience">
+        <div class="experience-item">
+          <span class="experience-number">~10</span>
+          <span class="experience-years">Years</span>
+          <span class="experience-label">Clinical Training &amp; Patient Care</span>
+        </div>
+        <div class="experience-item">
+          <span class="experience-number">10+</span>
+          <span class="experience-years">Years</span>
+          <span class="experience-label">Medical Research</span>
+        </div>
+        <div class="experience-item">
+          <span class="experience-number">3+</span>
+          <span class="experience-years">Years</span>
+          <span class="experience-label">Medical Teaching</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-heading">
+      <p class="eyebrow">Let's Connect</p>
+      <h2 id="contact-heading">Interested in reliable healthcare AI?</h2>
+      <p class="contact-copy">Open to opportunities and collaborations in clinical AI research, evaluation, safety, and health innovation.</p>
+      <a class="button" href="https://github.com/liubinya-joy" target="_blank" rel="noopener noreferrer">View GitHub Profile &rarr;</a>
+    </section>
+  </main>
+
+  <footer class="footer">&copy; 2026 Binya Liu · JoyBinya · Independent research and projects.</footer>
 </body>
 </html>
