@@ -4,262 +4,990 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="JoyBinya by Binya Liu — clinical AI research, benchmarks, and healthcare innovation.">
+  <meta name="description" content="JoyBinya by Binya Liu — physician-scientist bridging clinical experience, medical research and trustworthy healthcare AI.">
+  <meta name="theme-color" content="#f6faff">
   <title>JoyBinya | Clinical AI & Health Innovation</title>
+
   <style>
     :root {
-      --ink: #203b38;
-      --muted: #566a63;
-      --accent: #28776c;
-      --line: #dce8e0;
-      --paper: #f9fbf8;
-      --card: #ffffff;
-      --soft: #eaf4ee;
+      --ink: #213b55;
+      --muted: #586f83;
+      --accent: #367ba9;
+      --silver: #a1b6c8;
+      --line: #dce6ef;
+      --paper: #f6faff;
+      --surface: #ffffff;
+      --soft: #e9f4fc;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background: var(--paper);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 17px;
       line-height: 1.7;
     }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 
-    .container { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
-    .site-header { border-bottom: 1px solid var(--line); }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--silver);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(100% - 56px, 1100px);
+      margin: 0 auto;
+    }
+
+    /* NAVIGATION */
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .82);
+      backdrop-filter: blur(14px);
+    }
+
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      min-height: 86px;
       gap: 24px;
-      min-height: 88px;
     }
-    .logo { font-size: 29px; font-weight: 800; letter-spacing: -1.2px; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 30px; }
-    .nav-links a { font-size: 15px; font-weight: 600; color: var(--muted); }
-    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+
+    .logo {
+      font-size: 29px;
+      font-weight: 800;
+      letter-spacing: -1.15px;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 27px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover,
+    .text-link:hover {
+      color: var(--accent);
+    }
+
+    /* HERO */
 
     .hero {
-      text-align: center;
-      padding: 110px 0 100px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.28fr .72fr;
+      align-items: center;
+      gap: 60px;
+      padding: 112px 0 108px;
     }
+
+    .hero::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      width: 540px;
+      height: 540px;
+      right: -115px;
+      top: -86px;
+      background: radial-gradient(
+        circle,
+        rgba(206, 232, 250, .36),
+        rgba(232, 244, 252, 0) 70%
+      );
+      z-index: -1;
+    }
+
+    .hero-copy,
+    .hero-art {
+      position: relative;
+    }
+
     .eyebrow {
-      margin: 0 0 20px;
-      color: var(--accent);
-      font-size: 14px;
+      margin: 0 0 16px;
+      font-size: 13px;
       font-weight: 750;
-      letter-spacing: 1.5px;
-      line-height: 1.6;
+      color: var(--accent);
+      letter-spacing: 1.7px;
       text-transform: uppercase;
     }
+
     .hero .eyebrow {
-      font-size: clamp(15px, 1.8vw, 18px);
-      letter-spacing: 1px;
+      font-size: clamp(15px, 1.55vw, 17px);
+      letter-spacing: .7px;
       text-transform: none;
+      margin-bottom: 23px;
     }
-    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
     h1 {
-      max-width: 900px;
-      margin: 0 auto 28px;
-      font-size: clamp(40px, 6.5vw, 68px);
-      font-weight: 750;
-      line-height: 1.12;
-      letter-spacing: -2.3px;
+      font-size: clamp(42px, 5.1vw, 67px);
+      line-height: 1.11;
+      letter-spacing: -2.45px;
+      font-weight: 770;
+      margin: 0 0 28px;
+      text-wrap: balance;
     }
+
     .hero-description {
-      max-width: 750px;
-      margin: 0 auto 22px;
       color: var(--muted);
-      font-size: clamp(17px, 2vw, 20px);
-      line-height: 1.75;
+      font-size: 19px;
+      line-height: 1.77;
+      max-width: 670px;
+      margin: 0 0 19px;
+      text-wrap: pretty;
     }
-    .tagline { margin: 0 0 26px; font-size: 17px; font-weight: 700; }
+
+    .keep-together {
+      white-space: nowrap;
+    }
+
+    .tagline {
+      color: #345e7d;
+      font-size: 16px;
+      font-weight: 750;
+      margin-bottom: 28px;
+    }
+
+    /* BUTTONS */
+
     .button {
-      display: inline-block;
-      border-radius: 10px;
-      padding: 13px 25px;
+      box-shadow: 0 4px 14px rgba(33, 59, 85, .10);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 9px;
+      padding: 12px 23px;
       background: var(--ink);
       color: white;
       font-size: 15px;
-      font-weight: 700;
-      transition: background .2s ease, transform .2s ease;
+      font-weight: 750;
+      transition: background .2s ease;
     }
-    .button:hover { background: var(--accent); transform: translateY(-1px); }
 
-    .section { padding: 80px 0; border-top: 1px solid var(--line); }
-    .section-heading { text-align: center; max-width: 780px; margin: 0 auto 40px; }
-    h2 {
-      margin: 0;
-      font-size: clamp(29px, 4vw, 39px);
-      line-height: 1.2;
-      letter-spacing: -1px;
+    .button:hover {
+      background: var(--accent);
     }
+
+    .button-light {
+      box-shadow: none;
+      background: var(--soft);
+      color: var(--ink);
+      border: 1px solid #d3e6f4;
+    }
+
+    .button-light:hover {
+      background: #d8edf9;
+    }
+
+    /* DECORATIVE CLINICAL AI VISUAL */
+
+    .hero-art {
+      position: relative;
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 15px 0;
+      margin: auto;
+      width: 298px;
+      height: 298px;
+      border: 1px solid #ccdeec;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at center,
+        rgba(208, 231, 247, .24) 0%,
+        transparent 65%
+      );
+    }
+
+    .orbit::before {
+      content: "";
+      position: absolute;
+      inset: 45px;
+      border: 1px solid #bed8ea;
+      border-radius: 50%;
+    }
+
+    .orbit::after {
+      content: "";
+      position: absolute;
+      inset: 105px;
+      background: radial-gradient(
+        circle at 35% 35%,
+        #f8fcff,
+        #c5e4f6
+      );
+      box-shadow: 0 0 0 20px rgba(215, 234, 247, .28);
+      border-radius: 50%;
+    }
+
+    .value {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border: 1px solid #d8e5ef;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .96);
+      box-shadow: 0 12px 35px rgba(32, 73, 116, .07);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .value .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #7fb5db;
+      flex: none;
+    }
+
+    .value.one {
+      top: 36px;
+      left: 0;
+    }
+
+    .value.two {
+      right: 0;
+      top: 150px;
+    }
+
+    .value.three {
+      bottom: 32px;
+      left: 11px;
+    }
+
+    .value.three .dot {
+      background: #a6b6c6;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding: 84px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 810px;
+      margin: 0 auto 40px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(30px, 3.8vw, 40px);
+      line-height: 1.18;
+      letter-spacing: -1.2px;
+      text-wrap: balance;
+    }
+
+    .section-subtitle {
+      margin: 15px auto 0;
+      max-width: 640px;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    /* PROJECT CARDS */
+
     .cards {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
     }
+
     .card {
-      background: var(--card);
+      background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fcfdff 100%
+      );
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 35px;
-      box-shadow: 0 9px 35px rgba(27, 67, 52, .035);
+      border-radius: 19px;
+      padding: 34px;
+      min-height: 325px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      text-align: left;
+      box-shadow: 0 12px 36px rgba(33, 69, 111, .045);
     }
+
     .pill {
       display: inline-block;
-      margin-bottom: 23px;
-      padding: 6px 14px;
       border-radius: 100px;
-      background: var(--soft);
       color: var(--accent);
-      font-size: 13px;
-      font-weight: 700;
+      background: var(--soft);
+      padding: 5px 13px;
+      font-size: 12px;
+      font-weight: 750;
+      margin-bottom: 19px;
     }
-    h3 { font-size: 25px; line-height: 1.3; letter-spacing: -.5px; margin-bottom: 14px; }
-    .card p { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
-    .card-bottom { margin-top: auto; padding-top: 10px; }
-    .metric { display: block; color: var(--accent); font-size: 35px; font-weight: 800; line-height: 1.3; }
-    .metric-caption { display: block; margin: 5px 0 8px; font-size: 14px; font-weight: 700; }
-    .note { display: block; color: var(--muted); font-size: 13px; line-height: 1.6; }
-    .coming-soon { color: var(--accent); font-size: 17px; font-weight: 700; }
 
-    .about-copy { max-width: 790px; margin: 0 auto; text-align: center; }
-    .about-copy p { color: var(--muted); font-size: 18px; line-height: 1.85; margin-bottom: 22px; }
-    .experience {
-      margin: 44px auto 0;
-      padding: 32px 15px;
-      max-width: 850px;
+    .card h3 {
+      font-size: 25px;
+      line-height: 1.27;
+      letter-spacing: -.55px;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    .card-bottom {
+      margin-top: auto;
+    }
+
+    .metric {
+      display: block;
+      color: var(--accent);
+      font-size: 35px;
+      line-height: 1.18;
+      font-weight: 800;
+      letter-spacing: -.8px;
+    }
+
+    .caption {
+      display: block;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.65;
+      margin-top: 7px;
+    }
+
+    .note {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      margin-top: 5px;
+    }
+
+    .soon {
+      color: var(--accent);
+      font-size: 17px;
+      font-weight: 750;
+    }
+
+    /* ABOUT */
+
+    .about-copy {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.9;
+      margin-bottom: 19px;
+      text-wrap: pretty;
+    }
+
+    .stats {
+      max-width: 860px;
+      margin: 43px auto 0;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat {
+      text-align: center;
+      padding: 8px 18px;
+    }
+
+    .stat + .stat {
+      border-left: 1px solid var(--line);
+    }
+
+    .stat-number {
+      display: block;
+      color: var(--accent);
+      font-size: 43px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .stat-unit {
+      display: block;
+      font-size: 13px;
+      font-weight: 750;
+      margin: 3px 0 7px;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* PUBLICATIONS */
+
+    .pub-list {
+      max-width: 950px;
+      margin: 0 auto 31px;
       border-top: 1px solid var(--line);
     }
-    .experience-item { padding: 4px 18px; text-align: center; }
-    .experience-item + .experience-item { border-left: 1px solid var(--line); }
-    .experience-number { display: block; color: var(--accent); font-size: 43px; font-weight: 800; line-height: 1.2; }
-    .experience-years { display: block; margin: 4px 0 7px; font-size: 14px; font-weight: 700; }
-    .experience-label { display: block; color: var(--muted); font-size: 14px; line-height: 1.5; }
 
-    .contact { text-align: center; }
-    .contact-copy { max-width: 680px; margin: 24px auto 12px; color: var(--muted); font-size: 18px; }
-    .footer { border-top: 1px solid var(--line); text-align: center; color: var(--muted); padding: 30px 20px; font-size: 14px; }
+    .pub {
+      display: grid;
+      grid-template-columns: 80px 1fr 20px;
+      gap: 23px;
+      align-items: start;
+      padding: 25px 4px;
+      border-bottom: 1px solid var(--line);
+    }
 
-    @media (max-width: 700px) {
-      .container { padding: 0 20px; }
-      .nav { flex-direction: column; justify-content: center; gap: 5px; padding: 16px 0; }
-      .logo { font-size: 27px; }
-      .nav-links { gap: 22px; }
-      .nav-links a { font-size: 14px; }
-      .hero { padding: 75px 0 78px; }
-      h1 { letter-spacing: -1.3px; }
-      .section { padding: 65px 0; }
-      .cards { grid-template-columns: 1fr; }
-      .card { padding: 28px; }
-      .about-copy p { font-size: 17px; }
-      .experience { gap: 25px; grid-template-columns: 1fr; padding: 28px 0 0; }
-      .experience-item + .experience-item { border-left: 0; }
+    .pub-year {
+      color: var(--accent);
+      font-weight: 750;
+      font-size: 15px;
+    }
+
+    .pub-title {
+      font-size: 17px;
+      font-weight: 730;
+      line-height: 1.5;
+      text-wrap: pretty;
+    }
+
+    .pub-title:hover {
+      color: var(--accent);
+    }
+
+    .pub-journal {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 7px 0 0;
+    }
+
+    .pub-arrow {
+      color: var(--accent);
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    /* CONTACT */
+
+    .contact-copy {
+      max-width: 660px;
+      margin: 20px auto 26px;
+      color: var(--muted);
+      font-size: 18px;
+      text-wrap: pretty;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 29px 0;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 830px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 85px 0 80px;
+      }
+
+      .hero-art,
+      .hero::before {
+        display: none;
+      }
+
+      .hero-copy {
+        max-width: 740px;
+      }
+    }
+
+    @media (max-width: 670px) {
+      .container {
+        width: min(100% - 36px, 1100px);
+      }
+
+      .nav {
+        flex-direction: column;
+        justify-content: center;
+        padding: 18px 0 15px;
+        gap: 12px;
+      }
+
+      .logo {
+        font-size: 27px;
+      }
+
+      .nav-links {
+        gap: 18px;
+        justify-content: center;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 73px 0 75px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 9.5vw, 54px);
+        letter-spacing: -1.7px;
+      }
+
+      .hero-description {
+        font-size: 17px;
+      }
+
+      .section {
+        padding: 67px 0;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: 0;
+        padding: 27px;
+      }
+
+      .about-copy p {
+        font-size: 16px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+        gap: 23px;
+        padding-top: 28px;
+      }
+
+      .stat + .stat {
+        border-left: none;
+      }
+
+      .pub {
+        grid-template-columns: 1fr 19px;
+        gap: 9px;
+      }
+
+      .pub-year {
+        grid-column: 1 / -1;
+      }
+
+      .pub-title {
+        font-size: 16px;
+      }
+
+      .contact-copy {
+        font-size: 16px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .button { transition: none; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      .button {
+        transition: none;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header class="site-header">
+
+  <!-- HEADER -->
+
+  <header class="topbar">
     <nav class="container nav" aria-label="Main navigation">
       <a class="logo" href="#home">JoyBinya</a>
+
       <div class="nav-links">
-        <a href="#work">Projects</a>
+        <a href="#projects">Projects</a>
         <a href="#about">About</a>
+        <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
 
   <main class="container">
-    <section class="hero" id="home" aria-labelledby="home-heading">
-      <p class="eyebrow">Binya Liu · Physician-Scientist · Clinical AI</p>
-      <h1 id="home-heading">Making clinical AI safer, smarter, and more human.</h1>
-      <p class="hero-description">I bring clinical judgment and scientific rigor to AI evaluation and healthcare applications — with a belief that better science can help people live healthier, happier lives.</p>
-      <p class="tagline">Science for Health. Joy for Life.</p>
-      <a class="button" href="#work">Explore my work &rarr;</a>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home" aria-labelledby="hero-title">
+
+      <div class="hero-copy">
+
+        <p class="eyebrow">
+          Binya Liu · Physician-Scientist · Clinical AI
+        </p>
+
+        <h1 id="hero-title">
+          Making clinical AI safer, smarter, and more human.
+        </h1>
+
+        <p class="hero-description">
+          Drawing on clinical medicine, research, and teaching,
+          I develop rigorous AI evaluations and practical tools
+          to support better care and
+          <span class="keep-together">healthier, happier lives.</span>
+        </p>
+
+        <p class="tagline">
+          Science for Health. Joy for Life.
+        </p>
+
+        <a class="button" href="#projects">
+          Explore my work <span aria-hidden="true">&rarr;</span>
+        </a>
+
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit"></div>
+
+        <div class="value one">
+          <span class="dot"></span>
+          Clinical insight
+        </div>
+
+        <div class="value two">
+          <span class="dot"></span>
+          Research rigor
+        </div>
+
+        <div class="value three">
+          <span class="dot"></span>
+          Human impact
+        </div>
+      </div>
+
     </section>
 
-    <section class="section" id="work" aria-labelledby="work-heading">
+    <!-- PROJECTS -->
+
+    <section class="section" id="projects"
+             aria-labelledby="projects-heading">
+
       <div class="section-heading">
         <p class="eyebrow">Selected Projects</p>
-        <h2 id="work-heading">Research meets real-world impact.</h2>
+        <h2 id="projects-heading">
+          Research meets real-world impact.
+        </h2>
       </div>
+
       <div class="cards">
+
         <article class="card">
-          <span class="pill">Benchmark</span>
+
+          <span class="pill">Clinical AI Benchmark</span>
+
           <h3>Prediabetes AI Benchmark</h3>
-          <p>100 synthetic cases designed to evaluate care action, urgency, information sufficiency, safety, and patient communication.</p>
+
+          <p>
+            100 synthetic cases designed to evaluate care action,
+            urgency, information sufficiency, safety, and
+            patient communication.
+          </p>
+
           <div class="card-bottom">
             <span class="metric">74 / 80</span>
-            <span class="metric-caption">Strict action-label agreement on held-out cases</span>
-            <span class="note">A benchmark result, not a measure of real-world clinical accuracy.</span>
+
+            <span class="caption">
+              Strict action-label agreement on held-out cases
+            </span>
+
+            <span class="note">
+              A benchmark agreement result, not a measure of
+              real-world clinical accuracy.
+            </span>
           </div>
+
         </article>
+
         <article class="card">
+
           <span class="pill">In Development</span>
+
           <h3>Prediabetes Screening App</h3>
-          <p>A planned healthcare application exploring patient-friendly screening guidance, risk communication, and safer next-step decisions.</p>
+
+          <p>
+            A planned healthcare application exploring
+            patient-friendly screening guidance,
+            risk communication, and safer next-step decisions.
+          </p>
+
           <div class="card-bottom">
-            <span class="coming-soon">Coming soon</span>
-            <span class="note">Concept only — not a functioning medical application.</span>
+            <span class="soon">Coming soon</span>
+
+            <span class="note">
+              Concept only — not a functioning medical application.
+            </span>
           </div>
+
         </article>
+
       </div>
+
     </section>
 
-    <section class="section" id="about" aria-labelledby="about-heading">
+    <!-- ABOUT ME -->
+
+    <section class="section" id="about"
+             aria-labelledby="about-heading">
+
       <div class="section-heading">
         <p class="eyebrow">About Me</p>
-        <h2 id="about-heading">From Clinical Medicine to Healthcare AI</h2>
+
+        <h2 id="about-heading">
+          From Clinical Medicine to Healthcare AI
+        </h2>
       </div>
+
       <div class="about-copy">
-        <p>Medicine has shaped my life since I entered medical school at 17. As an attending physician in China, researcher, and medical educator, I’ve learned that great healthcare requires both scientific rigor and genuine empathy.</p>
-        <p>Now, I bring these experiences to healthcare AI — building trustworthy tools that support clinicians, empower patients, and help more people live healthier, happier lives.</p>
+
+        <p>
+          Medicine has shaped my life since I entered medical
+          school at 17. Years of patient care, research, and
+          teaching have taught me that great healthcare requires
+          sound judgment, scientific rigor, and genuine empathy.
+        </p>
+
+        <p>
+          Today, I bring these perspectives to healthcare AI—
+          building trustworthy evaluations and practical tools
+          that support clinicians, empower patients, and help
+          more people make informed decisions about their health.
+        </p>
+
       </div>
-      <div class="experience" aria-label="Professional experience">
-        <div class="experience-item">
-          <span class="experience-number">~10</span>
-          <span class="experience-years">Years</span>
-          <span class="experience-label">Clinical Training &amp; Patient Care</span>
+
+      <div class="stats" aria-label="Professional experience">
+
+        <div class="stat">
+          <span class="stat-number">~10</span>
+          <span class="stat-unit">Years</span>
+          <span class="stat-label">
+            Clinical Training &amp; Patient Care
+          </span>
         </div>
-        <div class="experience-item">
-          <span class="experience-number">10+</span>
-          <span class="experience-years">Years</span>
-          <span class="experience-label">Medical Research</span>
+
+        <div class="stat">
+          <span class="stat-number">10+</span>
+          <span class="stat-unit">Years</span>
+          <span class="stat-label">
+            Medical Research
+          </span>
         </div>
-        <div class="experience-item">
-          <span class="experience-number">3+</span>
-          <span class="experience-years">Years</span>
-          <span class="experience-label">Medical Teaching</span>
+
+        <div class="stat">
+          <span class="stat-number">3+</span>
+          <span class="stat-unit">Years</span>
+          <span class="stat-label">
+            Medical Teaching
+          </span>
         </div>
+
       </div>
+
     </section>
 
-    <section class="section contact" id="contact" aria-labelledby="contact-heading">
-      <p class="eyebrow">Let's Connect</p>
-      <h2 id="contact-heading">Interested in reliable healthcare AI?</h2>
-      <p class="contact-copy">Open to opportunities and collaborations in clinical AI research, evaluation, safety, and health innovation.</p>
-      <a class="button" href="https://github.com/liubinya-joy" target="_blank" rel="noopener noreferrer">View GitHub Profile &rarr;</a>
+    <!-- PUBLICATIONS -->
+
+    <section class="section" id="publications"
+             aria-labelledby="publications-heading">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">Research &amp; Publications</p>
+
+        <h2 id="publications-heading">
+          A foundation in scientific inquiry.
+        </h2>
+
+        <p class="section-subtitle">
+          Selected peer-reviewed publications from collaborative
+          research in reproductive health, translational medicine,
+          and data-driven methods.
+        </p>
+
+      </div>
+
+      <div class="pub-list">
+
+        <article class="pub">
+
+          <span class="pub-year">2025</span>
+
+          <div>
+            <a class="pub-title"
+               href="https://doi.org/10.1038/s44294-024-00052-w"
+               target="_blank"
+               rel="noopener noreferrer">
+              Real world perspectives on endometriosis disease
+              phenotyping through surgery, omics, health data,
+              and artificial intelligence
+            </a>
+
+            <p class="pub-journal">
+              npj Women's Health · Co-author
+            </p>
+          </div>
+
+          <span class="pub-arrow" aria-hidden="true">&nearr;</span>
+
+        </article>
+
+        <article class="pub">
+
+          <span class="pub-year">2025</span>
+
+          <div>
+            <a class="pub-title"
+               href="https://doi.org/10.1016/j.crmeth.2025.101137"
+               target="_blank"
+               rel="noopener noreferrer">
+              Anticlustering for sample allocation to minimize
+              batch effects
+            </a>
+
+            <p class="pub-journal">
+              Cell Reports Methods · Co-author
+            </p>
+          </div>
+
+          <span class="pub-arrow" aria-hidden="true">&nearr;</span>
+
+        </article>
+
+        <article class="pub">
+
+          <span class="pub-year">2020</span>
+
+          <div>
+            <a class="pub-title"
+               href="https://doi.org/10.1096/fj.202000520R"
+               target="_blank"
+               rel="noopener noreferrer">
+              An HMGA2-p62-ERα axis regulates uterine
+              leiomyomas proliferation
+            </a>
+
+            <p class="pub-journal">
+              FASEB Journal · Co-first author
+            </p>
+          </div>
+
+          <span class="pub-arrow" aria-hidden="true">&nearr;</span>
+
+        </article>
+
+      </div>
+
+      <div class="center">
+
+        <a class="button button-light"
+           href="https://scholar.google.com/citations?user=uD3QzZcAAAAJ&amp;hl=en"
+           target="_blank"
+           rel="noopener noreferrer">
+          View all publications on Google Scholar
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+
+      </div>
+
     </section>
+
+    <!-- CONTACT -->
+
+    <section class="section center" id="contact"
+             aria-labelledby="contact-heading">
+
+      <p class="eyebrow">Let's Connect</p>
+
+      <div class="section-heading" style="margin-bottom:0">
+
+        <h2 id="contact-heading">
+          Let's build more thoughtful healthcare AI.
+        </h2>
+
+      </div>
+
+      <p class="contact-copy">
+        Open to opportunities and collaborations in
+        clinical AI research, evaluation, safety,
+        and health innovation.
+      </p>
+
+      <a class="button"
+         href="https://github.com/liubinya-joy"
+         target="_blank"
+         rel="noopener noreferrer">
+        View my GitHub
+        <span aria-hidden="true">&nearr;</span>
+      </a>
+
+    </section>
+
   </main>
 
-  <footer class="footer">&copy; 2026 Binya Liu · JoyBinya · Independent research and projects.</footer>
+  <!-- FOOTER -->
+
+  <footer class="footer">
+    &copy; 2026 Binya Liu · JoyBinya ·
+    Independent research and projects.
+  </footer>
+
 </body>
 </html>
