@@ -164,6 +164,12 @@
 
     .no-break { white-space: nowrap; }
 
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
     /* HERO VISUAL */
 
     .hero-art {
@@ -725,9 +731,14 @@
           Science for Health. Joy for Life.
         </p>
 
-        <a class="button" href="#projects">
-          Explore my work &rarr;
-        </a>
+        <div class="hero-actions">
+          <a class="button" href="#projects">
+            Explore my work &rarr;
+          </a>
+          <a class="button button-light" href="https://joybinya-meal.fatu.chatgpt.site/">
+            Try the Meal Guide &rarr;
+          </a>
+        </div>
       </div>
 
       <div class="hero-art" aria-hidden="true">
@@ -772,22 +783,20 @@
         </article>
 
         <article class="card">
-          <span class="pill">In Development</span>
+          <span class="pill">Live Prototype</span>
 
-          <h3>Prediabetes Screening App</h3>
+          <h3>JoyBinya Meal Guide</h3>
 
           <p>
-            A planned patient-friendly health application
-            exploring screening guidance, risk communication,
-            and safer next steps.
+            Build a meal from ingredients you have at home, with options for
+            dietary preferences and LDL cholesterol. Available in English,
+            Simplified Chinese, and Cantonese.
           </p>
 
           <div class="card-footer">
-            <span class="text-link">Coming soon</span>
-            <br>
-            <small>
-              Concept only — not a functioning medical application.
-            </small>
+            <a class="text-link" href="https://joybinya-meal.fatu.chatgpt.site/">
+              Open the Meal Guide &rarr;
+            </a>
           </div>
         </article>
 
