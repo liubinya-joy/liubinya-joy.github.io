@@ -5,699 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6faff">
-  <meta name="description" content="JoyBinya by Binya Liu: clinical AI research, patient-centered benchmarks, and healthcare innovation.">
-  <title>JoyBinya | Clinical AI & Health Innovation</title>
-
-  <style>
-    :root {
-      --ink: #213b55;
-      --muted: #586f83;
-      --blue: #367ba9;
-      --line: #dce6ef;
-      --paper: #f6faff;
-      --soft: #e9f4fc;
-      --white: #ffffff;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font: 17px/1.7 -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Helvetica, Arial, sans-serif;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    a:focus-visible {
-      outline: 3px solid #80b5dd;
-      outline-offset: 4px;
-    }
-
-    .container {
-      width: min(100% - 56px, 1100px);
-      margin: auto;
-    }
-
-    /* NAVIGATION */
-
-    .topbar {
-      background: rgba(255,255,255,.88);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      min-height: 86px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-size: 29px;
-      font-weight: 800;
-      letter-spacing: -1.2px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 650;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover,
-    .pub-title:hover,
-    .text-link:hover {
-      color: var(--blue);
-    }
-
-    h1, h2, h3, p { margin-top: 0; }
-    h1, h2, h3 { line-height: 1.2; }
-
-    .eyebrow {
-      color: var(--blue);
-      font-size: 13px;
-      letter-spacing: 1.6px;
-      font-weight: 750;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    /* BUTTONS */
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: 10px;
-      background: var(--ink);
-      color: white;
-      font-size: 15px;
-      font-weight: 750;
-    }
-
-    .button:hover { background: var(--blue); }
-
-    .button-light {
-      background: var(--soft);
-      color: var(--ink);
-      border: 1px solid #d3e6f4;
-    }
-
-    .button-light:hover { background: #d8edf9; }
-
-    .text-link {
-      font-size: 14px;
-      color: var(--blue);
-      font-weight: 750;
-    }
-
-    /* HOME */
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.28fr .72fr;
-      align-items: center;
-      gap: 56px;
-      padding: 110px 0 104px;
-    }
-
-    .hero .eyebrow {
-      font-size: clamp(15px,1.6vw,17px);
-      letter-spacing: .5px;
-      text-transform: none;
-    }
-
-    h1 {
-      font-size: clamp(42px,5vw,66px);
-      letter-spacing: -2.4px;
-      margin-bottom: 27px;
-      text-wrap: balance;
-    }
-
-    .hero-description {
-      font-size: 19px;
-      color: var(--muted);
-      max-width: 650px;
-      line-height: 1.78;
-      text-wrap: pretty;
-    }
-
-    .tagline {
-      color: #345e7d;
-      font-weight: 750;
-      font-size: 16px;
-      margin: 0 0 28px;
-    }
-
-    .no-break { white-space: nowrap; }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    /* HERO VISUAL */
-
-    .hero-art {
-      min-height: 350px;
-      position: relative;
-    }
-
-    .orbit {
-      position: absolute;
-      width: 290px;
-      height: 290px;
-      border-radius: 50%;
-      border: 1px solid #c8deee;
-      top: 29px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: radial-gradient(
-        circle,
-        #e6f4fd 0%,
-        transparent 69%
-      );
-    }
-
-    .orbit::before {
-      content: "";
-      position: absolute;
-      inset: 45px;
-      border: 1px solid #bed8ea;
-      border-radius: 50%;
-    }
-
-    .orbit::after {
-      content: "";
-      position: absolute;
-      inset: 104px;
-      border-radius: 50%;
-      background: #c5e4f6;
-      box-shadow: 0 0 0 18px rgba(215,234,247,.3);
-    }
-
-    .value {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      white-space: nowrap;
-      padding: 11px 15px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: var(--white);
-      box-shadow: 0 12px 30px rgba(30,70,105,.07);
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    .value::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #8cbde0;
-    }
-
-    .v1 { left: 0; top: 32px; }
-    .v2 { right: 0; top: 155px; }
-    .v3 { bottom: 20px; left: 10px; }
-
-    /* SECTIONS */
-
-    .section {
-      border-top: 1px solid var(--line);
-      padding: 80px 0;
-    }
-
-    .section-heading {
-      max-width: 830px;
-      margin: 0 auto 38px;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: clamp(30px,3.7vw,40px);
-      letter-spacing: -1.2px;
-      text-wrap: balance;
-      margin: 0;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      font-size: 17px;
-      margin: 15px auto 0;
-      max-width: 710px;
-    }
-
-    .center { text-align: center; }
-
-    /* PROJECT CARDS */
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-      gap: 24px;
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 19px;
-      padding: 32px;
-      box-shadow: 0 12px 35px rgba(33,69,111,.04);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .pill {
-      padding: 5px 13px;
-      border-radius: 30px;
-      background: var(--soft);
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 750;
-      margin-bottom: 18px;
-    }
-
-    .card h3 {
-      font-size: 25px;
-      letter-spacing: -.5px;
-      margin-bottom: 13px;
-    }
-
-    .card p {
-      font-size: 16px;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .card-footer { margin-top: auto; }
-
-    /* MATCHING LIGHT BLUE PANELS */
-
-    .feature-panel {
-      background: linear-gradient(
-        145deg,
-        #eff8ff,
-        #fafdff
-      );
-      border: 1px solid #d6e8f5;
-      border-radius: 25px;
-      padding: 44px;
-      box-shadow: 0 12px 38px rgba(33,69,111,.035);
-    }
-
-    .feature-panel .section-heading {
-      margin-bottom: 28px;
-    }
-
-    /* BENCHMARK TITLE */
-
-    .benchmark-title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      line-height: 1.2;
-    }
-
-    .benchmark-title-top {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      column-gap: clamp(24px,4vw,52px);
-      font-size: clamp(24px,3vw,35px);
-    }
-
-    .benchmark-title-bottom {
-      color: var(--blue);
-      font-size: clamp(32px,4vw,44px);
-    }
-
-    /* BENCHMARK NUMBERS */
-
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-      gap: 14px;
-    }
-
-    .metric-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 17px;
-      padding: 25px 19px;
-      text-align: center;
-    }
-
-    .metric-card.research {
-      background: #e4f1fd;
-      border-color: #c6dfef;
-    }
-
-    .metric-number {
-      display: block;
-      font-size: clamp(31px,3.4vw,47px);
-      font-weight: 800;
-      line-height: 1.15;
-      color: var(--blue);
-      letter-spacing: -1.4px;
-      white-space: nowrap;
-    }
-
-    .metric-card.research .metric-number {
-      color: #24547f;
-    }
-
-    .metric-label {
-      font-size: 14px;
-      font-weight: 650;
-      line-height: 1.48;
-      margin: 12px 0 9px;
-    }
-
-    .metric-source {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .source-note {
-      text-align: center;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
-      margin: 13px 0 28px;
-    }
-
-    .source-note a {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    /* RESEARCH STORY */
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin-top: 20px;
-    }
-
-    .story {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.8);
-    }
-
-    .story h3 {
-      font-size: 20px;
-      margin-bottom: 11px;
-    }
-
-    .story p {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 0;
-    }
-
-    .vision {
-      text-align: center;
-      margin: 30px auto 0;
-      max-width: 750px;
-    }
-
-    .vision strong {
-      display: block;
-      color: var(--ink);
-      font-size: 19px;
-      margin-bottom: 9px;
-    }
-
-    .vision p {
-      color: var(--muted);
-      font-size: 16px;
-      margin: 0;
-    }
-
-    .research-note {
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
-      margin: 22px auto 0;
-      max-width: 750px;
-    }
-
-    /* ABOUT ME */
-
-    .about-layout {
-      display: grid;
-      grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
-      align-items: center;
-      gap: clamp(24px, 4vw, 46px);
-      max-width: 860px;
-      margin: auto;
-    }
-
-    .about-portrait {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 14px;
-    }
-
-    .about-copy .eyebrow { margin-bottom: 10px; }
-
-    .about-copy p:not(.eyebrow) {
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--muted);
-      margin: 16px 0 0;
-      text-wrap: pretty;
-    }
-
-    .experience {
-      max-width: 860px;
-      margin: 40px auto 0;
-      padding-top: 30px;
-      border-top: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-    }
-
-    .experience > div {
-      text-align: center;
-      padding: 6px 20px;
-    }
-
-    .experience > div + div {
-      border-left: 1px solid var(--line);
-    }
-
-    .experience strong {
-      display: block;
-      color: var(--blue);
-      font-size: 43px;
-      line-height: 1.2;
-    }
-
-    .experience span {
-      display: block;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .experience b {
-      display: block;
-      font-size: 13px;
-      margin: 3px 0 7px;
-    }
-
-    /* PUBLICATIONS */
-
-    .pub-list {
-      max-width: 950px;
-      margin: 0 auto 30px;
-      padding: 0 22px;
-      background: rgba(255,255,255,.82);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-    }
-
-    .pub {
-      padding: 24px 4px;
-      border-bottom: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 80px 1fr 20px;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .pub:last-child {
-      border-bottom: 0;
-    }
-
-    .pub-year {
-      font-size: 15px;
-      font-weight: 750;
-      color: var(--blue);
-    }
-
-    .pub-title {
-      font-size: 17px;
-      font-weight: 730;
-      line-height: 1.5;
-    }
-
-    .pub-authors {
-      margin: 7px 0 0;
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .pub-authors strong {
-      font-weight: 800;
-      color: #2b6695;
-    }
-
-    .pub-journal {
-      margin: 4px 0 0;
-      color: #51687e;
-      font-size: 14px;
-      font-style: italic;
-    }
-
-    .pub-arrow {
-      font-size: 22px;
-      color: var(--blue);
-    }
-
-    /* CONTACT AND FOOTER */
-
-    .contact-copy {
-      max-width: 640px;
-      margin: 20px auto 26px;
-      font-size: 18px;
-      color: var(--muted);
-    }
-
-    .footer {
-      text-align: center;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-      padding: 28px 14px;
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 860px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 80px 0;
-      }
-
-      .hero-art {
-        display: none;
-      }
-    }
-
-    @media (max-width: 670px) {
-      .container {
-        width: min(100% - 36px,1100px);
-      }
-
-      .nav {
-        flex-direction: column;
-        justify-content: center;
-        gap: 12px;
-        padding: 18px 0;
-      }
-
-      .logo { font-size: 27px; }
-
-      .nav-links {
-        gap: 14px;
-        justify-content: center;
-      }
-
-      .nav-links a { font-size: 13px; }
-
-      .hero { padding: 67px 0; }
-
-      h1 {
-        font-size: clamp(38px,9.3vw,53px);
-        letter-spacing: -1.6px;
-      }
-
-      .hero-description { font-size: 17px; }
-      .section { padding: 62px 0; }
-
-      .cards,
-      .metric-grid,
-      .story-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .card { padding: 26px; }
-      .feature-panel { padding: 28px 18px; }
-
-      .benchmark-title-top {
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .pub-list { padding: 0 15px; }
-      .metric-card { padding: 20px 15px; }
-      .metric-number { font-size: 39px; }
-      .story { padding: 20px; }
-      .about-layout { grid-template-columns: 1fr; gap: 22px; }
-      .about-portrait { width: min(160px, 100%); justify-self: center; }
-      .about-copy p:not(.eyebrow) { font-size: 16px; }
-
-      .experience {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .experience > div + div {
-        border-left: 0;
-      }
-
-      .pub {
-        grid-template-columns: 1fr 19px;
-        gap: 8px;
-      }
-
-      .pub-year {
-        grid-column: 1 / -1;
-      }
-
-      .pub-title { font-size: 16px; }
-      .contact-copy { font-size: 16px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-    }
-  </style>
+  <meta name="description" content="Binya Liu is a physician-scientist designing and evaluating clinical AI for patient guidance. Explore the Prediabetes AI Benchmark, methods, and failure analysis.">
+  <link rel="canonical" href="https://joybinya.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://joybinya.com/">
+  <meta property="og:title" content="Binya Liu | Clinical AI Evaluation">
+  <meta property="og:description" content="A physician-scientist’s portfolio on clinical AI evaluation, including a 100-case synthetic benchmark for patient guidance.">
+  <meta property="og:image" content="https://joybinya.com/clinical-ai-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Binya Liu, physician-scientist working on clinical AI evaluation.">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Binya Liu | Clinical AI Evaluation</title>
+
+  <link rel="stylesheet" href="./site.css">
 </head>
 
 <body>
@@ -710,7 +31,7 @@
 
       <div class="nav-links">
         <a href="#projects">Projects</a>
-        <a href="#benchmark">Benchmark</a>
+        <a href="./benchmark.html">Benchmark</a>
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
@@ -731,36 +52,25 @@
         </p>
 
         <h1 id="hero-title">
-          Making clinical AI safer, smarter, and more human.
+          I design and evaluate clinical AI for safer patient guidance.
         </h1>
 
         <p class="hero-description">
-          Drawing on clinical medicine, research, and teaching,
-          I develop rigorous AI evaluations and practical tools
-          to support better care and
-          <span class="no-break">healthier, happier lives.</span>
+          My featured project uses 100 synthetic cases to evaluate how a language
+          model recommends screening, follow-up, and escalation.
         </p>
 
-        <p class="tagline">
-          Science for Health. Joy for Life.
-        </p>
-
-        <div class="hero-actions">
-          <a class="button" href="#projects">
-            Explore my work &rarr;
-          </a>
-          <a class="button button-light" href="https://joybinya-meal.fatu.chatgpt.site/">
-            Try the Meal Guide &rarr;
-          </a>
-        </div>
+        <a class="button" href="./benchmark.html">
+          View the Prediabetes AI Benchmark &rarr;
+        </a>
       </div>
 
-      <div class="hero-art" aria-hidden="true">
-        <div class="orbit"></div>
-        <div class="value v1">Clinical insight</div>
-        <div class="value v2">Research rigor</div>
-        <div class="value v3">Human impact</div>
-      </div>
+      <aside class="hero-result" aria-labelledby="hero-result-heading">
+        <h2 id="hero-result-heading">Benchmark baseline</h2>
+        <strong class="metric-number">92.5%</strong>
+        <p>74 of 80 held-out synthetic cases matched the frozen primary-action label.</p>
+        <p class="metric-source">Single-model engineering baseline</p>
+      </aside>
 
     </section>
 
@@ -772,7 +82,7 @@
       <div class="section-heading">
         <p class="eyebrow">Selected Projects</p>
         <h2 id="projects-heading">
-          Research meets real-world impact.
+          Clinical AI evaluation and prototypes
         </h2>
       </div>
 
@@ -784,14 +94,13 @@
           <h3>Prediabetes AI Benchmark</h3>
 
           <p>
-            Can AI help people understand when to get screened,
-            what to do next, and when to seek urgent care?
-            I designed 100 synthetic patient scenarios to find out.
+            I designed a synthetic case benchmark for screening, follow-up and escalation.
+            Review the case split, scoring rules and disagreements from the baseline run.
           </p>
 
           <div class="card-footer">
-            <a class="text-link" href="#benchmark">
-              Explore the benchmark &rarr;
+            <a class="text-link" href="./benchmark.html">
+              Review the evaluation &rarr;
             </a>
           </div>
         </article>
@@ -802,9 +111,8 @@
           <h3>JoyBinya Meal Guide</h3>
 
           <p>
-            Build a meal from ingredients you have at home, with options for
-            dietary preferences and LDL cholesterol. Available in English,
-            Simplified Chinese, and Cantonese.
+            A companion prototype for adults looking for prediabetes-friendly meal ideas
+            using food they already have. Available in English, Simplified Chinese, and Cantonese.
           </p>
 
           <div class="card-footer">
@@ -817,136 +125,26 @@
       </div>
     </section>
 
-    <!-- PREDIABETES BENCHMARK -->
-
-    <section class="section" id="benchmark"
-             aria-labelledby="benchmark-heading">
-
+    <section class="section" id="benchmark" aria-labelledby="benchmark-heading">
       <div class="feature-panel">
-
         <div class="section-heading">
-
-          <p class="eyebrow">
-            Featured Research · Prediabetes AI Benchmark
-          </p>
-
-          <h2 id="benchmark-heading" class="benchmark-title">
-
-            <span class="benchmark-title-top">
-              <span>Earlier Awareness</span>
-              <span>Better Decisions</span>
-            </span>
-
-            <span class="benchmark-title-bottom">
-              Healthier Lives
-            </span>
-
-          </h2>
-
-          <p class="section-subtitle">
-            Prediabetes often has no obvious symptoms.
-            But early screening and healthier habits
-            can help prevent or delay type 2 diabetes.
-          </p>
-
+          <h2 id="benchmark-heading">Why prediabetes?</h2>
+          <p class="section-subtitle">Prediabetes often has no obvious symptoms. The benchmark examines what a language model recommends when patients ask about screening and next steps.</p>
         </div>
-
         <div class="metric-grid">
-
           <div class="metric-card">
             <strong class="metric-number">115.2M</strong>
-
-            <p class="metric-label">
-              U.S. adults estimated to have prediabetes
-            </p>
-
-            <span class="metric-source">CDC · 2026</span>
+            <p class="metric-label">Estimated U.S. adults with prediabetes</p>
           </div>
-
           <div class="metric-card">
             <strong class="metric-number">8 in 10</strong>
-
-            <p class="metric-label">
-              U.S. adults with prediabetes
-              who don't know they have it
-            </p>
-
-            <span class="metric-source">CDC · 2026</span>
+            <p class="metric-label">U.S. adults with prediabetes who are unaware they have it</p>
           </div>
-
-          <div class="metric-card research">
-            <strong class="metric-number">92.5%</strong>
-
-            <p class="metric-label">
-              AI agreement with predefined next steps
-              in 80 held-out synthetic cases (74/80)
-            </p>
-
-            <span class="metric-source">
-              JoyBinya · Independent benchmark
-            </span>
-          </div>
-
         </div>
-
         <p class="source-note">
-          The first two figures are U.S. public-health
-          estimates from
-          <a href="https://www.cdc.gov/diabetes/communication-resources/prediabetes-statistics.html"
-             target="_blank"
-             rel="noopener noreferrer">
-            CDC (2026) &nearr;
-          </a>.
-          The third is a benchmark result,
-          not clinical accuracy.
+          U.S. population estimates. <a href="https://www.cdc.gov/diabetes/communication-resources/prediabetes-statistics.html">CDC (2026) &nearr;</a>
         </p>
-
-        <div class="story-grid">
-
-          <div class="story">
-            <h3>Why I Built It</h3>
-
-            <p>
-              As more people turn to AI for health information,
-              I wanted to know whether a GPT-based model could
-              recommend appropriate screening, judge urgency,
-              recognize missing information, and explain
-              the next step safely.
-            </p>
-          </div>
-
-          <div class="story">
-            <h3>What I Found</h3>
-
-            <p>
-              Across 80 unseen cases, 74 recommendations
-              matched the predefined next steps.
-              The model also classified all 8 cases
-              in a small urgency check.
-              Physician review showed why safe clinical
-              guidance cannot be reduced to one score.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="vision">
-          <strong>My Vision</strong>
-
-          <p>
-            Help build trustworthy AI that encourages earlier
-            awareness, appropriate screening, timely care,
-            and informed choices for healthier lives.
-          </p>
-        </div>
-
-        <p class="research-note">
-          This evaluation used synthetic scenarios.
-          Its findings do not establish real-world
-          clinical accuracy, safety, or improved patient outcomes.
-          The benchmark is not a diagnostic tool or medical advice.
-        </p>
-
+        <div class="center"><a class="text-link" href="./benchmark.html">Review the Prediabetes AI Benchmark &rarr;</a></div>
       </div>
     </section>
 
@@ -991,21 +189,20 @@
              aria-label="Professional experience">
 
           <div>
-            <strong>~10</strong>
-            <b>Years</b>
-            <span>Clinical Training &amp; Patient Care</span>
+            <b>Patient Care</b>
+            <span>Obstetrics, gynecology, and reproductive medicine</span>
           </div>
 
           <div>
-            <strong>10+</strong>
-            <b>Years</b>
-            <span>Medical Research</span>
+            <strong>10+ years</strong>
+            <b>Translational Research</b>
+            <span>Reproductive health and multiomics, including work at UCSF</span>
           </div>
 
           <div>
-            <strong>3+</strong>
-            <b>Years</b>
-            <span>Medical Teaching</span>
+            <strong>3+ years</strong>
+            <b>Medical Teaching</b>
+            <span>Patient communication informs how I assess model responses</span>
           </div>
 
         </div>
@@ -1151,12 +348,11 @@
         safety, and health innovation.
       </p>
 
-      <a class="button"
-         href="https://github.com/liubinya-joy"
-         target="_blank"
-         rel="noopener noreferrer">
-        View my GitHub &nearr;
-      </a>
+      <div class="contact-links">
+        <a class="button" href="https://www.linkedin.com/in/binya-liu-md-phd/">Connect on LinkedIn &nearr;</a>
+        <a class="text-link" href="https://github.com/liubinya-joy">GitHub &nearr;</a>
+        <a class="text-link" href="https://scholar.google.com/citations?user=uD3QzZcAAAAJ&amp;hl=en">Google Scholar &nearr;</a>
+      </div>
 
     </section>
 

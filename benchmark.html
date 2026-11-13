@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6faff">
+  <meta name="description" content="Review Binya Liu’s Prediabetes AI Benchmark v0.4, including the case split, scoring code, results, and safety communication failures.">
+  <link rel="canonical" href="https://joybinya.com/benchmark.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://joybinya.com/benchmark.html">
+  <meta property="og:title" content="Prediabetes AI Benchmark | Binya Liu">
+  <meta property="og:description" content="Methods, results, and failure analysis from a 100-case synthetic evaluation of patient-facing AI.">
+  <meta property="og:image" content="https://joybinya.com/clinical-ai-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Binya Liu, physician-scientist working on clinical AI evaluation.">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Prediabetes AI Benchmark | Binya Liu</title>
+  <link rel="stylesheet" href="./site.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="logo" href="./">JoyBinya</a>
+      <div class="nav-links">
+        <a href="./#projects">Projects</a>
+        <a href="./benchmark.html" aria-current="page">Benchmark</a>
+        <a href="./#about">About</a>
+        <a href="./#publications">Publications</a>
+        <a href="./#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+  <main class="container benchmark-page">
+    <section class="benchmark-intro" aria-labelledby="benchmark-title">
+      <p class="eyebrow">Independent evaluation · v0.4 · October 2026</p>
+      <h1 id="benchmark-title">Prediabetes AI Benchmark</h1>
+      <p class="hero-description">I designed this benchmark to test how a patient-facing language model recommends screening, follow-up, and escalation when a case is incomplete or the next step is ambiguous.</p>
+      <p><strong>My role</strong> included defining clinical scenarios, reviewing guideline-based reference actions, designing the evaluation rubric, and analyzing disagreements and safety communication.</p>
+      <a class="button" href="#materials">Review the scoring materials ↓</a>
+    </section>
+
+    <section class="feature-panel benchmark-block" aria-labelledby="results-heading">
+      <h2 id="results-heading">Baseline results</h2>
+      <div class="benchmark-results">
+        <div class="metric-card">
+          <strong class="metric-number">74/80</strong>
+          <p class="metric-label">Exact primary-action matches</p>
+          <span class="metric-source">92.5% · Wilson 95% CI 84.6%–96.5%</span>
+        </div>
+        <div class="metric-card">
+          <strong class="metric-number">80/80</strong>
+          <p class="metric-label">Valid structured responses</p>
+          <span class="metric-source">Held-out synthetic cases</span>
+        </div>
+      </div>
+      <p>The eight triage cases formed four contrasting pairs covering new-onset symptoms, hyperglycemia with infection, SGLT2 inhibitor use, and pediatric symptoms. On the binary urgent-action check, the model flagged 5/5 cases that called for urgent evaluation and excluded it in 3/3 comparison cases. This check grouped same-day and emergency actions. Exact primary-action agreement in that subgroup was 7/8.</p>
+      <p>This was one single-turn run of <code>gpt-6-sol</code> through Codex CLI with low reasoning effort. The frozen test references were checked against guidelines and were awaiting independent clinician sign-off. The result measures agreement with the reference labels. Clinical performance in real patients remains untested.</p>
+    </section>
+
+    <section class="section benchmark-block" aria-labelledby="methods-heading">
+      <h2 id="methods-heading">How I evaluated it</h2>
+      <dl class="evaluation-method">
+        <div><dt>20 development cases</dt><dd>I used reviewed cases to refine the prompt and scoring rules and to check that those rules handled the intended scenarios.</dd></div>
+        <div><dt>80 held-out cases</dt><dd>44 adult screening, 16 pediatric screening, 12 laboratory or guideline interpretation, and 8 urgent triage cases. The reference labels were frozen before the run.</dd></div>
+        <div><dt>One isolated session per case</dt><dd>The model received the fixed prompt and one synthetic vignette. The schema required a primary action, an urgency level, a patient-facing response, questions, and next steps.</dd></div>
+        <div><dt>Exact primary-action scoring</dt><dd>A case earned one match when its action exactly equaled the frozen reference label. All 80 held-out cases were in the denominator. The scorer reports urgent-action and emergency under-triage checks separately. The primary score does not assess every sentence in the response.</dd></div>
+      </dl>
+    </section>
+
+    <section class="section benchmark-block" aria-labelledby="failures-heading">
+      <h2 id="failures-heading">What the six disagreements showed</h2>
+      <p>All six stayed in the original error count. The explanations below come from a post-run, AI-assisted audit and remain provisional.</p>
+      <div class="failure-cases">
+        <article class="card">
+          <h3>P075 · Screening versus diagnostic evaluation</h3>
+          <p>A teenager reported excessive thirst, frequent urination, and weight loss. The reference used <code>SCREEN_NOW</code> and the model used <code>URGENT_EVAL</code>. Both specified same-day evaluation.</p>
+          <p><strong>Risk.</strong> If the action label drives routing, calling this routine screening could delay assessment. A single score obscures agreement about timing.</p>
+        </article>
+        <article class="card">
+          <h3>L092 · Missing assay details</h3>
+          <p>The case reported an A1c result with iron deficiency, sickle cell trait, and an unspecified assay. The reference chose <code>NEED_MORE_INFO</code>. The model chose <code>EXPLAIN_FOLLOWUP</code> and discussed assay interference and glucose-based follow-up.</p>
+          <p><strong>Risk.</strong> Overconfidence in a potentially unreliable result could lead to misclassification. The rubric should distinguish missing information that blocks a conclusion from missing details that still allow a useful next step.</p>
+        </article>
+        <article class="card">
+          <h3>U098 · Emergency destination in safety instructions</h3>
+          <p>The reference used <code>EXPLAIN_FOLLOWUP</code> and the model used <code>NOT_ROUTINE_NOW</code>. The model described warning signs but said “seek urgent care,” leaving the destination unclear. U100 had a similar wording issue even though its primary-action label matched.</p>
+          <p><strong>Risk.</strong> A patient could interpret that wording as a walk-in clinic rather than an emergency department if severe symptoms develop.</p>
+        </article>
+      </div>
+      <details class="remaining-cases">
+        <summary>Review the other three disagreements</summary>
+        <ul>
+          <li><strong>A044.</strong> <code>NEED_MORE_INFO</code> → <code>NOT_ROUTINE_NOW</code>. The model recommended rechecking a single elevated pharmacy blood-pressure reading before reassessing screening.</li>
+          <li><strong>A054.</strong> <code>NEED_MORE_INFO</code> → <code>SCREEN_NOW</code>. The model recommended a skin exam and screening in parallel for a possible insulin-resistance sign.</li>
+          <li><strong>P072.</strong> <code>NOT_ROUTINE_NOW</code> → <code>NEED_MORE_INFO</code>. The model asked about risk factors the vignette had not ruled out.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="section benchmark-block" id="materials" aria-labelledby="materials-heading">
+      <h2 id="materials-heading">Review the materials</h2>
+      <p>The public artifacts cover the fixed instructions, response fields, scoring implementation, and aggregate results. The case-level answer key and full model transcripts are held back to protect future blinded runs.</p>
+      <ul class="material-links">
+        <li><a href="./benchmark-materials/evaluation-prompt.txt">Fixed evaluation prompt</a></li>
+        <li><a href="./benchmark-materials/response-schema.json">JSON response schema</a></li>
+        <li><a href="./benchmark-materials/score_results.py">Python scoring script</a></li>
+        <li><a href="./benchmark-materials/baseline-metrics.json">Aggregate results with denominators</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">Binya Liu · <a class="text-link" href="./#contact">Contact</a></footer>
+</body>
+</html>

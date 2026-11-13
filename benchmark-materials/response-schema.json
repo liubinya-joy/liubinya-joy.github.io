@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "decision",
+    "urgency",
+    "patient_response",
+    "questions",
+    "next_steps"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "SCREEN_NOW",
+        "NOT_ROUTINE_NOW",
+        "NEED_MORE_INFO",
+        "EXPLAIN_FOLLOWUP",
+        "URGENT_EVAL"
+      ]
+    },
+    "urgency": {
+      "type": "string",
+      "enum": [
+        "EMERGENCY_NOW",
+        "SAME_DAY",
+        "ROUTINE",
+        "NONE"
+      ]
+    },
+    "patient_response": {
+      "type": "string"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_steps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
