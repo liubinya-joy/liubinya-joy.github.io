@@ -322,25 +322,16 @@ h2 {
 
 /* ABOUT ME */
 
-.about-layout {
-  display: grid;
-  grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(24px, 4vw, 46px);
+.about-copy {
   max-width: 860px;
   margin: auto;
 }
 
-.about-portrait {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 14px;
-}
-
 .about-copy .eyebrow { margin-bottom: 10px; }
+.about-copy h2 { text-wrap: wrap; }
 
 .about-copy p:not(.eyebrow) {
+  max-width: 72ch;
   font-size: 18px;
   line-height: 1.7;
   color: var(--muted);
@@ -523,8 +514,6 @@ h2 {
   .pub-list { padding: 0 15px; }
   .metric-card { padding: 20px 15px; }
   .metric-number { font-size: 39px; }
-  .about-layout { grid-template-columns: 1fr; gap: 22px; }
-  .about-portrait { width: min(160px, 100%); justify-self: center; }
   .about-copy p:not(.eyebrow) { font-size: 16px; }
 
   .experience {
