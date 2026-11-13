@@ -466,25 +466,29 @@
 
     /* ABOUT ME */
 
-    .about-copy {
-      max-width: 800px;
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(24px, 4vw, 46px);
+      max-width: 860px;
       margin: auto;
-      text-align: center;
     }
 
     .about-portrait {
       display: block;
-      width: min(160px, 100%);
+      width: 100%;
       height: auto;
-      margin: 0 auto 24px;
       border-radius: 14px;
     }
 
-    .about-copy p {
+    .about-copy .eyebrow { margin-bottom: 10px; }
+
+    .about-copy p:not(.eyebrow) {
       font-size: 18px;
-      line-height: 1.85;
+      line-height: 1.7;
       color: var(--muted);
-      margin-bottom: 18px;
+      margin: 16px 0 0;
       text-wrap: pretty;
     }
 
@@ -664,7 +668,9 @@
       .metric-card { padding: 20px 15px; }
       .metric-number { font-size: 39px; }
       .story { padding: 20px; }
-      .about-copy p { font-size: 16px; }
+      .about-layout { grid-template-columns: 1fr; gap: 22px; }
+      .about-portrait { width: min(160px, 100%); justify-self: center; }
+      .about-copy p:not(.eyebrow) { font-size: 16px; }
 
       .experience {
         grid-template-columns: 1fr;
@@ -951,36 +957,34 @@
 
       <div class="feature-panel">
 
-        <div class="section-heading">
-          <p class="eyebrow">About Me</p>
+        <div class="about-layout">
+          <img class="about-portrait" src="./dr-binya-liu.webp" width="384" height="456"
+               alt="Portrait of Dr. Binya Liu" loading="lazy">
 
-          <h2 id="about-heading">
-            From Clinical Medicine to Healthcare AI
-          </h2>
-        </div>
+          <div class="about-copy">
+            <p class="eyebrow">About Me</p>
 
-        <img class="about-portrait" src="./dr-binya-liu.webp" width="384" height="456"
-             alt="Portrait of Dr. Binya Liu" loading="lazy">
+            <h2 id="about-heading">
+              From Clinical Medicine to Healthcare AI
+            </h2>
 
-        <div class="about-copy">
+            <p>
+              Medicine has shaped my life since I entered
+              medical school at 17.
+              Years of patient care, research, and teaching
+              have taught me that great healthcare requires
+              sound judgment, scientific rigor,
+              and genuine empathy.
+            </p>
 
-          <p>
-            Medicine has shaped my life since I entered
-            medical school at 17.
-            Years of patient care, research, and teaching
-            have taught me that great healthcare requires
-            sound judgment, scientific rigor,
-            and genuine empathy.
-          </p>
-
-          <p>
-            Today, I bring these perspectives to healthcare AI —
-            building trustworthy evaluations and practical tools
-            that support clinicians, empower patients,
-            and help more people make informed decisions
-            about their health.
-          </p>
-
+            <p>
+              Today, I bring these perspectives to healthcare AI —
+              building trustworthy evaluations and practical tools
+              that support clinicians, empower patients,
+              and help more people make informed decisions
+              about their health.
+            </p>
+          </div>
         </div>
 
         <div class="experience"
