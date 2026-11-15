@@ -469,18 +469,25 @@ h2 {
   .nav {
     flex-direction: column;
     justify-content: center;
-    gap: 12px;
-    padding: 18px 0;
+    gap: 0;
+    padding: 10px 0 4px;
   }
 
   .logo { font-size: 27px; }
 
   .nav-links {
-    gap: 14px;
+    gap: 0 10px;
     justify-content: center;
   }
 
-  .nav-links a { font-size: 13px; }
+  .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
 
   .hero { padding: 67px 0; }
 
@@ -489,7 +496,7 @@ h2 {
     letter-spacing: -1.6px;
   }
 
-  .hero-description { font-size: 17px; }
+  .hero-description { font-size: 17px; line-height: 1.6; }
   .section { padding: 62px 0; }
 
   .cards,
@@ -504,6 +511,11 @@ h2 {
   .pub-list { padding: 0 15px; }
   .metric-card { padding: 20px 15px; }
   .metric-number { font-size: 39px; }
+  .benchmark-intro { padding: 32px 0; }
+  .benchmark-intro h1 { margin-bottom: 16px; }
+  .benchmark-intro p { margin-bottom: 16px; }
+  .remaining-cases summary { min-height: 44px; padding-block: 9px; }
+  .material-links a { display: inline-block; min-height: 44px; padding-block: 9px; }
   .about-copy p:not(.eyebrow) { font-size: 16px; }
 
   .experience {
@@ -592,4 +604,28 @@ h2 {
 
 @media (max-width: 720px) {
   .featured-project { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 670px) {
+  .home-page .hero { padding: 32px 0 36px; }
+  .home-page h1 { font-size: clamp(2.25rem, 9.3vw, 3.3rem); margin-bottom: 16px; }
+  .home-actions { gap: 4px 18px; margin-top: 18px; }
+  .home-actions .text-link, .featured-copy .text-link, .research-project .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-links a { grid-column: span 2; }
+  .nav-links a:nth-child(n + 4) { grid-column: span 3; }
 }
