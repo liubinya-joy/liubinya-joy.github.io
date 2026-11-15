@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6faff">
+  <meta name="description" content="A practical prediabetes meal guide for ingredients you already have.">
+  <meta name="robots" content="noindex">
+  <title>Meal Guide · JoyBinya</title>
+  <link rel="icon" href="./favicon.png" type="image/png">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="wordmark" href="./" aria-label="JoyBinya">Joy<span>Binya</span></a>
+      <nav aria-label="Navigation">
+        <button type="button" class="nav-link" id="history-button" data-copy="history">Saved meals</button>
+        <a class="nav-link profile" href="https://joybinya.com/#about" data-copy="profile">About Binya</a>
+        <select id="language" class="language" aria-label="Language / 语言 / 語言">
+          <option value="en">English</option>
+          <option value="zh">简体中文</option>
+          <option value="yue">廣東話</option>
+        </select>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <div class="hero-copy">
+        <div class="eyebrow" data-copy="context">PREDIABETES MEAL GUIDE</div>
+        <h1 id="title" data-copy="title">Start with what you have.</h1>
+        <p data-copy="subtitle">Choose what’s in your kitchen and get meal ideas for prediabetes.</p>
+        <a class="start" href="#builder"><span data-copy="start">Build my plate</span> <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-visual">
+        <img id="hero-photo" src="./rainbow-meal-window-light.webp" width="960" height="960" alt="Japanese-style plate with colorful vegetables, salmon, and brown rice with quinoa, beside berries and cream-handled cutlery">
+      </div>
+    </section>
+
+    <div class="workspace" id="builder">
+      <form id="meal-form" class="surface builder" aria-labelledby="ingredients-title">
+        <section aria-labelledby="ingredients-title">
+          <h2 id="ingredients-title" data-copy="ingredients">What’s in your kitchen?</h2>
+          <button type="button" id="example" class="link-button example-button" data-copy="example">Try rice, tofu, and broccoli</button>
+          <p class="hint" data-copy="ingredientsHint">Pick what you have. A few ingredients are enough to start.</p>
+          <label class="search">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="food-search" type="search" placeholder="Search ingredients, e.g. tofu" aria-label="Search ingredients" autocomplete="off">
+          </label>
+          <div class="tabs" id="food-tabs" role="group"></div>
+          <p id="rainbow-hint" class="hint rainbow-hint" data-copy="rainbowHint" hidden>Pick vegetables and whole fruit in different colors to add variety.</p>
+          <div id="food-list" class="choices foods ingredient-choices"></div>
+          <details class="more-vegetables" id="more-vegetables">
+            <summary data-copy="moreVegetables">More common vegetables</summary>
+            <div id="more-vegetable-list" class="choices ingredient-choices"></div>
+          </details>
+          <button type="button" class="link-button add-ingredient" id="add-ingredient">
+            <span aria-hidden="true">＋</span> <span data-copy="addIngredient">Add an ingredient</span>
+          </button>
+          <div id="selected-foods" class="selected-foods" hidden>
+            <span data-copy="selected">Selected</span><div id="selected-list" class="choices ingredient-choices"></div>
+            <div id="selected-colors" class="plate-colors" aria-live="polite"></div>
+          </div>
+        </section>
+        <section class="form-section" aria-labelledby="avoid-title">
+          <h2 id="avoid-title" data-copy="avoid">What do you skip?</h2>
+          <div class="choices" id="avoid-list"></div>
+          <details class="allergy">
+            <summary><span data-copy="allergies">Food allergies</span> <span id="allergy-count"></span></summary>
+            <div class="choices" id="allergy-list"></div>
+            <p class="hint" data-copy="allergyHint">Check ingredient and cross-contact information for packaged foods and sauces.</p>
+          </details>
+        </section>
+        <section class="form-section" aria-labelledby="style-title">
+          <h2 id="style-title" data-copy="style">Cooking style</h2>
+          <div id="style-list" class="choices" role="group" aria-labelledby="style-title"></div>
+          <label class="goal">
+            <span><strong data-copy="ldl">Also consider LDL cholesterol</strong><small data-copy="ldlHint">Prioritize swaps with less saturated fat.</small></span>
+            <input id="ldl" type="checkbox" role="switch">
+            <span class="switch" aria-hidden="true"></span>
+          </label>
+        </section>
+        <div class="actions">
+          <button type="submit" class="primary"><span data-copy="build">Show my meal ideas</span> <span aria-hidden="true">→</span></button>
+          <span id="picked-count" class="hint" aria-live="polite"></span>
+        </div>
+        <p id="form-message" class="feedback" role="status"></p>
+      </form>
+      <aside id="results" class="surface results" aria-labelledby="result-title">
+        <h2 id="result-title" tabindex="-1" data-copy="yourPlate">Your plate</h2>
+        <div class="plate-wrap">
+          <div class="plate">
+            <div><b>½</b><span data-copy="plateVegetables">Nonstarchy vegetables</span></div>
+            <div><b>¼</b><span data-copy="plateProtein">Lean protein</span></div>
+            <div><b>¼</b><span data-copy="plateCarbs">Carb foods</span></div>
+          </div>
+        </div>
+        <a class="source-link plate-source" href="https://www.cdc.gov/diabetes/healthy-eating/diabetes-meal-planning.html" target="_blank" rel="noopener noreferrer" data-copy="plateSource">CDC plate method ↗</a>
+        <div id="empty-state">
+          <p class="hint" data-copy="plateHint">Two ways to use what you have.</p>
+          <ol id="empty-order" class="order"></ol>
+        </div>
+        <div id="generated" hidden></div>
+      </aside>
+    </div>
+
+    <details class="learn-more" id="learn">
+      <summary data-copy="learnMore">Learn more about meals and habits</summary>
+      <div class="learn-content">
+        <section class="routine" id="routine" aria-labelledby="routine-title">
+          <h2 id="routine-title" data-copy="routine">Eating and movement habits</h2>
+          <div class="routine-grid">
+            <article class="surface habit fiber">
+              <p class="eyebrow" data-copy="morning">In the morning</p>
+              <h3 data-copy="fiberTitle">Build fiber gradually</h3>
+              <p data-copy="fiberBody">Start with foods like oats, beans and vegetables.</p>
+              <details class="allergy">
+                <summary data-copy="psyllium">How to take psyllium</summary>
+                <p data-copy="psylliumSteps"></p>
+              </details>
+              <a class="source-link" data-copy="fiberSource" href="https://medlineplus.gov/druginfo/meds/a601104.html" target="_blank" rel="noopener noreferrer">MedlinePlus</a>
+            </article>
+            <article class="surface habit sequence">
+              <p class="eyebrow" data-copy="atTable">At the table</p>
+              <h3 data-copy="sequenceTitle">Try this eating order</h3>
+              <p data-copy="sequenceBody">Start with a few bites of vegetables, then protein, then the starch.</p>
+              <ol id="routine-order" class="order"></ol>
+              <a class="source-link" data-copy="sequenceSource" href="https://pubmed.ncbi.nlm.nih.gov/30101510/" target="_blank" rel="noopener noreferrer">Prediabetes meal-order study</a>
+            </article>
+            <article class="surface habit walking" id="walking">
+              <p class="eyebrow" data-copy="activity">Movement</p>
+              <h3 data-copy="walkTitle">Take a short walk after eating</h3>
+              <p data-copy="walkBody">If walking is comfortable for you, try five or ten minutes after the meal at an easy pace.</p>
+              <div class="walk-controls">
+                <select id="walk-minutes" aria-label="Walking time">
+                  <option value="5" data-copy="five">5 min</option>
+                  <option value="10" data-copy="ten" selected>10 min</option>
+                </select>
+                <button type="button" class="primary" id="walk-button" data-copy="startWalk">Start walk timer</button>
+              </div>
+              <div class="walk-display"><span id="walk-time" role="timer" aria-live="off" hidden>10:00</span><span id="walk-status" class="hint" role="status"></span></div>
+              <a class="source-link" data-copy="walkSource" href="https://pubmed.ncbi.nlm.nih.gov/27747394/" target="_blank" rel="noopener noreferrer">Post-meal walking study</a>
+              <div class="strength-option">
+                <h3 data-copy="strengthTitle">Strength training</h3>
+                <p data-copy="strengthBody">Try resistance bands or wall push-ups. Aim for at least two days a week, at times that work for you.</p>
+                <a class="source-link" data-copy="strengthSource" href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" target="_blank" rel="noopener noreferrer">CDC activity guide</a>
+              </div>
+            </article>
+          </div>
+          <div class="omega">
+            <div>
+              <h3 data-copy="omegaTitle">Where does omega-3 fit?</h3>
+              <p data-copy="omegaBody">Hemp hearts add plant omega-3 (ALA) to oats or vegetables. Salmon and sardines supply EPA and DHA.</p>
+            </div>
+            <div class="omega-sources">
+              <a class="source-link" data-copy="omegaSource" href="https://ods.od.nih.gov/factsheets/Omega3FattyAcids-Consumer/" target="_blank" rel="noopener noreferrer">NIH omega-3 guide</a>
+              <a class="source-link" data-copy="hempSource" href="https://pubmed.ncbi.nlm.nih.gov/35408737/" target="_blank" rel="noopener noreferrer">Hemp heart analysis</a>
+            </div>
+          </div>
+        </section>
+        <section class="routine nutrition-resources" id="resources" aria-labelledby="resources-title">
+          <h2 id="resources-title" data-copy="resources">Nutrition resources</h2>
+          <p class="hint" data-copy="resourcesHint">Choose a guide by what you want to do next.</p>
+          <ul class="resource-list">
+            <li class="surface resource-item">
+              <a href="https://professional.diabetes.org/sites/dpro/files/2025-05/PE25-Plan-Your-Plate-FINAL-5-22-25.pdf" target="_blank" rel="noopener noreferrer">
+                <span data-copy="resourcePlate">Build a balanced plate</span><span aria-hidden="true">↗</span>
+              </a>
+              <p class="hint" data-copy="resourcePlateHint">ADA’s illustrated plate guide for choosing vegetables, protein and carbs.</p>
+            </li>
+            <li class="surface resource-item">
+              <a href="https://diabetes.org/food-nutrition/reading-food-labels/protein" target="_blank" rel="noopener noreferrer">
+                <span data-copy="resourceProtein">Find protein options</span><span aria-hidden="true">↗</span>
+              </a>
+              <p class="hint" data-copy="resourceProteinHint">ADA’s examples of plant proteins, seafood, poultry and other choices.</p>
+            </li>
+            <li class="surface resource-item">
+              <a href="https://www.heart.org/en/healthy-living/healthy-eating/plant-forward-eating" target="_blank" rel="noopener noreferrer">
+                <span data-copy="resourceHeart">Make heart-healthy swaps</span><span aria-hidden="true">↗</span>
+              </a>
+              <p class="hint" data-copy="resourceHeartHint">American Heart Association ideas for using more beans, lentils and other plant foods.</p>
+            </li>
+            <li class="surface resource-item">
+              <a href="https://www.mayoclinic.org/diseases-conditions/diabetes/in-depth/diabetes-diet/art-20044295" target="_blank" rel="noopener noreferrer">
+                <span data-copy="resourceMayo">See a sample day of meals</span><span aria-hidden="true">↗</span>
+              </a>
+              <p class="hint" data-copy="resourceMayoHint">Mayo Clinic’s guide explains portions and gives a sample diabetes meal plan.</p>
+            </li>
+            <li class="surface resource-item">
+              <a href="https://realfood.gov/guidelines" target="_blank" rel="noopener noreferrer">
+                <span data-copy="resourceDga">Read the current U.S. dietary guidelines</span><span aria-hidden="true">↗</span>
+              </a>
+              <p class="hint" data-copy="resourceDgaHint">Federal guidance for the general public, 2025–2030.</p>
+            </li>
+            <li class="surface resource-item">
+              <a href="https://www.dietaryguidelines.gov/sites/default/files/2020-12/DGA_2020-2025_StartSimple_withMyPlate_English_BW.pdf" target="_blank" rel="noopener noreferrer">
+                <span data-copy="resourceMyPlate">See the MyPlate handout</span><span aria-hidden="true">↗</span>
+              </a>
+              <p class="hint" data-copy="resourceMyPlateHint">A food-group handout from the 2020–2025 guidelines (PDF).</p>
+            </li>
+            <li class="surface resource-item">
+              <a href="https://www.nal.usda.gov/human-nutrition-and-food-safety/dri-calculator" target="_blank" rel="noopener noreferrer">
+                <span data-copy="resourceDri">Estimate calories and macronutrients</span><span aria-hidden="true">↗</span>
+              </a>
+              <p class="hint" data-copy="resourceDriHint">USDA DRI calculator for general reference. Your care team can help set individual targets.</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </details>
+  </main>
+  <footer class="wrap footer">
+    <a class="footer-brand" href="https://joybinya.com/#about" data-copy="author">Binya Liu · Physician-scientist</a>
+    <div class="footer-links">
+      <button type="button" class="nav-link" id="privacy-button" data-copy="privacy">Data &amp; privacy</button>
+      <a data-copy="resources" href="#resources">Nutrition resources</a>
+    </div>
+  </footer>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-top">
+      <h2 id="dialog-title"></h2>
+      <form method="dialog"><button id="dialog-close" type="submit" class="close" aria-label="Close">×</button></form>
+    </div>
+    <div id="dialog-content"></div>
+    <p id="dialog-feedback" class="feedback" role="status"></p>
+  </dialog>
+  <noscript><p class="wrap">Enable JavaScript to use the meal guide. 请启用 JavaScript 后使用搭餐工具。</p></noscript>
+</body>
+</html>
