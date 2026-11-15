@@ -1,4 +1,4 @@
-import { t } from "./copy.js";
+import { t } from "./copy.js?v=pantry-1";
 
 export const groups = { veg: "蔬菜", protein: "蛋白质", starch: "主食" };
 export const styles = {
@@ -55,10 +55,10 @@ export const foods = [
   { id: "cabbage", color: "green", name: "卷心菜", group: "veg", search: "包菜 圆白菜" },
   { id: "snappeas", color: "green", name: "荷兰豆", group: "veg" },
   { id: "eggplant", color: "purple", name: "茄子", group: "veg" },
-  { id: "asparagus", color: "green", name: "芦笋", group: "veg", more: true, style: "western", search: "asparagus 蘆筍 露笋 露筍" },
+  { id: "asparagus", color: "green", name: "芦笋", group: "veg", style: "western", search: "asparagus 蘆筍 露笋 露筍" },
   { id: "onion", color: "white", name: "洋葱", group: "veg", more: true, style: "western", tags: ["onion"], search: "onion onions 洋蔥 紫洋葱 黄洋葱 甜洋葱" },
   { id: "beet", name: "甜菜根", group: "veg", color: "purple", more: true, style: "western", search: "beet beets beetroot beetroots 红菜头 紅菜頭" },
-  { id: "artichoke", color: "green", name: "洋蓟", group: "veg", more: true, style: "western", search: "artichokes globe artichoke artichoke hearts 朝鲜蓟 朝鮮薊 洋薊", aliases: ["globe artichoke", "artichoke hearts"] },
+  { id: "artichoke", color: "green", name: "洋蓟", group: "veg", style: "western", search: "artichokes globe artichoke artichoke hearts 朝鲜蓟 朝鮮薊 洋薊", aliases: ["globe artichoke", "artichoke hearts"] },
   { id: "brussels", color: "green", name: "抱子甘蓝", group: "veg", more: true, style: "western", search: "Brussels sprouts 芽甘蓝 小卷心菜 椰菜仔" },
   { id: "arugula", color: "green", name: "芝麻菜", group: "veg", more: true, style: "western", search: "arugula rocket rucola" },
   { id: "greenbeans", color: "green", name: "四季豆", group: "veg", more: true, style: "western", search: "green beans string beans 青豆角" },
@@ -88,6 +88,7 @@ export const foods = [
   { id: "blackberry", name: "黑莓", group: "fruit", color: "purple", search: "blackberry blackberries 黑魅" },
   { id: "blueberry", name: "蓝莓", group: "fruit", color: "blue", search: "blueberry blueberries 藍莓" },
   { id: "raspberry", name: "红莓（树莓）", group: "fruit", color: "red", search: "raspberry raspberries 红莓 红树莓 覆盆子 紅莓" },
+  { id: "strawberry", name: "草莓", group: "fruit", color: "red", search: "strawberry strawberries 士多啤梨" },
   { id: "hemp", color: "tan", name: "火麻仁", group: "extra", top: true, tags: ["hemp"], search: "hemp hearts hemp seeds 大麻籽" },
 ];
 
@@ -169,6 +170,18 @@ function rankedFoods(state, group, style) {
     && !(state.ldl && food.ldl < 0)).sort((a, b) => score(b) - score(a));
 }
 
+function choicesForGroup(state, group, style) {
+  const candidates = rankedFoods(state, group, style);
+  const atHome = candidates.filter(food => state.foods.includes(food.id));
+  if (atHome.length) return atHome;
+  const fallback = group === "protein"
+    ? candidates.find(food => food.id === "chicken")
+      || candidates.find(food => food.id === "egg")
+      || candidates.find(food => !(food.ldl < 0))
+    : candidates[0];
+  return [fallback];
+}
+
 const names = {
   broccoli: ["Broccoli", "西蘭花"], bokchoy: ["Bok choy", "白菜"],
   tomato: ["Tomato", "番茄"], spinach: ["Spinach", "菠菜"],
@@ -193,12 +206,12 @@ const names = {
   barley: ["Barley", "大麥"], corn: ["Corn", "粟米"],
   noodles: ["Wheat noodles", "小麥麵"], pasta: ["Whole-wheat pasta", "全麥意粉"],
   blackberry: ["Blackberries", "黑莓"], blueberry: ["Blueberries", "藍莓"],
-  raspberry: ["Raspberries", "紅莓（覆盆子）"],
+  raspberry: ["Raspberries", "紅莓（覆盆子）"], strawberry: ["Strawberries", "士多啤梨"],
   hemp: ["Hemp hearts", "火麻仁"],
 };
 
 const styleNames = { mixed: ["Both styles", "中西都得"], chinese: ["Chinese home-style", "中式家常"], western: ["Western-style", "西式簡餐"] };
-const groupNames = { veg: ["Vegetables", "蔬菜"], protein: ["Protein", "蛋白質"], starch: ["Carbs", "主食"], extra: ["Toppings", "配料"] };
+const groupNames = { veg: ["Vegetables", "蔬菜"], protein: ["Protein", "蛋白質"], starch: ["Carbs", "主食"], fruit: ["Fruit", "水果"], extra: ["Toppings", "配料"] };
 const avoidNames = {
   scallion: ["Scallions", "蔥"], onion: ["Onion", "洋蔥"], ginger: ["Ginger", "薑"], garlic: ["Garlic", "蒜"],
   cilantro: ["Cilantro", "芫荽"], chili: ["Chili", "辣椒"], pork: ["Pork", "豬肉"],
@@ -214,20 +227,20 @@ const allergyNames = {
 export function nameOf(food) { return food.custom ? food.name : t(names[food.id][0], food.name, names[food.id][1]); }
 export function searchNames(food) { return [food.name, food.id, food.search || "", ...(names[food.id] || [])].join(" "); }
 export function styleOf(id) { return t(styleNames[id][0], styles[id], styleNames[id][1]); }
-export function groupOf(id) { return t(groupNames[id][0], groups[id] || "配料", groupNames[id][1]); }
+export function groupOf(id) { return t(groupNames[id][0], groups[id] || groupNames[id][1], groupNames[id][1]); }
 export function avoidOf(id) { return t(avoidNames[id][0], avoidOptions[id], avoidNames[id][1]); }
 export function allergyOf(id) { return t(allergyNames[id][0], allergens[id], allergyNames[id][1]); }
 
 export function makeMeals(state, versions = [0, 0]) {
   return [0, 1].map(index => {
     const style = state.style === "mixed" ? (index === 0 ? "chinese" : "western") : state.style;
-    const items = Object.keys(groups).map(group => {
-      const candidates = rankedFoods(state, group, style);
-      const atHome = candidates.filter(food => state.foods.includes(food.id));
-      const rotation = versions[index];
-      const shortlist = rotation === 0 && atHome.length ? atHome : candidates;
-      const offset = index === 1 && state.style !== "mixed" && shortlist.length > 1 ? 1 : 0;
-      const food = shortlist[(rotation + offset) % shortlist.length];
+    const choices = Object.keys(groups).map(group => choicesForGroup(state, group, style));
+    const combinationCount = choices.reduce((total, group) => total * group.length, 1);
+    const version = versions[index] + (index === 1 && state.style !== "mixed" ? 1 : 0);
+    let combination = version % combinationCount;
+    const items = choices.map(group => {
+      const food = group[combination % group.length];
+      combination = Math.floor(combination / group.length);
       return { ...food, name: nameOf(food), onHand: state.foods.includes(food.id) };
     });
     const [veg, protein, starch] = items;
@@ -239,9 +252,11 @@ export function makeMeals(state, versions = [0, 0]) {
     const seasoning = chinese && aromatics.length
       ? t("Season with " + aromatics.map(name => name.toLowerCase()).join(", ") + " and a little canola oil.", "可用" + aromatics.join("、") + "和少量菜籽油调味。", "可以用" + aromatics.join("、") + "同少少芥花籽油調味。")
       : t("Season with lemon, black pepper and olive oil.", "可用柠檬汁、黑胡椒和橄榄油调味。", "可以用檸檬汁、黑椒同橄欖油調味。");
-    const prep = chinese
-      ? t("Steam or stir-fry the vegetables. Cook the protein through and serve with the starch. ", "蔬菜焯熟或快炒，蛋白质食材煮熟，搭配主食。", "蔬菜灼熟或者快炒，蛋白質食材煮熟，再配主食。")
-      : t("Roast or pan-cook the vegetables and protein. Serve with the starch. ", "蔬菜和蛋白质食材烤熟或煎熟，搭配主食。", "蔬菜同蛋白質食材焗熟或者煎熟，再配主食。");
+    const alternateMethod = Math.floor(version / combinationCount) % 2 === 1;
+    const vegMethod = chinese
+      ? (alternateMethod ? t("Stir-fry the vegetables.", "蔬菜快炒。", "蔬菜快炒。") : t("Steam the vegetables.", "蔬菜蒸熟。", "蔬菜蒸熟。"))
+      : (alternateMethod ? t("Sauté the vegetables.", "蔬菜用平底锅快炒。", "蔬菜用平底鑊快炒。") : t("Roast the vegetables.", "蔬菜烤熟。", "蔬菜焗熟。"));
+    const prep = vegMethod + " " + t("Cook the protein through and serve with the starch.", "蛋白质食材煮熟，搭配主食。", "蛋白質食材煮熟，再配主食。");
     const available = state.foods.map(id => foodFor(state, id)).filter(food => isAllowed(food, state));
     const secondVegetable = available.find(food => food.group === "veg" && food.id !== veg.id && food.color && food.color !== "mixed" && food.color !== veg.color);
     const fruit = available.find(food => food.group === "fruit" && food.color !== veg.color && food.color !== secondVegetable?.color)
@@ -264,9 +279,9 @@ export function makeMeals(state, versions = [0, 0]) {
     const topping = hemp
       ? t(" Finish with a sprinkle of hemp hearts for plant omega-3 (ALA).", "撒一点火麻仁，补充植物来源的 omega‑3（ALA）。", "灑少少火麻仁，加啲植物來源嘅 omega‑3（ALA）。")
       : "";
-    const method = [prep + seasoning + topping, ...extras].join(" ");
+    const method = [prep + " " + seasoning + topping, ...extras].join(" ");
     const mealFoods = [...items, secondVegetable, fruit, hemp && foodById.hemp, mixedGrains && foodById[grainPartner]];
     const colors = [...new Set(mealFoods.map(food => food?.color).filter(Boolean))];
-    return { title, style: styleOf(style), items, method, colors };
+    return { title, style: styleOf(style), items, method, colors, canChangeIngredients: combinationCount > 1 };
   });
 }

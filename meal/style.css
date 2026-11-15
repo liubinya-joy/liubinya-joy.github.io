@@ -172,6 +172,17 @@ dialog p + p { margin-top: 8px; }
 .order li:first-child { background: #e7f0e5; }
 .order li:last-child { background: #faf1df; }
 .meal .order li span:first-child { flex: none; }
+.meal .order li { flex-wrap: wrap; }
+.meal .order .optional-ingredient {
+  padding: 3px 7px;
+  border: 1px solid #a8732d;
+  border-radius: 5px;
+  background: #fff2d8;
+  color: #65410c;
+  font-size: .8rem;
+  font-weight: 750;
+}
+.medical-note { margin: 6px 0 2px; }
 .meal > .hint:first-child { margin-top: 0; }
 .routine { margin-top: 32px; scroll-margin-top: 16px; }
 .routine > h2 { margin-bottom: 12px; font-size: clamp(1.35rem, 3vw, 1.8rem); letter-spacing: -.038em; }

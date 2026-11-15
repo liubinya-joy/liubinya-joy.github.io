@@ -1,5 +1,5 @@
 import { firebaseConfig } from "./firebase-config.js";
-import { locale } from "./copy.js";
+import { locale } from "./copy.js?v=pantry-1";
 
 export const isConfigured = ["apiKey", "authDomain", "projectId", "appId"]
   .every(key => typeof firebaseConfig?.[key] === "string" && firebaseConfig[key]);

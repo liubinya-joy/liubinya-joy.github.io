@@ -2,10 +2,10 @@ import {
   groups, styles, foods, foodColors, avoidOptions, allergens, exampleState,
   normalizeState, isAllowed, makeMeals, nameOf, searchNames, groupOf, styleOf, avoidOf, allergyOf,
   pantryOf, foodFor, ingredientName, findIngredient, restrictionsKey,
-} from "./meals.js";
+} from "./meals.js?v=pantry-1";
 import * as cloud from "./cloud.js";
 import * as localMeals from "./local-meals.js";
-import { languagePreferenceKey, locale, locales, setLocale, t, wording } from "./copy.js";
+import { languagePreferenceKey, locale, locales, setLocale, t, wording } from "./copy.js?v=pantry-1";
 
 const byId = id => document.getElementById(id);
 const form = byId("meal-form");
@@ -13,7 +13,7 @@ const search = byId("food-search");
 const dialog = byId("dialog");
 const content = byId("dialog-content");
 const feedback = byId("dialog-feedback");
-const foodTabs = ["top", ...Object.keys(groups), "extra", "rainbow"];
+const foodTabs = ["top", ...Object.keys(groups), "fruit", "extra", "rainbow"];
 const languages = { en: "en-US", zh: "zh-Hans", yue: "yue-Hant" };
 const draftKey = "joybinya-meal-draft-v1";
 const walkKey = "joybinya-meal-walk-v1";
@@ -144,7 +144,7 @@ function renderFood() {
       : !food.more && (category === "top" ? food.top : food.group === category));
   const selectFood = id => update({ foods: toggle(id, state.foods) });
   const more = pantry.filter(food => food.more);
-  byId("more-vegetables").hidden = Boolean(query) || category === "rainbow";
+  byId("more-vegetables").hidden = Boolean(query) || !["top", "veg"].includes(category);
   byId("rainbow-hint").hidden = Boolean(query) || category !== "rainbow";
   const renderFoodChoices = (element, entries) => renderChoices(element,
     Object.fromEntries(entries.map(food => [food.id, nameOf(food)])), state.foods, selectFood,
@@ -336,11 +336,11 @@ function renderResults() {
     meal.items.forEach(item => {
       const line = node("li");
       line.append(markColor(node("strong", item.name), item.color));
-      if (!item.onHand) line.append(node("small", t("To pick up", "可补", "可補買")));
+      if (!item.onHand) line.append(node("span", wording("optionalIngredient"), "optional-ingredient"));
       list.append(line);
     });
     const actions = node("div", "", "actions");
-    const change = button(t("Try another", "换个搭配", "換個搭法"), "secondary", () => {
+    const change = button(wording(meal.canChangeIngredients ? "changeCombination" : "changeMethod"), "secondary", () => {
       versions[index] += 1;
       meals = makeMeals(state, versions);
       mealIds[index] = makeDraftId();
