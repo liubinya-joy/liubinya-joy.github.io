@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6faff">
-  <meta name="description" content="Binya Liu is a physician-scientist designing and evaluating clinical AI for patient guidance. Explore the Prediabetes AI Benchmark, methods, and failure analysis.">
+  <meta name="theme-color" content="#faf9f5">
+  <meta name="description" content="Binya Liu is a physician-scientist exploring everyday food choices and clinical AI evaluation through the JoyBinya Meal Guide and Prediabetes AI Benchmark.">
   <link rel="canonical" href="https://joybinya.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://joybinya.com/">
-  <meta property="og:title" content="Binya Liu | Clinical AI Evaluation">
-  <meta property="og:description" content="A physician-scientist’s portfolio on clinical AI evaluation, including a 100-case synthetic benchmark for patient guidance.">
-  <meta property="og:image" content="https://joybinya.com/clinical-ai-preview.jpg">
+  <meta property="og:title" content="JoyBinya | Health, Research &amp; Everyday Decisions">
+  <meta property="og:description" content="Explore Binya Liu’s meal-building prototype and independent research into patient-facing AI.">
+  <meta property="og:image" content="https://joybinya.com/meal-guide-preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Binya Liu, physician-scientist working on clinical AI evaluation.">
+  <meta property="og:image:alt" content="The JoyBinya Meal Guide showing selected ingredients and a suggested plate.">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Binya Liu | Clinical AI Evaluation</title>
+  <title>JoyBinya | Health, Research &amp; Everyday Decisions</title>
 
   <link rel="stylesheet" href="./site.css">
 </head>
 
-<body>
+<body class="home-page">
 
   <!-- NAVIGATION -->
 
@@ -30,8 +30,8 @@
       <a class="logo" href="#home">JoyBinya</a>
 
       <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="./benchmark.html">Benchmark</a>
+        <a href="#projects">Meal Guide</a>
+        <a href="./benchmark.html">Research</a>
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
@@ -41,111 +41,34 @@
 
   <main class="container">
 
-    <!-- HOME -->
-
-    <section class="hero" id="home"
-             aria-labelledby="hero-title">
-
-      <div>
-        <p class="eyebrow">
-          Binya Liu · Physician-Scientist · Clinical AI
-        </p>
-
-        <h1 id="hero-title">
-          I design and evaluate clinical AI for safer patient guidance.
-        </h1>
-
-        <p class="hero-description">
-          My featured project uses 100 synthetic cases to evaluate how a language
-          model recommends screening, follow-up, and escalation.
-        </p>
-
-        <a class="button" href="./benchmark.html">
-          View the Prediabetes AI Benchmark &rarr;
-        </a>
-      </div>
-
-      <aside class="hero-result" aria-labelledby="hero-result-heading">
-        <h2 id="hero-result-heading">Benchmark baseline</h2>
-        <strong class="metric-number">92.5%</strong>
-        <p>74 of 80 held-out synthetic cases matched the frozen primary-action label.</p>
-        <p class="metric-source">Single-model engineering baseline</p>
-      </aside>
-
-    </section>
-
-    <!-- PROJECTS -->
-
-    <section class="section" id="projects"
-             aria-labelledby="projects-heading">
-
-      <div class="section-heading">
-        <p class="eyebrow">Selected Projects</p>
-        <h2 id="projects-heading">
-          Clinical AI evaluation and prototypes
-        </h2>
-      </div>
-
-      <div class="cards">
-
-        <article class="card">
-          <span class="pill">Clinical AI Benchmark</span>
-
-          <h3>Prediabetes AI Benchmark</h3>
-
-          <p>
-            I designed a synthetic case benchmark for screening, follow-up and escalation.
-            Review the case split, scoring rules and disagreements from the baseline run.
-          </p>
-
-          <div class="card-footer">
-            <a class="text-link" href="./benchmark.html">
-              Review the evaluation &rarr;
-            </a>
-          </div>
-        </article>
-
-        <article class="card">
-          <span class="pill">Live Prototype</span>
-
-          <h3>JoyBinya Meal Guide</h3>
-
-          <p>
-            A companion prototype for adults looking for prediabetes-friendly meal ideas
-            using food they already have. Available in English, Simplified Chinese, and Cantonese.
-          </p>
-
-          <div class="card-footer">
-            <a class="text-link" href="https://joybinya-meal.fatu.chatgpt.site/">
-              Open the Meal Guide &rarr;
-            </a>
-          </div>
-        </article>
-
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <p class="eyebrow">Binya Liu · Physician-scientist</p>
+      <h1 id="hero-title">What should I do next?</h1>
+      <p class="hero-description">Sometimes that means knowing when to seek medical care. Sometimes it’s deciding what to cook tonight.</p>
+      <p class="hero-description">I’m Binya. I build and evaluate tools that help people work through both kinds of decisions.</p>
+      <div class="home-actions">
+        <a class="button" href="https://joybinya-meal.fatu.chatgpt.site/">Try the Meal Guide <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="./benchmark.html">Explore the research <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <section class="section" id="benchmark" aria-labelledby="benchmark-heading">
-      <div class="feature-panel">
-        <div class="section-heading">
-          <h2 id="benchmark-heading">Why prediabetes?</h2>
-          <p class="section-subtitle">Prediabetes often has no obvious symptoms. The benchmark examines what a language model recommends when patients ask about screening and next steps.</p>
-        </div>
-        <div class="metric-grid">
-          <div class="metric-card">
-            <strong class="metric-number">115.2M</strong>
-            <p class="metric-label">Estimated U.S. adults with prediabetes</p>
-          </div>
-          <div class="metric-card">
-            <strong class="metric-number">8 in 10</strong>
-            <p class="metric-label">U.S. adults with prediabetes who are unaware they have it</p>
-          </div>
-        </div>
-        <p class="source-note">
-          U.S. population estimates. <a href="https://www.cdc.gov/diabetes/communication-resources/prediabetes-statistics.html">CDC (2026) &nearr;</a>
-        </p>
-        <div class="center"><a class="text-link" href="./benchmark.html">Review the Prediabetes AI Benchmark &rarr;</a></div>
+    <section class="section featured-project" id="projects" aria-labelledby="meal-heading">
+      <div class="featured-copy">
+        <p class="eyebrow">JoyBinya Meal Guide</p>
+        <h2 id="meal-heading">Start with what you have.</h2>
+        <p>I have rice, tofu, and broccoli. What can I make? Pick ingredients you already have and get meal ideas for adults managing prediabetes, with an option to consider LDL cholesterol.</p>
+        <p class="project-detail">Available in English, Simplified Chinese, and Cantonese.</p>
+        <a class="text-link" href="https://joybinya-meal.fatu.chatgpt.site/">Open the Meal Guide <span aria-hidden="true">→</span></a>
       </div>
+      <img class="meal-preview" src="./meal-guide-preview.jpg" width="1200" height="630" alt="Meal Guide screen with rice, tofu, and broccoli selected and a tofu-with-broccoli suggestion." loading="lazy">
+    </section>
+
+    <section class="section research-project" id="benchmark" aria-labelledby="benchmark-heading">
+      <p class="eyebrow">Prediabetes AI Benchmark</p>
+      <h2 id="benchmark-heading">When AI gives health advice, is the next step clear?</h2>
+      <p>I designed a 100-case synthetic benchmark to evaluate screening, follow-up, and triage decisions. In one case, the model named warning signs but said “seek urgent care,” leaving the patient to decide whether that meant a walk-in clinic or an emergency department.</p>
+      <p class="project-detail">This independent evaluation studied patient-facing model responses. Its results apply to the benchmark cases.</p>
+      <a class="text-link" href="./benchmark.html">Read the evaluation <span aria-hidden="true">→</span></a>
     </section>
 
     <!-- ABOUT ME -->
@@ -158,26 +81,9 @@
         <div class="about-copy">
           <p class="eyebrow">About Me</p>
 
-          <h2 id="about-heading">
-            From Clinical Medicine to Healthcare AI
-          </h2>
-
-          <p>
-            Medicine has shaped my life since I entered
-            medical school at 17.
-            Years of patient care, research, and teaching
-            have taught me that great healthcare requires
-            sound judgment, scientific rigor,
-            and genuine empathy.
-          </p>
-
-          <p>
-            Today, I bring these perspectives to healthcare AI —
-            building trustworthy evaluations and practical tools
-            that support clinicians, empower patients,
-            and help more people make informed decisions
-            about their health.
-          </p>
+          <h2 id="about-heading">Why I work on these questions</h2>
+          <p>I entered medical school at 17 and went on to care for patients in obstetrics, gynecology, and reproductive medicine. At UCSF, my research on endometriosis and adenomyosis brought together clinical information and molecular data.</p>
+          <p>Working with patients taught me to pay attention to both the details that change a recommendation and the practical decisions someone has to make at home.</p>
         </div>
 
         <div class="experience"
@@ -214,13 +120,7 @@
       <div class="feature-panel">
 
         <div class="section-heading">
-          <p class="eyebrow">
-            Research &amp; Publications
-          </p>
-
-          <h2 id="publications-heading">
-            A foundation in scientific inquiry
-          </h2>
+          <h2 id="publications-heading">Selected publications</h2>
 
           <p class="section-subtitle">
             Selected publications exploring reproductive health,
@@ -332,11 +232,7 @@
     <section class="section center" id="contact"
              aria-labelledby="contact-heading">
 
-      <p class="eyebrow">Let's Connect</p>
-
-      <h2 id="contact-heading">
-        Let's build more thoughtful healthcare AI.
-      </h2>
+      <h2 id="contact-heading">Get in touch</h2>
 
       <p class="contact-copy">
         Open to opportunities and collaborations
