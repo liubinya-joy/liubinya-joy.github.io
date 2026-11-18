@@ -45,6 +45,13 @@ h3 { font-size: 1.06rem; line-height: 1.4; }
 .button.secondary:hover { background: var(--pale); }
 .workspace, .guide { margin-top: clamp(26px, 5vw, 46px); scroll-margin-top: 15px; }
 .workspace { padding: clamp(14px, 3.5vw, 27px); border: 1px solid var(--line); border-radius: 18px; background: var(--white); }
+.invite-page { max-width: 32rem; }
+.invite-card { padding: clamp(22px, 6vw, 40px); }
+.invite-brand { display: flex; align-items: center; gap: 13px; margin-bottom: 22px; font-size: 1.13rem; font-weight: 800; }
+.invite-brand img { display: block; border-radius: 15px; }
+.invite-card h1 { max-width: none; font-size: clamp(1.9rem, 6vw, 2.65rem); }
+.invite-description { max-width: 34ch; color: var(--muted); }
+.invite-card .button { margin-top: 20px; }
 .section-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; }
 .section-head p, .hint { margin-top: 4px; color: var(--muted); font-size: .88rem; }
 .household { display: flex; align-items: center; gap: 7px; font-size: .86rem; font-weight: 700; }

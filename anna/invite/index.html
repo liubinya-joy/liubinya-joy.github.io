@@ -6,29 +6,38 @@
   <meta name="robots" content="noindex">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#f6faff">
-  <title>Anna Wang · 家庭餐单邀请 | JoyBinya</title>
-  <meta property="og:title" content="Anna Wang 送你的家庭餐单">
+  <title>Anna Wang 专属体验链接</title>
+  <meta property="og:title" content="Anna Wang 专属体验链接">
   <meta property="og:description" content="打开你的专属邀请，体验一周健康餐单和采购清单。">
-  <meta property="og:image" content="https://joybinya.com/meal/rainbow-meal-window-light.webp">
-  <link rel="icon" href="../../meal/favicon.png" type="image/png">
+  <meta property="og:image" content="https://joybinya.com/anna/app-icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <link rel="icon" href="../app-icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="../app-icon-180.png">
   <link rel="stylesheet" href="../anna.css">
+</head>
+<body>
+  <main class="wrap invite-page">
+    <section class="workspace invite-card" aria-labelledby="title">
+      <div class="invite-brand"><img src="../app-icon-192.png" width="68" height="68" alt=""><span>Anna Meals</span></div>
+      <h1 id="title">Anna Wang 专属体验链接</h1>
+      <p class="invite-description">按家人的口味安排一周晚餐，顺手备好采购清单。</p>
+      <a class="button" id="invite-action" hidden>打开体验邀请</a>
+      <p class="fine" id="invite-missing" hidden>请打开 Anna 发给你的完整邀请链接。</p>
+      <noscript><p class="fine">请在 Safari 或 Chrome 打开这条邀请。</p></noscript>
+    </section>
+  </main>
   <script>
     const pass = new URLSearchParams(location.hash.slice(1)).get("pass");
     if (pass && pass.length <= 512 && /^[\w-]+\.[\w-]+$/.test(pass)) {
       const invitation = new URL("https://anna-wang-family-meals.fatu.chatgpt.site/invite");
       invitation.searchParams.set("pass", pass);
-      location.replace(invitation.href);
+      const action = document.getElementById("invite-action");
+      action.href = invitation.href;
+      action.hidden = false;
+    } else {
+      document.getElementById("invite-missing").hidden = false;
     }
   </script>
-</head>
-<body>
-  <header class="topbar"><div class="wrap nav"><a class="wordmark" href="/">Joy<span>Binya</span></a></div></header>
-  <main class="wrap">
-    <section class="workspace" aria-labelledby="title">
-      <p class="kicker">Anna Wang</p>
-      <h1 id="title">你的家庭餐单邀请</h1>
-      <p>请打开 Anna 发给你的完整邀请链接。</p>
-    </section>
-  </main>
 </body>
 </html>
