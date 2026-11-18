@@ -3,7 +3,7 @@
 const copy = {
   guideNav: ["设计与使用说明", "Design & how to use", "設計同使用說明"],
   forAnna: ["Anna Wang", "Anna Wang", "Anna Wang"],
-  title: ["送给客户的一年家庭餐单", "A year of family meals to gift your clients", "送畀客人嘅一年家庭餐單"],
+  title: ["送给客户的\n一年家庭餐单", "A year of family meals to gift your clients", "送畀客人嘅\n一年家庭餐單"],
   intro: ["一份实用的新居礼物。每周按一家人的口味、忌口和人数安排晚餐，买什么、怎么换菜，一页就能看清。", "A housewarming gift that helps families plan dinners around their tastes, dietary needs, and household size. They can swap a meal and have the shopping list update for them.", "一份實用嘅入伙禮物。每星期照一家人嘅口味、戒口同人數配晚餐，買咩餸、點換餐，一頁睇清楚。"],
   start: ["试一遍客户流程 ↓", "Try the client experience ↓", "試吓客人點用 ↓"],
   demoTitle: ["家庭餐单 Demo", "Family meal planner demo", "家庭餐單示範"],
@@ -33,6 +33,9 @@ const copy = {
   familyTitle: ["客户怎么用", "How families use it", "客人點樣用"],
   familyBody: ["用平时使用的 Safari 或 Chrome 打开邀请并开通，然后设定人数和忌口。平时用每周菜单和采购清单，周末可做晚餐回顾。开通后沿用同一个浏览器。", "Open the invitation in your usual Safari or Chrome browser and activate it. Set household size and dietary needs. Use the weekly menu and shopping list, then review dinners at the end of the week. Return in the same browser.", "用平時用開嘅 Safari 或 Chrome 打開邀請同開通，再填人數同戒口。平時用每週餐單同買餸清單，週末可以做晚餐回顧。開通之後沿用同一個瀏覽器。"],
   installTitle: ["把餐单放到手机主屏幕", "Add the planner to your Home Screen", "將餐單加到手機主畫面"],
+  installAsk: ["想把餐单放到 iPhone 主屏幕吗？", "Add the planner to your iPhone Home Screen?", "想將餐單加到 iPhone 主畫面嗎？"],
+  installYes: ["需要", "Show me how", "想加"],
+  installDismiss: ["关闭提示", "Dismiss", "關閉提示"],
   installSteps: ["用 iPhone 的 Safari 打开这页。点「分享」→「添加到主屏幕」。如果看到「作为网页 App 打开」，开启后点「添加」。下次点主屏幕上的 Anna Meals Demo 图标就能打开。", "Open this page in Safari on your iPhone. Tap Share, then Add to Home Screen. If you see Open as Web App, turn it on, then tap Add. Use the Anna Meals Demo icon to open it again.", "喺 iPhone 用 Safari 開呢頁。撳「分享」→「加入主畫面」。如果見到「以網頁 App 打開」，開啟之後撳「加入」。下次撳主畫面上嘅 Anna Meals Demo 圖示就開到。"],
   feedbackTitle: ["想听听 Anna 的意见", "What would you change, Anna?", "想聽吓 Anna 嘅意見"],
   questionOne: ["送给客户时，你希望他们第一眼看到什么？", "What would you like clients to see first when they open your gift?", "客人一打開你送嘅禮物，你想佢哋首先見到咩？"],

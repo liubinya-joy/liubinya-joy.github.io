@@ -31,6 +31,7 @@ button:disabled { opacity: .72; cursor: default; }
 select { min-height: 44px; padding: 5px 7px; background: var(--white); border: 1px solid #abc3d5; border-radius: 8px; font-size: .88rem; }
 .hero { display: grid; overflow: hidden; margin-top: clamp(16px, 4vw, 34px); border: 1px solid var(--line); border-radius: 22px; background: var(--pale); }
 .hero-copy { padding: clamp(20px, 4.5vw, 48px); align-self: center; }
+.hero h1 { white-space: pre-line; }
 .kicker { color: var(--blue); font-size: .79rem; font-weight: 700; letter-spacing: .08em; }
 h1 { max-width: 16ch; margin: 5px 0 10px; font-size: clamp(1.95rem, 5vw, 3.45rem); line-height: 1.12; letter-spacing: -.045em; text-wrap: balance; }
 h2 { font-size: clamp(1.45rem, 3.2vw, 2.05rem); line-height: 1.25; letter-spacing: -.025em; }
@@ -71,6 +72,16 @@ dd { margin-top: 3px; color: var(--muted); }
 .install-help { margin-block: 5px 12px; border-top: 1px solid var(--line); }
 .install-help summary { min-height: 44px; padding-block: 10px; color: var(--blue); font-weight: 700; cursor: pointer; }
 .install-help p { max-width: 61ch; padding-bottom: 8px; color: var(--muted); }
+.install-prompt {
+  position: fixed; inset-inline: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 10; max-width: 410px; margin-inline: auto; padding: 14px 16px;
+  border: 1px solid var(--line); border-radius: 14px; background: #fff;
+  box-shadow: 0 10px 36px #17364d24; color: var(--ink); font-size: .88rem;
+}
+.install-prompt-title { font-weight: 750; }
+.install-prompt p + p:not([hidden]) { margin-top: 5px; color: var(--muted); }
+.install-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+@media print { .install-prompt { display: none !important; } }
 @media (display-mode: standalone) { .install-help { display: none; } }
 .feedback { margin-top: 12px; padding: clamp(14px, 3.5vw, 24px); border: 1px solid var(--line); border-radius: 16px; background: var(--pale); }
 .feedback ul { margin: 8px 0 13px; padding-inline-start: 20px; }

@@ -17,6 +17,7 @@
   <link rel="manifest" href="./app.webmanifest">
   <link rel="stylesheet" href="./anna.css">
   <script src="./anna.js" defer></script>
+  <script src="./install.js" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -33,7 +34,8 @@
     <section class="hero" aria-labelledby="title">
       <div class="hero-copy">
         <p class="kicker" data-copy="forAnna">Anna Wang</p>
-        <h1 id="title" data-copy="title">送给客户的一年家庭餐单</h1>
+        <h1 id="title" data-copy="title">送给客户的
+一年家庭餐单</h1>
         <p data-copy="intro">一份实用的新居礼物。每周按一家人的口味、忌口和人数安排晚餐，买什么、怎么换菜，一页就能看清。</p>
         <a class="button" href="#demo" data-copy="start">试一遍客户流程 ↓</a>
       </div>
@@ -110,5 +112,13 @@
     </section>
   </main>
   <footer class="wrap footer"><a href="../#about">JoyBinya · Binya Liu</a></footer>
+  <aside class="install-prompt" aria-labelledby="install-prompt-title" hidden>
+    <p class="install-prompt-title" id="install-prompt-title" data-copy="installAsk">想把餐单放到 iPhone 主屏幕吗？</p>
+    <p data-install-instructions data-copy="installSteps" tabindex="-1" hidden>在 iPhone 上用 Safari 打开本页。点「分享」→「添加到主屏幕」，然后点「添加」。</p>
+    <div class="install-actions">
+      <button class="button" type="button" data-install-open data-copy="installYes">需要</button>
+      <button class="button secondary" type="button" data-install-close data-copy="installDismiss">关闭提示</button>
+    </div>
+  </aside>
 </body>
 </html>
