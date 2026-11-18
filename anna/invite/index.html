@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#f6faff">
+  <title>Anna Wang · 家庭餐单邀请 | JoyBinya</title>
+  <meta property="og:title" content="Anna Wang 送你的家庭餐单">
+  <meta property="og:description" content="打开你的专属邀请，体验一周健康餐单和采购清单。">
+  <meta property="og:image" content="https://joybinya.com/meal/rainbow-meal-window-light.webp">
+  <link rel="icon" href="../../meal/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../anna.css">
+  <script>
+    const pass = new URLSearchParams(location.hash.slice(1)).get("pass");
+    if (pass && pass.length <= 512 && /^[\w-]+\.[\w-]+$/.test(pass)) {
+      const invitation = new URL("https://anna-wang-family-meals.fatu.chatgpt.site/invite");
+      invitation.searchParams.set("pass", pass);
+      location.replace(invitation.href);
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar"><div class="wrap nav"><a class="wordmark" href="/">Joy<span>Binya</span></a></div></header>
+  <main class="wrap">
+    <section class="workspace" aria-labelledby="title">
+      <p class="kicker">Anna Wang</p>
+      <h1 id="title">你的家庭餐单邀请</h1>
+      <p>请打开 Anna 发给你的完整邀请链接。</p>
+    </section>
+  </main>
+</body>
+</html>
