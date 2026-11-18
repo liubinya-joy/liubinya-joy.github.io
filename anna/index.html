@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="Anna Meals Demo">
   <meta name="description" content="Try a sample household meal planner and review the design and invitation flow for Anna Wang.">
   <meta property="og:title" content="Anna Wang · 家庭餐单礼物">
-  <meta property="og:description" content="用手机试用家庭餐单、采购清单和晚餐回顾，并查看设计与使用说明。">
+  <meta property="og:description" content="用手机体验家庭餐单、Whole Foods 采购、橄榄油赠礼和 Anna 的每月问候。">
   <meta property="og:image" content="https://joybinya.com/meal/rainbow-meal-window-light.webp">
   <title>Anna Wang · 家庭餐单礼物 | JoyBinya</title>
   <link rel="icon" href="../meal/favicon.png" type="image/png">
@@ -64,6 +64,8 @@
       </section>
       <section id="shopping" class="pane" aria-label="Shopping list" data-label="shopping" hidden>
         <p class="hint" data-copy="shopHint">用量随人数和换菜自动更新。家里有的食材可以勾掉。</p>
+        <a class="button secondary shop-link" href="https://www.wholefoodsmarket.com/grocery" target="_blank" rel="noopener" data-copy="wholeFoods">去 Whole Foods 买菜 ↗</a>
+        <p class="hint" data-copy="shopHow">也可以点每样食材旁的「查找」，规格、价格和送货选项在 Whole Foods 确认。</p>
         <ul id="groceries" class="rows grocery-rows"></ul>
         <p class="result-note" id="next-shopping" hidden><strong data-copy="nextShopping">下周采购清单</strong><span id="next-food"></span></p>
       </section>
@@ -80,22 +82,51 @@
       <p class="fine" data-copy="healthNote">餐单按兼顾血糖和血脂的一般饮食原则设计。个人医疗建议请咨询医生。</p>
     </section>
 
+    <section class="workspace gift-workspace" id="gift" aria-labelledby="gift-title">
+      <div>
+        <p class="kicker" data-copy="giftLabel">Anna 的新居心意</p>
+        <h2 id="gift-title" data-copy="giftTitle">一瓶有机特级初榨橄榄油</h2>
+        <p class="hint" data-copy="giftIntro">客户留下姓名和邮箱，Anna 可以通过 Amazon 送出礼物邀请，收货地址由客户在 Amazon 里填写。</p>
+        <details class="monthly-preview">
+          <summary data-copy="notePreview">看看 Anna 的每月问候示例</summary>
+          <div class="result-note">
+            <h3 data-copy="noteSubject">Anna Wang · 本月厨房问候</h3>
+            <p data-copy="noteBody">Alex，你好！这周试试用一点橄榄油烤彩椒和西兰花。如果想少花点时间想菜单，打开家庭餐单看看这周可以做什么。祝你们在新家吃得开心！</p>
+            <p class="fine" data-copy="noteUnsubscribe">每封问候都附退订入口。</p>
+          </div>
+        </details>
+      </div>
+      <form class="gift-form" id="gift-demo" method="post" aria-label="Gift claim preview" data-label="giftForm">
+        <h3 data-copy="giftForm">领取礼物演示</h3>
+        <div class="gift-name">
+          <label><span data-copy="firstName">名字</span><input type="text" value="Alex" maxlength="80" required></label>
+          <label><span data-copy="lastName">姓氏</span><input type="text" value="Chen" maxlength="80" required></label>
+        </div>
+        <label><span data-copy="email">邮箱</span><input type="email" value="alex@example.com" maxlength="254" required></label>
+        <label class="gift-opt-in"><input type="checkbox" id="monthly-opt-in"><span data-copy="noteOptIn">也想收到 Anna 的每月问候</span></label>
+        <p class="fine" data-copy="giftDemoNote">请用示例信息试填。演示不会保存资料、寄礼物或发邮件。</p>
+        <button class="button" type="submit" data-copy="giftSubmit" disabled>预览领取</button>
+        <p class="result-note" id="gift-status" role="status" hidden></p>
+      </form>
+    </section>
+
     <section class="guide" id="guide" aria-labelledby="guide-title">
       <h2 id="guide-title" data-copy="guideTitle">设计与使用说明</h2>
       <dl class="guide-grid">
         <div>
           <dt data-copy="designTitle">客户收到什么</dt>
-          <dd data-copy="designBody">一年的家庭餐单服务。按口味、忌口和人数规划晚餐，换菜后自动更新采购清单。晚餐回顾会根据确认吃过的餐点，给出一条可用到下周的食材建议。</dd>
+          <dd data-copy="designBody">一年的家庭餐单服务。换菜后采购清单自动更新，可直接去 Whole Foods 找食材。晚餐回顾会给出一条可用到下周的食材建议。</dd>
         </div>
         <div>
           <dt data-copy="annaTitle">Anna 怎么送</dt>
-          <dd data-copy="annaBody">先选好要送礼的家庭，再由 Binya 为每户生成一条专属邀请。把各自的链接一对一发给客户，会员从赠送日起有效 12 个月。</dd>
+          <dd data-copy="annaBody">Binya 为每户生成独立邀请，Anna 一对一发送，会员从赠送日起有效 12 个月。想加送橄榄油时，Anna 可用客户填写的邮箱通过 Amazon 发礼物邀请。</dd>
         </div>
         <div>
           <dt data-copy="familyTitle">客户怎么用</dt>
           <dd data-copy="familyBody">用平时使用的 Safari 或 Chrome 打开邀请并开通，然后设定人数和忌口。平时用每周菜单和采购清单，周末可做晚餐回顾。开通后沿用同一个浏览器。</dd>
         </div>
       </dl>
+      <p class="guide-note" data-copy="notesDelivery">接通 Anna 的 Gmail 后，她就可以收到领取申请，并给自愿订阅的客户按月发问候。每封邮件都附退订入口。</p>
       <details class="install-help">
         <summary data-copy="installTitle">把餐单放到手机主屏幕</summary>
         <p data-copy="installSteps">用 iPhone 的 Safari 打开这页。点「分享」→「添加到主屏幕」。如果看到「作为网页 App 打开」，开启后点「添加」。下次点主屏幕上的 Anna Meals Demo 图标就能打开。</p>
@@ -104,8 +135,8 @@
         <h3 id="feedback-title" data-copy="feedbackTitle">想听听 Anna 的意见</h3>
         <ul>
           <li data-copy="questionOne">送给客户时，你希望他们第一眼看到什么？</li>
-          <li data-copy="questionTwo">开通、排餐、采购和回顾，哪一步还可以更简单？</li>
-          <li data-copy="questionThree">如果只能再加一项，你希望是什么？</li>
+          <li data-copy="questionTwo">领取橄榄油、选餐或去 Whole Foods 买菜，哪一步还可以更简单？</li>
+          <li data-copy="questionThree">每月问候里，你最想跟客户分享什么？</li>
         </ul>
         <a class="button secondary" id="feedback" href="mailto:hellojoybinya@gmail.com" data-copy="reply">把意见发给 Binya</a>
       </section>

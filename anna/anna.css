@@ -55,20 +55,38 @@ h3 { font-size: 1.06rem; line-height: 1.4; }
 .pane h3 { margin-top: 10px; }
 .pane h3 + p { margin-top: 5px; }
 .pane > .button { margin-top: 11px; }
+.shop-link { margin-bottom: 6px; }
 .rows { margin: 0; padding: 0; list-style: none; }
 .rows li { display: flex; align-items: baseline; gap: 10px; padding-block: 8px; border-bottom: 1px solid var(--line); }
 .day { flex: 0 0 4em; color: var(--muted); font-size: .84rem; }
-.grocery-rows label { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; width: 100%; min-height: 34px; gap: 8px; cursor: pointer; }
+.grocery-rows li { align-items: center; }
+.grocery-rows label { display: grid; flex: 1; min-width: 0; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; min-height: 34px; gap: 8px; cursor: pointer; }
+.grocery-rows a { display: inline-flex; align-items: center; min-height: 44px; flex: none; font-size: .8rem; }
 .grocery-rows input { width: 17px; height: 17px; margin: 0; accent-color: var(--ink); }
 .grocery-rows input:checked ~ span { color: var(--muted); text-decoration: line-through; }
 .amount { font-size: .84rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .result-note { margin-top: 11px; padding: 9px 12px; border-radius: 8px; background: var(--pale); font-size: .88rem; }
 .result-note strong { margin-inline-end: .45em; }
 .fine { margin-top: 12px; color: var(--muted); font-size: .77rem; }
+.gift-workspace { display: grid; gap: 18px; }
+.gift-workspace h2 { margin-top: 3px; }
+.gift-form { display: grid; min-width: 0; gap: 9px; align-content: start; padding: 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.gift-form label { display: grid; min-width: 0; gap: 2px; font-size: .85rem; font-weight: 700; }
+.gift-name { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.gift-form input:not([type="checkbox"]) { width: 100%; min-height: 44px; padding: 5px 8px; border: 1px solid #abc3d5; border-radius: 8px; }
+.gift-form .gift-opt-in { display: flex; align-items: center; gap: 7px; min-height: 44px; font-weight: 400; }
+.gift-opt-in input { width: 17px; height: 17px; accent-color: var(--ink); }
+.gift-form .fine, .gift-form .result-note { margin: 0; }
+.gift-form .button { justify-self: start; }
+.monthly-preview { margin-top: 9px; }
+.monthly-preview summary { min-height: 44px; padding-block: 9px; color: var(--blue); font-weight: 700; cursor: pointer; }
+.monthly-preview .result-note { margin-top: 0; }
+.monthly-preview h3 + p { margin-top: 5px; }
 .guide-grid { display: grid; gap: 0; margin: 10px 0 0; }
 .guide-grid > div { padding-block: 13px; border-top: 1px solid var(--line); }
 dt { font-weight: 700; }
 dd { margin-top: 3px; color: var(--muted); }
+.guide-note { margin: 0 0 12px; color: var(--muted); }
 .install-help { margin-block: 5px 12px; border-top: 1px solid var(--line); }
 .install-help summary { min-height: 44px; padding-block: 10px; color: var(--blue); font-weight: 700; cursor: pointer; }
 .install-help p { max-width: 61ch; padding-bottom: 8px; color: var(--muted); }
@@ -89,5 +107,6 @@ dd { margin-top: 3px; color: var(--muted); }
 @media (min-width: 700px) {
   .hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
   .hero img { align-self: stretch; height: 100%; aspect-ratio: 4 / 3; }
+  .gift-workspace { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 25px; }
   .guide-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 19px; }
 }
