@@ -63,7 +63,9 @@ h3 { font-size: 1.06rem; line-height: 1.4; }
 .grocery-rows label { display: grid; flex: 1; min-width: 0; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; min-height: 34px; gap: 8px; cursor: pointer; }
 .grocery-rows a { display: inline-flex; align-items: center; min-height: 44px; flex: none; font-size: .8rem; }
 .grocery-rows input { width: 17px; height: 17px; margin: 0; accent-color: var(--ink); }
-.grocery-rows input:checked ~ span { color: var(--muted); text-decoration: line-through; }
+.pantry-tag { display: none; margin-inline-start: 6px; padding: 0 5px; border-radius: 5px; background: #e5f1eb; color: #28533e; font-size: .72rem; white-space: nowrap; }
+.grocery-rows input:checked + span .pantry-tag { display: inline-block; }
+.grocery-rows li:has(input:checked) a { display: none; }
 .amount { font-size: .84rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .result-note { margin-top: 11px; padding: 9px 12px; border-radius: 8px; background: var(--pale); font-size: .88rem; }
 .result-note strong { margin-inline-end: .45em; }

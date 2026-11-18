@@ -15,7 +15,9 @@ const copy = {
   swap: ["换掉周三的晚餐", "Swap Wednesday’s dinner", "換星期三嘅晚餐"],
   swapBack: ["换回原来的晚餐", "Restore the original dinner", "換返原本嘅晚餐"],
   swapped: ["周三的菜和采购清单已更新。", "Wednesday’s dinner and the shopping list are updated.", "星期三嘅晚餐同買餸清單已更新。"],
-  shopHint: ["用量随人数和换菜自动更新。家里有的食材可以勾掉。", "Quantities update when you change the number of people or swap a meal. Check off items you have.", "換餸或者改人數，份量會自動更新。屋企已有嘅可以剔走。"],
+  shopHint: ["用量随人数和换菜自动更新。勾选表示家里已有。", "Quantities update when you change the number of people or swap a meal. Check the ingredients you already have.", "換餸或者改人數，份量會自動更新。剔選表示屋企已有。"],
+  pantryHave: ["家里已有", "Already have", "屋企已有"],
+  pantryItem: ["家里已有{food}", "Already have {food}", "屋企已有{food}"],
   wholeFoods: ["去 Whole Foods 买菜 ↗", "Shop at Whole Foods ↗", "去 Whole Foods 買餸 ↗"],
   shopHow: ["也可以点每样食材旁的「查找」，规格、价格和送货选项在 Whole Foods 确认。", "Use Find beside an ingredient to search for it. Check pack sizes, prices, and delivery options at Whole Foods.", "可以撳食材隔籬嘅「搵貨」。包裝、價錢同送貨選項喺 Whole Foods 確認。"],
   shopFind: ["查找 ↗", "Find ↗", "搵貨 ↗"],
@@ -132,8 +134,8 @@ function renderMeals() {
     if (totals.get(food) !== amount) checked.delete(food);
   }
   shoppingList.innerHTML = Array.from(totals, ([food, amount]) =>
-    `<li><label><input type="checkbox" value="${food}" data-amount="${amount}"${checked.get(food) === amount ? " checked" : ""}>
-      <span>${pick(foods[food])}</span><span class="amount">${grams(amount)}</span></label>
+    `<li><label><input type="checkbox" value="${food}" data-amount="${amount}" aria-label="${word("pantryItem").replace("{food}", pick(foods[food]))}"${checked.get(food) === amount ? " checked" : ""}>
+      <span>${pick(foods[food])}<small class="pantry-tag" aria-hidden="true">${word("pantryHave")}</small></span><span class="amount">${grams(amount)}</span></label>
       <a href="${wholeFoodsSearch(food)}" target="_blank" rel="noopener" aria-label="${word("shopFindItem").replace("{food}", pick(foods[food]))}">${word("shopFind")}</a></li>`).join("");
   const next = `${pick(foods.brownRice)} · ${grams(55 * Number(size.value))}`;
   document.querySelector("#added-food").textContent = next;
