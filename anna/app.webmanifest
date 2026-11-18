@@ -1,0 +1,14 @@
+{
+  "id": "./",
+  "name": "Anna Wang · Family Meal Planner Demo",
+  "short_name": "Anna Meals Demo",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#f6faff",
+  "background_color": "#f6faff",
+  "icons": [
+    { "src": "./app-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./app-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
