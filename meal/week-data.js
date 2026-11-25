@@ -6,7 +6,6 @@ const weekGroups = {
   carb: ["Whole grains & starchy vegetables", "优质主食（全谷物与薯类）", "全穀物同薯類"],
   fruit: ["Fruit", "水果", "生果"],
   topping: ["Toppings", "搭配小料", "伴碟小料"],
-  finish: ["After-dinner bite", "餐末小点", "餐尾小食"],
   seasoning: ["Seasonings", "调味", "調味"],
   custom: ["Other ingredients", "其他食材", "其他食材"],
 };
@@ -72,10 +71,6 @@ const weekFoods = {
   topping: {
     olives: weekFood(["Pitted olives", "去核橄榄", "去核橄欖"], "g", 12, "green"),
   },
-  finish: {
-    scallionPancake: { ...weekFood(["Scallion pancakes", "葱油饼", "蔥油餅"], "count", 0.25),
-      allergen: "gluten", avoid: "scallion" },
-  },
   seasoning: {
     oil: weekFood(["Extra-virgin olive oil","特级初榨橄榄油","特級初榨橄欖油"], "tbsp", 0.25),
     lemon: weekFood(["Lemons","柠檬","檸檬"], "count", 0.125),
@@ -106,79 +101,26 @@ const restrictions = {
   },
 };
 const restrictionNames = { avoid: ["Aromatics to skip", "烹调用料忌口", "戒口配料"], allergen: ["Ingredients to avoid", "需要避开的食材", "需要避開嘅食材"] };
-const cuisineNames = {
-  cantonese: ["Cantonese", "粤菜", "粵菜"],
-  yunnan: ["Yunnan-inspired", "云南风味", "雲南風味"],
-  shanghai: ["Shanghai-inspired", "上海菜", "上海菜"],
-  zhejiang: ["Zhejiang-inspired", "浙菜", "浙菜"],
-  hunan: ["Hunan-inspired", "湘式风味", "湘式風味"],
-  shandong: ["Shandong-inspired", "鲁式风味", "魯式風味"],
-  northeast: ["Northeast Chinese-inspired", "东北风味", "東北風味"],
-  mediterranean: ["Mediterranean-inspired", "地中海风味", "地中海風味"],
-};
-const regions = {
-  yunnan: [
-    [["Mint-lemon toss", "薄荷柠檬拌", "薄荷檸檬撈"], "blanch", ["lemon", "mint"]],
-    [["Ginger and mint braise", "云南家常焖", "雲南家常炆"], "braise", ["ginger", "mint"]],
-  ],
-  cantonese: [
-    [["Cantonese-style steamed", "粤式清蒸", "廣式清蒸"], "steam", ["ginger", "scallion"]],
-    [["Garlic wok toss", "粤式清炒", "廣式清炒"], "wok", ["garlic", "scallion"]],
-  ],
-  shanghai: [
-    [["Shanghai scallion-oil toss", "上海葱油拌", "上海蔥油撈"], "warmOil", ["scallion"]],
-    [["Shanghai home-style glaze", "上海本帮酱香焖", "上海本幫醬香炆"], "glaze", ["ginger", "soySauce"]],
-    [["Shanghai ginger stir-fry", "沪式姜香清炒", "滬式薑香清炒"], "wok", ["ginger", "scallion"]],
-  ],
-  zhejiang: [
-    [["Zhejiang vinegar finish", "浙式醋香", "浙式醋香"], "tangy", ["vinegar", "ginger"]],
-    [["Jiangnan-style steaming", "江南姜葱清蒸", "江南薑蔥清蒸"], "steam", ["ginger", "scallion"]],
-    [["Zhejiang garlic greens", "浙式蒜香清炒", "浙式蒜香清炒"], "wok", ["garlic"]],
-  ],
-  hunan: [
-    [["Chili-vinegar wok toss", "湘式酸辣快炒", "湘式酸辣快炒"], "wok", ["vinegar", "chili", "garlic"]],
-    [["Vinegar-scented braise", "湘式醋香焖", "湘式醋香炆"], "braise", ["vinegar", "chili"]],
-  ],
-  shandong: [
-    [["Scallion braise", "鲁式葱香焖", "魯式蔥香炆"], "braise", ["scallion", "ginger"]],
-    [["Vinegar wok toss", "鲁式醋香快炒", "魯式醋香快炒"], "wok", ["vinegar", "scallion"]],
-  ],
-  northeast: [
-    [["Northeast-style home stew", "东北家常炖", "東北家常燉"], "braise", ["scallion", "garlic"]],
-    [["Northeast-style cold toss", "东北凉拌", "東北涼拌"], "blanch", ["vinegar", "garlic"]],
-  ],
-  mediterranean: [
-    [["Mediterranean lemon-herb roast", "地中海柠檬香草烤", "地中海檸檬香草焗"], "roast", ["lemon", "dill", "garlic"]],
-    [["Mediterranean olive-oil toss", "地中海橄榄油拌", "地中海橄欖油撈"], "herbToss", ["lemon", "mint"]],
-    [["Mediterranean lemon braise", "地中海柠檬炖", "地中海檸檬燉"], "braise", ["lemon", "garlic"]],
-  ],
-};
+const mediterraneanRecipes = [
+  [["Lemon-herb roast", "柠檬香草烤", "檸檬香草焗"], "roast", ["lemon", "dill", "garlic"]],
+  [["Olive-oil toss", "橄榄油拌", "橄欖油撈"], "herbToss", ["lemon", "mint"]],
+  [["Lemon braise", "柠檬炖", "檸檬燉"], "braise", ["lemon", "garlic"]],
+];
 const cooking = {
-  blanch: ["Blanch the vegetables until tender, drain them well and toss with the cooked protein.",
-    "蔬菜焯熟沥干，与煮熟的蛋白质食材拌匀。", "蔬菜灼熟瀝乾，同煮熟嘅蛋白質食材撈勻。"],
-  braise: ["Simmer the vegetables with a splash of water until tender. Add the cooked protein for the final minute.",
-    "蔬菜加少量水焖软，最后一分钟加煮熟的蛋白质食材。", "蔬菜加少少水炆軟，最後一分鐘加煮熟嘅蛋白質食材。"],
-  steam: ["Steam the vegetables until tender and serve with the separately cooked protein.",
-    "蔬菜蒸熟，搭配另行煮熟的蛋白质食材。", "蔬菜蒸熟，配另外煮熟嘅蛋白質食材。"],
-  wok: ["Stir-fry the vegetables in a little olive oil until tender. Fold in the cooked protein.",
-    "用少量橄榄油把蔬菜炒熟，拌入煮熟的蛋白质食材。", "用少少橄欖油炒熟蔬菜，再撈入煮熟嘅蛋白質食材。"],
-  warmOil: ["Blanch and drain the vegetables. Briefly warm the seasonings in the oil, then toss the fragrant oil with the vegetables and cooked protein.",
-    "蔬菜焯熟沥干。调料用油短暂煸香，再把香油和蔬菜、煮熟的蛋白质食材拌匀。", "蔬菜灼熟瀝乾。調味料用油略爆香，再同蔬菜同煮熟嘅蛋白質食材撈勻。"],
-  glaze: ["Simmer the vegetables and cooked protein with a few spoonfuls of water and the seasonings. Let the sauce reduce until it lightly coats the food.",
-    "蔬菜和煮熟的蛋白质食材加几匙水及调料一起焖，最后把汁收浓至薄薄裹住食材。", "蔬菜同煮熟嘅蛋白質食材，加幾匙水同調味料一齊炆，最後收汁至薄薄包住食材。"],
-  tangy: ["Steam the vegetables. Warm the seasonings with a splash of water, then spoon the sauce over the vegetables and cooked protein just before serving.",
-    "蔬菜蒸熟。调料加少许水加热，起锅前浇在蔬菜和煮熟的蛋白质食材上。", "蔬菜蒸熟。調味料加少少水煮熱，上碟前淋喺蔬菜同煮熟嘅蛋白質食材上。"],
   roast: ["Toss the vegetables with olive oil and roast at 425°F until tender. Finish with the seasonings and serve alongside the cooked protein.",
-    "蔬菜拌橄榄油，用 220°C 烤至熟软。出炉再加调味，搭配煮熟的蛋白质食材。", "蔬菜拌橄欖油，用 220°C 焗到熟軟。出爐加調味，配煮熟嘅蛋白質食材。"],
+    "蔬菜拌橄榄油，用 220°C 烤至熟软。出炉再加调味，搭配煮熟的蛋白质食材。",
+    "蔬菜拌橄欖油，用 220°C 焗到熟軟。出爐加調味，配煮熟嘅蛋白質食材。"],
   herbToss: ["Steam the vegetables until tender, then toss them warm with the olive oil, seasonings and cooked protein.",
-    "蔬菜蒸熟，趁温热拌入橄榄油、调料和煮熟的蛋白质食材。", "蔬菜蒸熟，趁暖撈入橄欖油、調味料同煮熟嘅蛋白質食材。"],
+    "蔬菜蒸熟，趁温热拌入橄榄油、调料和煮熟的蛋白质食材。",
+    "蔬菜蒸熟，趁暖撈入橄欖油、調味料同煮熟嘅蛋白質食材。"],
+  braise: ["Simmer the vegetables with a splash of water until tender. Add the cooked protein for the final minute.",
+    "蔬菜加少量水焖软，最后一分钟加煮熟的蛋白质食材。",
+    "蔬菜加少少水炆軟，最後一分鐘加煮熟嘅蛋白質食材。"],
 };
 const dishSteps = {
-  steam: ["Steamed", "清蒸", "清蒸"], wok: ["Wok-tossed", "快炒", "快炒"],
-  braise: ["Home-style braise", "家常焖", "家常炆"], blanch: ["Blanched and tossed", "焯熟拌菜", "灼熟撈菜"],
-  warmOil: ["Warm-oil toss", "热油拌", "熱油撈"], glaze: ["Light glaze", "收汁焖", "收汁炆"],
-  tangy: ["Steam and dress", "清蒸浇汁", "清蒸淋汁"], roast: ["Oven-roasted", "烤蔬菜", "焗蔬菜"],
-  herbToss: ["Olive-oil toss", "橄榄油拌", "橄欖油撈"],
+  roast: ["Oven-roasted","烤蔬菜","焗蔬菜"],
+  herbToss: ["Olive-oil toss","橄榄油拌","橄欖油撈"],
+  braise: ["Home-style braise","家常焖","家常炆"],
 };
 const days = [
   ["Monday", "周一", "星期一"], ["Tuesday", "周二", "星期二"], ["Wednesday", "周三", "星期三"],

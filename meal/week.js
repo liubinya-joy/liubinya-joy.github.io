@@ -11,7 +11,6 @@ const extraFoodList = document.querySelector("#custom-food-list");
 const extraFoodStatus = document.querySelector("#custom-food-status");
 const extraFoodConfirm = document.querySelector("#custom-food-confirm");
 const restrictionOptions = document.querySelector("#week-restrictions");
-const cuisineSelect = document.querySelector("#cuisines");
 const status = document.querySelector("#week-status");
 const result = document.querySelector("#weekly-results");
 const screenButtons = Array.from(result.querySelectorAll("[data-screen-choice]"));
@@ -28,9 +27,6 @@ const dailyServings = document.querySelector("#daily-servings");
 const overview = document.querySelector("#week-overview");
 const prep = document.querySelector("#shared-prep");
 const prepItems = document.querySelector("#prep-items");
-const shanghaiFinish = document.querySelector("#shanghai-finish");
-const pancake = form.elements.pancake;
-const pancakeRestriction = document.querySelector("#pancake-restriction");
 const guides = document.querySelector("#resources");
 const savedMeals = document.querySelector("#saved-meals");
 const savedMealList = document.querySelector("#saved-meal-list");
@@ -84,13 +80,11 @@ const validCounter = value => Number.isSafeInteger(value) && value >= 0;
 const oldOlives = ["greenOlive", "blackOlive", "purpleOlive"];
 let profile = {
   guests: String(savedProfile?.guests || 4),
-  cuisine: Object.hasOwn(cuisineNames, savedProfile?.cuisine) ? savedProfile.cuisine : "cantonese",
   foods: Array.isArray(savedProfile?.foods)
     ? [...new Set(savedProfile.foods.map(id => oldOlives.includes(id) ? "olives" : id))]
     : defaults,
   avoid: Array.isArray(savedProfile?.avoid) ? savedProfile.avoid : [],
   allergen: Array.isArray(savedProfile?.allergen) ? savedProfile.allergen : [],
-  pancake: savedProfile?.pancake !== false,
   customFoods: storedCustomFoods(savedProfile?.customFoods),
   reviewedCustom: typeof savedProfile?.reviewedCustom === "string" ? savedProfile.reviewedCustom : "",
 };
@@ -135,8 +129,8 @@ function saveWeek() {
 function formSettings() {
   const values = new FormData(form);
   const settings = {
-    guests: values.get("guests"), cuisine: values.get("cuisine"), foods: values.getAll("foods"),
-    avoid: values.getAll("avoid"), allergen: values.getAll("allergen"), pancake: pancake.checked,
+    guests: values.get("guests"), foods: values.getAll("foods"),
+    avoid: values.getAll("avoid"), allergen: values.getAll("allergen"),
     customFoods: draftCustomFoods,
   };
   return { ...settings, reviewedCustom: draftReview === customReviewKey(settings) ? draftReview : "" };
@@ -170,9 +164,6 @@ function renderForm(values) {
   draftCustomFoods = values.customFoods;
   draftReview = values.reviewedCustom;
   form.elements.guests.value = Array.from(form.elements.guests.options).some(option => option.value === values.guests) ? values.guests : "4";
-  cuisineSelect.innerHTML = Object.entries(cuisineNames)
-    .map(([id, name]) => `<option value="${id}">${tr(name)}</option>`).join("");
-  cuisineSelect.value = values.cuisine;
 
   function chip(name, id, label, color) {
     return `<label class="choice-chip"><input type="checkbox" name="${name}" value="${id}"${values[name].includes(id) ? " checked" : ""}>
@@ -192,15 +183,6 @@ function renderForm(values) {
   restrictionOptions.innerHTML = Object.entries(restrictions).map(([type, choices]) => `<fieldset><legend>${tr(restrictionNames[type])}</legend><div class="choice-row">
     ${Object.entries(choices).map(([id, label]) => chip(type, id, label)).join("")}
     </div></fieldset>`).join("");
-  pancake.checked = values.pancake;
-  renderShanghaiFinish();
-}
-
-function renderShanghaiFinish() {
-  const values = formSettings();
-  shanghaiFinish.hidden = values.cuisine !== "shanghai";
-  pancake.disabled = !isAllowed(values, "scallionPancake");
-  pancakeRestriction.hidden = !pancake.disabled;
 }
 
 function foodFor(id, settings = profile) {
@@ -229,26 +211,20 @@ function allowedChoices(values, group) {
 function buildWeek(settings = profile) {
   const choices = Object.fromEntries(foodGroups.map(group => [group, allowedChoices(settings, group)]));
   if (!["vegetable", "protein", "carb"].every(group => choices[group].length)) return [];
-  const region = settings.cuisine;
-  const pancakeDay = region === "shanghai" && settings.pancake && isAllowed(settings, "scallionPancake")
-    ? guestOverrides.findIndex(guests => (guests ?? Number(settings.guests)) > 0) : -1;
   const plan = days.map((day, index) => {
     const variation = (pins[index]?.revision ?? revision) + index + (pins[index]?.swap ?? swaps[index]);
-    const [recipeName, defaultMethod, ingredients] = regions[region][variation % regions[region].length];
+    const [recipeName, method, ingredients] = mediterraneanRecipes[variation % mediterraneanRecipes.length];
     const spices = ingredients.filter(id => isAllowed(settings, id));
-    const method = spices.length || !ingredients.length ? defaultMethod
-      : { warmOil: "blanch", glaze: "braise", tangy: "steam" }[defaultMethod] || defaultMethod;
     const title = spices.length === ingredients.length ? recipeName : dishSteps[method];
-    if (["wok", "warmOil", "roast", "herbToss"].includes(method)) spices.push("oil");
+    if (["roast", "herbToss"].includes(method)) spices.push("oil");
     const main = choices.protein[variation % choices.protein.length];
     const starch = choices.carb[variation % choices.carb.length];
     const vegetables = [choices.vegetable[variation % choices.vegetable.length]];
     if (choices.vegetable.length > 1) vegetables.push(choices.vegetable[(variation + 1) % choices.vegetable.length]);
     const fruit = choices.fruit.length ? choices.fruit[variation % choices.fruit.length] : null;
     const topping = choices.topping.length ? choices.topping[variation % choices.topping.length] : null;
-    return { day, region, method, spices, title, main, starch, vegetables,
-      guests: guestOverrides[index] ?? Number(settings.guests), extras: [fruit, topping].filter(Boolean),
-      finish: index === pancakeDay };
+    return { day, method, spices, title, main, starch, vegetables,
+      guests: guestOverrides[index] ?? Number(settings.guests), extras: [fruit, topping].filter(Boolean) };
   });
   if (reviewGrain && isAllowed(settings, reviewGrain)) {
     const dinner = plan.find((dish, index) => dish.guests > 0 && !pins[index] && dish.starch !== reviewGrain);
@@ -271,8 +247,7 @@ function details(dish) {
 }
 
 function dishIngredients(dish) {
-  return new Set([dish.main, dish.starch, ...dish.vegetables, ...dish.spices, ...dish.extras,
-    ...(dish.finish ? ["scallionPancake"] : [])]);
+  return new Set([dish.main, dish.starch, ...dish.vegetables, ...dish.spices, ...dish.extras]);
 }
 
 function shoppingRows(dishes) {
@@ -280,8 +255,7 @@ function shoppingRows(dishes) {
   for (const dish of dishes) {
     if (dish.guests === 0) continue;
     for (const item of dishIngredients(dish)) {
-      const portion = dish.finish && item === dish.starch ? 0.5 : 1;
-      totals.set(item, (totals.get(item) || 0) + foodFor(item).perGuest * dish.guests * portion);
+      totals.set(item, (totals.get(item) || 0) + foodFor(item).perGuest * dish.guests);
     }
   }
   return [...totals].map(([id, needed]) => {
@@ -359,7 +333,6 @@ function exportWeek(includeSteps) {
       meal.push(card.method);
       if (card.extra) meal.push(`${t("servingExtra")} · ${card.extra}`);
     }
-    if (dish.finish) meal.push(t("carbOrder"), t("pancakeOrder"));
     return meal.join("\n");
   });
   const ingredients = includeSteps ? currentList : toBuy();
@@ -367,8 +340,7 @@ function exportWeek(includeSteps) {
     `${checked[item.id] === item.amount ? "[x]" : "[ ]"} ${tr(item.name)} — ${formatAmount(item)}`);
   const sources = Array.from(document.querySelectorAll("#nutrition-links a"), source =>
     `${source.textContent.trim()} — ${source.href}`);
-  const sharedNote = currentPlan.some(dish => dish.finish) ? [] : [t("carbOrder")];
-  return [t("weekTitle"), ...sharedNote, dinnerLines.join(includeSteps ? "\n\n" : "\n"),
+  return [t("weekTitle"), t("mediterraneanDiet"), t("carbOrder"), dinnerLines.join(includeSteps ? "\n\n" : "\n"),
     [t("shopTitle"), ...shoppingLines].join("\n"),
     [t("nutritionResources"), ...sources].join("\n")].join("\n\n");
 }
@@ -390,7 +362,6 @@ function renderWeek() {
   savedMealsEmpty.hidden = !savedMealList.hidden;
   if (!plan.length) return;
 
-  document.querySelector("#week-carb-note").hidden = plan.some(dish => dish.finish);
   renderWeekOverview(plan);
   const openRecipes = new Set(Array.from(dishList.querySelectorAll("details[open]"), recipe => recipe.dataset.recipe));
   dishList.innerHTML = plan.map((dish, index) => {
@@ -402,13 +373,12 @@ function renderWeek() {
     return `<article class="dish weekly-dish" id="dinner-${index}">
       <div class="dinner-row">
         <div>
-          <p class="day-line">${tr(dish.day)} · ${tr(cuisineNames[dish.region])} · ${t("guestCount").replace("{n}", dish.guests)}</p>
+          <p class="day-line">${tr(dish.day)} · ${t("guestCount").replace("{n}", dish.guests)}</p>
           <h3>${escapeHtml(card.title)}</h3>
           <p class="dinner-summary">${escapeHtml(card.vegetables)} · ${escapeHtml(tr(foodFor(dish.starch).name))}</p>
         </div>
         <button type="button" class="small-button swap" data-swap="${index}" aria-label="${tr(dish.day)} · ${t(kept ? "pinnedDinner" : "swapDay")}"${kept ? " disabled" : ""}>${t(kept ? "pinnedDinner" : "swapShort")}</button>
       </div>
-      ${dish.finish ? `<p class="meal-finish">${t("carbOrder")} ${t("pancakeOrder")}</p>` : ""}
       <details class="recipe-detail" data-recipe="${index}"${openRecipes.has(String(index)) ? " open" : ""}>
         <summary>${t("viewRecipe")}</summary>
         <p><strong>${tr(weekGroups.vegetable)}</strong> · ${escapeHtml(card.vegetables)}</p>
@@ -543,7 +513,6 @@ editPreferences.addEventListener("click", () => {
 for (const button of screenButtons) button.addEventListener("click", () => setScreen(button.dataset.screenChoice));
 
 function preferencesChanged() {
-  renderShanghaiFinish();
   renderCustomReview(formSettings());
   result.hidden = true;
   showStatus(planReady ? "weekChanged" : "");

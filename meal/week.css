@@ -84,7 +84,6 @@ input[type="checkbox"] { accent-color: var(--ink); }
 .custom-food-choice label { min-width: 0; overflow-wrap: anywhere; }
 #custom-food-list:not(:empty) { margin-bottom: 9px; }
 .custom-food-review { display: flex; align-items: center; gap: 7px; min-height: 44px; margin-bottom: 8px; font-size: .875rem; }
-.shanghai-finish { margin: 0 0 10px; }
 .draft-actions, .delivery-actions, .list-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .draft-actions { margin-top: 15px; }
 .status { margin-block: 8px; font-size: .875rem; }
@@ -111,8 +110,7 @@ input[type="checkbox"] { accent-color: var(--ink); }
 .recipe-detail p + p, .recipe-detail .pin { margin-top: 8px; }
 .pin[aria-pressed="true"] { color: #315b42; border-color: #aec6b3; background: #ecf4e8; }
 .night-off { background: transparent; }
-.meal-order-note, .meal-finish { margin-bottom: 12px; color: var(--muted); font-size: .875rem; }
-.meal-finish { margin-block: 9px 0; }
+.meal-order-note { margin-bottom: 12px; color: var(--muted); font-size: .875rem; }
 .saved-meals ul { margin: 0 0 9px; padding: 0; list-style: none; }
 .saved-meals li + li { border-top: 1px solid var(--line); }
 .saved-meals li a { display: flex; align-items: center; min-height: 44px; font-size: .875rem; }

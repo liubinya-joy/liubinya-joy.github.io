@@ -8,10 +8,10 @@
   <title>Weekly meal planner · JoyBinya</title>
   <meta name="description" content="Plan a week of family dinners, prepare a grocery list and review your meals with JoyBinya.">
   <link rel="icon" href="./favicon.png" type="image/png">
-  <link rel="stylesheet" href="./week.css">
-  <script src="./week-copy.js" defer></script>
-  <script src="./week-data.js" defer></script>
-  <script src="./week.js" defer></script>
+  <link rel="stylesheet" href="./week.css?v=mediterranean-1">
+  <script src="./week-copy.js?v=mediterranean-1" defer></script>
+  <script src="./week-data.js?v=mediterranean-1" defer></script>
+  <script src="./week.js?v=mediterranean-1" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -33,6 +33,7 @@
       <p class="kicker">JoyBinya Meal Guide</p>
       <h1 id="week-heading" data-text="weekTitle">This week’s menu</h1>
       <p data-text="weekIntro">Seven dinners for your household, with one shopping list.</p>
+      <p class="diet-pattern"><span data-text="dietaryPattern">Dietary pattern</span> · <strong data-text="mediterraneanDiet">Mediterranean diet</strong></p>
       <a id="current-week-link" class="back" href="./week.html" data-text="backCurrentWeek" hidden>‹ This week’s menu</a>
       <p id="next-week-note" class="fine" hidden></p>
       <div class="week-intro-actions">
@@ -60,7 +61,6 @@
       <p class="fine preference-storage" data-text="preferenceStorage">Your household preferences stay in this browser and are used the next time you plan.</p>
       <div class="draft-settings week-settings">
         <label><span data-text="householdServings">Usual number of people</span><select name="guests"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></label>
-        <label><span data-text="cuisine">Regional flavor</span><select name="cuisine" id="cuisines"></select></label>
       </div>
       <div class="weekly-choices" id="week-ingredients"></div>
       <details class="avoid-panel" id="custom-foods">
@@ -74,12 +74,6 @@
         <div id="custom-food-list" class="choice-row"></div>
         <label class="custom-food-review" hidden><input id="custom-food-confirm" type="checkbox"><span data-text="customFoodReview">I checked that these added ingredients fit our restrictions.</span></label>
       </details>
-      <div id="shanghai-finish" class="shanghai-finish" hidden>
-        <label class="choice-chip"><input name="pancake" type="checkbox" checked>
-          <span data-text="shanghaiPancake">Scallion pancake as an after-dinner bite once this week</span>
-        </label>
-        <p id="pancake-restriction" class="fine" data-text="pancakeRestricted" hidden>Skipped when you avoid scallions or gluten.</p>
-      </div>
       <details class="avoid-panel">
         <summary data-text="avoidTitle">Dietary restrictions</summary>
         <div class="weekly-choices" id="week-restrictions"></div>

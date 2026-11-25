@@ -1,11 +1,11 @@
 import {
-  groups, styles, foods, foodColors, avoidOptions, allergens, exampleState,
-  normalizeState, isAllowed, makeMeals, nameOf, searchNames, groupOf, styleOf, avoidOf, allergyOf,
+  groups, foods, foodColors, avoidOptions, allergens, exampleState,
+  normalizeState, isAllowed, makeMeals, nameOf, searchNames, groupOf, avoidOf, allergyOf,
   pantryOf, foodFor, ingredientName, findIngredient, restrictionsKey,
-} from "./meals.js?v=weekly-1";
-import * as cloud from "./cloud.js?v=weekly-1";
+} from "./meals.js?v=mediterranean-1";
+import * as cloud from "./cloud.js?v=mediterranean-1";
 import * as localMeals from "./local-meals.js";
-import { languagePreferenceKey, locale, locales, setLocale, t, wording } from "./copy.js?v=weekly-1";
+import { languagePreferenceKey, locale, locales, setLocale, t, wording } from "./copy.js?v=mediterranean-1";
 
 const byId = id => document.getElementById(id);
 const form = byId("meal-form");
@@ -269,7 +269,6 @@ function renderForm() {
   renderFood();
   renderChoices(byId("avoid-list"), optionsFor(Object.keys(avoidOptions), avoidOf), state.avoid, id => update({ avoid: toggle(id, state.avoid) }));
   renderChoices(byId("allergy-list"), optionsFor(Object.keys(allergens), allergyOf), state.allergies, id => update({ allergies: toggle(id, state.allergies) }));
-  renderChoices(byId("style-list"), optionsFor(Object.keys(styles), styleOf), [state.style], id => update({ style: id }));
   byId("allergy-count").textContent = state.allergies.length ? t("· " + state.allergies.length + " selected", "· 已选 " + state.allergies.length + " 项", "· 已揀 " + state.allergies.length + " 項") : "";
   byId("ldl").checked = state.ldl;
   byId("picked-count").textContent = state.foods.length ? t(state.foods.length + " selected", "已选 " + state.foods.length + " 种食材", "已揀 " + state.foods.length + " 種食材") : t("No ingredients selected", "还没选食材", "未揀食材");

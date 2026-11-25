@@ -1,10 +1,8 @@
-import { t } from "./copy.js?v=weekly-1";
+import { t } from "./copy.js?v=mediterranean-1";
 
 export const groups = { veg: "蔬菜", protein: "蛋白质", starch: "主食" };
 export const styles = {
-  mixed: "中西混搭",
-  chinese: "中式家常",
-  western: "西式简餐",
+  mediterranean: "地中海饮食",
 };
 
 export const avoidOptions = {
@@ -40,51 +38,51 @@ export const foodColors = {
 
 export const foods = [
   { id: "broccoli", name: "西兰花", group: "veg", top: true, color: "green" },
-  { id: "bokchoy", name: "小白菜", group: "veg", top: true, color: "green", style: "chinese", search: "青菜 上海青" },
+  { id: "bokchoy", name: "小白菜", group: "veg", top: true, color: "green", search: "青菜 上海青" },
   { id: "tomato", name: "番茄", group: "veg", top: true, color: "red", search: "西红柿" },
   { id: "spinach", name: "菠菜", group: "veg", color: "green" },
-  { id: "mushroom", color: "brown", name: "香菇", group: "veg", top: true, style: "chinese", search: "蘑菇" },
+  { id: "mushroom", color: "brown", name: "香菇", group: "veg", top: true, search: "蘑菇" },
   { id: "cucumber", color: "green", name: "黄瓜", group: "veg", top: true },
-  { id: "bellpepper", color: "mixed", name: "甜椒", group: "veg", style: "western", search: "彩椒 青椒" },
+  { id: "bellpepper", color: "mixed", name: "甜椒", group: "veg", search: "彩椒 青椒" },
   { id: "redpepper", name: "红彩椒", group: "veg", color: "red", search: "red pepper red bell pepper 彩椒 紅甜椒 紅椒" },
   { id: "yellowpepper", name: "黄彩椒", group: "veg", color: "yellow", search: "yellow pepper yellow bell pepper 彩椒 黃甜椒 黃椒" },
   { id: "carrot", name: "胡萝卜", group: "veg", color: "orange", search: "carrot carrots 红萝卜 紅蘿蔔" },
   { id: "purplecabbage", name: "紫甘蓝", group: "veg", color: "purple", search: "red cabbage purple cabbage 紫包菜 紫卷心菜 紫椰菜" },
   { id: "cauliflower", name: "菜花", group: "veg", color: "white", search: "花椰菜" },
-  { id: "zucchini", color: "green", name: "西葫芦", group: "veg", style: "western" },
+  { id: "zucchini", color: "green", name: "西葫芦", group: "veg" },
   { id: "cabbage", color: "green", name: "卷心菜", group: "veg", search: "包菜 圆白菜" },
   { id: "snappeas", color: "green", name: "荷兰豆", group: "veg" },
   { id: "eggplant", color: "purple", name: "茄子", group: "veg" },
-  { id: "asparagus", color: "green", name: "芦笋", group: "veg", style: "western", search: "asparagus 蘆筍 露笋 露筍" },
-  { id: "onion", color: "white", name: "洋葱", group: "veg", more: true, style: "western", tags: ["onion"], search: "onion onions 洋蔥 紫洋葱 黄洋葱 甜洋葱" },
-  { id: "beet", name: "甜菜根", group: "veg", color: "purple", more: true, style: "western", search: "beet beets beetroot beetroots 红菜头 紅菜頭" },
-  { id: "artichoke", color: "green", name: "洋蓟", group: "veg", style: "western", search: "artichokes globe artichoke artichoke hearts 朝鲜蓟 朝鮮薊 洋薊", aliases: ["globe artichoke", "artichoke hearts"] },
-  { id: "brussels", color: "green", name: "抱子甘蓝", group: "veg", more: true, style: "western", search: "Brussels sprouts 芽甘蓝 小卷心菜 椰菜仔" },
-  { id: "arugula", color: "green", name: "芝麻菜", group: "veg", more: true, style: "western", search: "arugula rocket rucola" },
-  { id: "greenbeans", color: "green", name: "四季豆", group: "veg", more: true, style: "western", search: "green beans string beans 青豆角" },
-  { id: "tofu", color: "white", name: "豆腐", group: "protein", top: true, style: "chinese", tags: ["soy"], ldl: 2 },
-  { id: "salmon", color: "pink", name: "三文鱼", group: "protein", top: true, style: "western", tags: ["fish"], ldl: 2 },
+  { id: "asparagus", color: "green", name: "芦笋", group: "veg", search: "asparagus 蘆筍 露笋 露筍" },
+  { id: "onion", color: "white", name: "洋葱", group: "veg", more: true, tags: ["onion"], search: "onion onions 洋蔥 紫洋葱 黄洋葱 甜洋葱" },
+  { id: "beet", name: "甜菜根", group: "veg", color: "purple", more: true, search: "beet beets beetroot beetroots 红菜头 紅菜頭" },
+  { id: "artichoke", color: "green", name: "洋蓟", group: "veg", search: "artichokes globe artichoke artichoke hearts 朝鲜蓟 朝鮮薊 洋薊", aliases: ["globe artichoke", "artichoke hearts"] },
+  { id: "brussels", color: "green", name: "抱子甘蓝", group: "veg", more: true, search: "Brussels sprouts 芽甘蓝 小卷心菜 椰菜仔" },
+  { id: "arugula", color: "green", name: "芝麻菜", group: "veg", more: true, search: "arugula rocket rucola" },
+  { id: "greenbeans", color: "green", name: "四季豆", group: "veg", more: true, search: "green beans string beans 青豆角" },
+  { id: "tofu", color: "white", name: "豆腐", group: "protein", top: true, tags: ["soy"], ldl: 2 },
+  { id: "salmon", color: "pink", name: "三文鱼", group: "protein", top: true, tags: ["fish"], ldl: 2 },
   { id: "chicken", color: "tan", name: "鸡胸肉", group: "protein", top: true, ldl: 1 },
   { id: "egg", color: "yellow", name: "鸡蛋", group: "protein", top: true, tags: ["egg"] },
-  { id: "edamame", color: "green", name: "毛豆", group: "protein", style: "chinese", tags: ["soy"], ldl: 2 },
-  { id: "chickpea", color: "tan", name: "鹰嘴豆", group: "protein", style: "western", ldl: 2 },
-  { id: "lentil", color: "brown", name: "扁豆（干豆）", group: "protein", style: "western", ldl: 2, search: "小扁豆 lentils" },
+  { id: "edamame", color: "green", name: "毛豆", group: "protein", tags: ["soy"], ldl: 2 },
+  { id: "chickpea", color: "tan", name: "鹰嘴豆", group: "protein", ldl: 2 },
+  { id: "lentil", color: "brown", name: "扁豆（干豆）", group: "protein", ldl: 2, search: "小扁豆 lentils" },
   { id: "shrimp", color: "pink", name: "虾", group: "protein", tags: ["shellfish"] },
-  { id: "sardines", color: "silver", name: "沙丁鱼", group: "protein", style: "western", tags: ["fish"], ldl: 2 },
+  { id: "sardines", color: "silver", name: "沙丁鱼", group: "protein", tags: ["fish"], ldl: 2 },
   { id: "cod", color: "white", name: "鳕鱼", group: "protein", tags: ["fish"], ldl: 1 },
   { id: "porkloin", color: "pink", name: "猪里脊", group: "protein", tags: ["pork"], ldl: 1 },
-  { id: "porkbelly", color: "pink", name: "五花肉", group: "protein", style: "chinese", tags: ["pork"], ldl: -2 },
+  { id: "porkbelly", color: "pink", name: "五花肉", group: "protein", tags: ["pork"], ldl: -2 },
   { id: "beef", color: "red", name: "肥牛", group: "protein", tags: ["beef"], ldl: -2 },
-  { id: "rice", color: "white", name: "白米饭", group: "starch", top: true, style: "chinese", search: "大米 白饭" },
-  { id: "brownrice", color: "brown", name: "糙米饭", group: "starch", top: true, style: "chinese", ldl: 1 },
-  { id: "oat", color: "tan", name: "燕麦", group: "starch", style: "western", ldl: 1 },
-  { id: "toast", color: "brown", name: "全麦面包", group: "starch", top: true, style: "western", tags: ["wheat"], packaged: true },
+  { id: "rice", color: "white", name: "白米饭", group: "starch", top: true, search: "大米 白饭" },
+  { id: "brownrice", color: "brown", name: "糙米饭", group: "starch", top: true, ldl: 1 },
+  { id: "oat", color: "tan", name: "燕麦", group: "starch", ldl: 1 },
+  { id: "toast", color: "brown", name: "全麦面包", group: "starch", top: true, tags: ["wheat"], packaged: true },
   { id: "yam", color: "orange", name: "红薯", group: "starch", top: true, search: "地瓜 番薯" },
-  { id: "quinoa", color: "tan", name: "藜麦", group: "starch", style: "western", ldl: 1 },
+  { id: "quinoa", color: "tan", name: "藜麦", group: "starch", ldl: 1 },
   { id: "barley", color: "tan", name: "大麦", group: "starch", ldl: 2 },
   { id: "corn", color: "yellow", name: "玉米", group: "starch" },
-  { id: "noodles", color: "tan", name: "小麦面条", group: "starch", style: "chinese", tags: ["wheat"], packaged: true },
-  { id: "pasta", color: "brown", name: "全麦意面", group: "starch", style: "western", tags: ["wheat"], packaged: true },
+  { id: "noodles", color: "tan", name: "小麦面条", group: "starch", tags: ["wheat"], packaged: true },
+  { id: "pasta", color: "brown", name: "全麦意面", group: "starch", tags: ["wheat"], packaged: true },
   { id: "blackberry", name: "黑莓", group: "fruit", color: "purple", search: "blackberry blackberries 黑魅" },
   { id: "blueberry", name: "蓝莓", group: "fruit", color: "blue", search: "blueberry blueberries 藍莓" },
   { id: "raspberry", name: "红莓（树莓）", group: "fruit", color: "red", search: "raspberry raspberries 红莓 红树莓 覆盆子 紅莓" },
@@ -93,7 +91,7 @@ export const foods = [
 ];
 
 export const foodById = Object.fromEntries(foods.map(food => [food.id, food]));
-export const initialState = { foods: [], avoid: [], allergies: [], style: "mixed", ldl: false };
+export const initialState = { foods: [], avoid: [], allergies: [], style: "mediterranean", ldl: false };
 export const exampleState = { ...initialState, foods: ["rice", "tofu", "broccoli"] };
 
 export function ingredientName(value) {
@@ -149,7 +147,7 @@ export function normalizeState(value) {
     customFoods,
     avoid: options("avoid", avoidOptions),
     allergies: options("allergies", allergens),
-    style: typeof value?.style === "string" && Object.hasOwn(styles, value.style) ? value.style : "mixed",
+    style: "mediterranean",
     ldl: value?.ldl === true,
   };
 }
@@ -162,16 +160,15 @@ export function isAllowed(food, state) {
   return !food.tags?.some(tag => avoidTags.includes(tag));
 }
 
-function rankedFoods(state, group, style) {
+function rankedFoods(state, group) {
   const score = food => (state.foods.includes(food.id) ? 20 : 0)
-    + (food.style === style ? 3 : 0)
     + (state.ldl ? (food.ldl || 0) * 2 : 0);
   return pantryOf(state).filter(food => food.group === group && (!food.custom || state.foods.includes(food.id)) && isAllowed(food, state)
     && !(state.ldl && food.ldl < 0)).sort((a, b) => score(b) - score(a));
 }
 
-function choicesForGroup(state, group, style) {
-  const candidates = rankedFoods(state, group, style);
+function choicesForGroup(state, group) {
+  const candidates = rankedFoods(state, group);
   const atHome = candidates.filter(food => state.foods.includes(food.id));
   if (atHome.length) return atHome;
   const fallback = group === "protein"
@@ -210,7 +207,7 @@ const names = {
   hemp: ["Hemp hearts", "火麻仁"],
 };
 
-const styleNames = { mixed: ["Both styles", "中西都得"], chinese: ["Chinese home-style", "中式家常"], western: ["Western-style", "西式簡餐"] };
+const styleNames = { mediterranean: ["Mediterranean diet", "地中海飲食"] };
 const groupNames = { veg: ["Vegetables", "蔬菜"], protein: ["Protein", "蛋白質"], starch: ["Carbs", "主食"], fruit: ["Fruit", "水果"], extra: ["Toppings", "配料"] };
 const avoidNames = {
   scallion: ["Scallions", "蔥"], onion: ["Onion", "洋蔥"], ginger: ["Ginger", "薑"], garlic: ["Garlic", "蒜"],
@@ -233,10 +230,10 @@ export function allergyOf(id) { return t(allergyNames[id][0], allergens[id], all
 
 export function makeMeals(state, versions = [0, 0]) {
   return [0, 1].map(index => {
-    const style = state.style === "mixed" ? (index === 0 ? "chinese" : "western") : state.style;
-    const choices = Object.keys(groups).map(group => choicesForGroup(state, group, style));
+    const style = "mediterranean";
+    const choices = Object.keys(groups).map(group => choicesForGroup(state, group));
     const combinationCount = choices.reduce((total, group) => total * group.length, 1);
-    const version = versions[index] + (index === 1 && state.style !== "mixed" ? 1 : 0);
+    const version = versions[index] + index;
     let combination = version % combinationCount;
     const items = choices.map(group => {
       const food = group[combination % group.length];
@@ -244,18 +241,10 @@ export function makeMeals(state, versions = [0, 0]) {
       return { ...food, name: nameOf(food), onHand: state.foods.includes(food.id) };
     });
     const [veg, protein, starch] = items;
-    const chinese = style === "chinese";
-    const title = chinese
-      ? t(protein.name + " with " + veg.name.toLowerCase(), protein.name + "配" + veg.name, protein.name + "配" + veg.name)
-      : t("Lemon " + protein.name.toLowerCase() + " with " + veg.name.toLowerCase(), "柠檬" + protein.name + "配" + veg.name, "檸檬" + protein.name + "配" + veg.name);
-    const aromatics = ["scallion", "ginger", "garlic"].filter(id => !state.avoid.includes(id)).map(avoidOf);
-    const seasoning = chinese && aromatics.length
-      ? t("Season with " + aromatics.map(name => name.toLowerCase()).join(", ") + " and a little canola oil.", "可用" + aromatics.join("、") + "和少量菜籽油调味。", "可以用" + aromatics.join("、") + "同少少芥花籽油調味。")
-      : t("Season with lemon, black pepper and olive oil.", "可用柠檬汁、黑胡椒和橄榄油调味。", "可以用檸檬汁、黑椒同橄欖油調味。");
+    const title = t("Lemon " + protein.name.toLowerCase() + " with " + veg.name.toLowerCase(), "柠檬" + protein.name + "配" + veg.name, "檸檬" + protein.name + "配" + veg.name);
+    const seasoning = t("Season with lemon, black pepper and a little olive oil.", "可用柠檬汁、黑胡椒和少量橄榄油调味。", "可以用檸檬汁、黑椒同少少橄欖油調味。");
     const alternateMethod = Math.floor(version / combinationCount) % 2 === 1;
-    const vegMethod = chinese
-      ? (alternateMethod ? t("Stir-fry the vegetables.", "蔬菜快炒。", "蔬菜快炒。") : t("Steam the vegetables.", "蔬菜蒸熟。", "蔬菜蒸熟。"))
-      : (alternateMethod ? t("Sauté the vegetables.", "蔬菜用平底锅快炒。", "蔬菜用平底鑊快炒。") : t("Roast the vegetables.", "蔬菜烤熟。", "蔬菜焗熟。"));
+    const vegMethod = alternateMethod ? t("Sauté the vegetables.", "蔬菜用平底锅快炒。", "蔬菜用平底鑊快炒。") : t("Roast the vegetables.", "蔬菜烤熟。", "蔬菜焗熟。");
     const prep = vegMethod + " " + t("Cook the protein through and serve with the starch.", "蛋白质食材煮熟，搭配主食。", "蛋白質食材煮熟，再配主食。");
     const available = state.foods.map(id => foodFor(state, id)).filter(food => isAllowed(food, state));
     const secondVegetable = available.find(food => food.group === "veg" && food.id !== veg.id && food.color && food.color !== "mixed" && food.color !== veg.color);
