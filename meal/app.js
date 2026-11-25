@@ -2,10 +2,10 @@ import {
   groups, styles, foods, foodColors, avoidOptions, allergens, exampleState,
   normalizeState, isAllowed, makeMeals, nameOf, searchNames, groupOf, styleOf, avoidOf, allergyOf,
   pantryOf, foodFor, ingredientName, findIngredient, restrictionsKey,
-} from "./meals.js?v=pantry-1";
-import * as cloud from "./cloud.js";
+} from "./meals.js?v=weekly-1";
+import * as cloud from "./cloud.js?v=weekly-1";
 import * as localMeals from "./local-meals.js";
-import { languagePreferenceKey, locale, locales, setLocale, t, wording } from "./copy.js?v=pantry-1";
+import { languagePreferenceKey, locale, locales, setLocale, t, wording } from "./copy.js?v=weekly-1";
 
 const byId = id => document.getElementById(id);
 const form = byId("meal-form");

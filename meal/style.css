@@ -151,6 +151,9 @@ dialog p + p { margin-top: 8px; }
 .hero .eyebrow { margin-bottom: 10px; }
 .start { margin-top: 19px; border: 0; background: var(--ink); color: white; border-radius: 9px; padding: 8px 13px; font-size: .9rem; }
 .start:hover { background: var(--blue); }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 15px; }
+.weekly-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 12px; font-size: .875rem; font-weight: 700; }
+.weekly-link:hover { text-decoration: underline; text-underline-offset: .2em; }
 .chip { white-space: normal; text-align: left; }
 .ingredient-choices { gap: 6px; }
 .ingredient-choices .chip { font-size: .84rem; padding: 5px 9px; }

@@ -15,6 +15,7 @@ export const copy = {
   subtitle: ["Choose what’s in your kitchen and get meal ideas for prediabetes.", "选几样手边的食材，看看糖尿病前期怎么搭餐。", "揀幾樣手頭上嘅食材，睇吓糖尿病前期可以點搭餸。"],
   context: ["PREDIABETES MEAL GUIDE", "糖尿病前期搭餐指南", "糖尿病前期配餐指南"],
   start: ["Build my plate", "开始搭餐", "開始搭餸"],
+  weekly: ["Plan a week →", "安排一周晚餐 →", "安排一星期晚餐 →"],
   history: ["Saved meals", "已存餐单", "已儲存餐單"],
   profile: ["About Binya", "个人主页", "個人網頁"],
   ingredients: ["What’s in your kitchen?", "家里有什么？", "屋企有咩食材？"],

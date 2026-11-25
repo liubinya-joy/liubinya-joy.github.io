@@ -1,4 +1,4 @@
-import { t } from "./copy.js?v=pantry-1";
+import { t } from "./copy.js?v=weekly-1";
 
 export const groups = { veg: "蔬菜", protein: "蛋白质", starch: "主食" };
 export const styles = {

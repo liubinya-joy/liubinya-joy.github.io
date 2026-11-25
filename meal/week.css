@@ -1,0 +1,180 @@
+:root {
+  color-scheme: light;
+  --paper: #f6faff;
+  --card: #fff;
+  --ink: #17364d;
+  --muted: #4f6578;
+  --blue: #eaf3f8;
+  --line: #dae6ef;
+  --link: #225b84;
+  --label: #315b6e;
+  --focus: #2573a6;
+  --control-line: #b9ccdc;
+  --selected: #e6f3fd;
+  --selected-line: #78a6c8;
+  --notice: #78511c;
+  font: 16px/1.6 Arial, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+  font-variant-ligatures: none;
+  color: var(--ink);
+  background: var(--paper);
+}
+:root:lang(yue-Hant) { font-family: Arial, "PingFang HK", "Microsoft JhengHei", system-ui, sans-serif; }
+* { box-sizing: border-box; }
+body, h1, h2, h3, h4, p { margin: 0; }
+a { color: var(--link); text-underline-offset: .2em; }
+button, select, input, textarea { font: inherit; font-variant-ligatures: none; color: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: default; opacity: .55; }
+input[type="checkbox"] { accent-color: var(--ink); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+[hidden] { display: none !important; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.shell { width: min(1120px, 100% - 32px); margin-inline: auto; }
+.site-header { background: var(--card); border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; min-height: 62px; gap: 12px; }
+.wordmark { font-size: 1.5rem; color: var(--ink); font-weight: 820; letter-spacing: -.065em; text-decoration: none; }
+.wordmark span { color: var(--link); }
+.header-nav { margin-inline-start: auto; }
+.header-nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; text-decoration: none; }
+.language select, .draft select, .draft input:not([type="checkbox"]), .daily-servings select, .review-dinners select {
+  width: 100%; min-height: 44px; padding: 7px 9px; border: 1px solid var(--control-line); border-radius: 8px; background: var(--card); font-size: 1rem;
+}
+.language select { font-size: .875rem; }
+.week { padding-block: 12px 26px; }
+.week-links { margin-bottom: 8px; }
+.back { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; }
+.week-intro { padding: clamp(22px, 4.5vw, 46px); border: 1px solid var(--line); border-radius: 20px; background: var(--blue); }
+.kicker { color: var(--label); font-size: .875rem; font-weight: 750; }
+.week-intro h1 { margin-top: 7px; font-size: clamp(2.1rem, 6vw, 3.8rem); line-height: 1.12; letter-spacing: -.045em; text-wrap: balance; }
+.week-intro > p:not(.kicker) { max-width: 52ch; margin-top: 10px; color: var(--muted); }
+.week-intro-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 15px; margin-top: 18px; }
+.button, .small-button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 13px; border: 1px solid var(--control-line); border-radius: 9px; background: var(--card); text-align: center; text-decoration: none; font-size: .875rem; font-weight: 700; }
+.primary { color: white; background: var(--ink); border-color: var(--ink); }
+.primary:hover { background: var(--link); }
+.quiet-button { min-height: 44px; padding: 6px 3px; border: 0; background: transparent; color: var(--link); font-size: .875rem; font-weight: 670; }
+.quiet-button:hover { text-decoration: underline; }
+.week-detail { margin-top: 12px; }
+.week-detail > summary, .avoid-panel > summary, .nutrition-guides > summary { min-height: 44px; padding-block: 10px; cursor: pointer; font-size: .95rem; font-weight: 700; }
+.week-detail > p, .shopping-intro { margin-bottom: 10px; color: var(--muted); font-size: .875rem; }
+.draft { padding: clamp(16px, 3vw, 28px); border: 1px solid var(--line); border-radius: 16px; background: var(--card); margin-top: 14px; scroll-margin-top: 12px; }
+.draft-settings { display: grid; gap: 10px; }
+.draft-settings label, .custom-food-editor label { display: grid; min-width: 0; gap: 4px; font-size: .875rem; font-weight: 670; }
+.preference-storage { margin-bottom: 14px; }
+.weekly-choices { display: grid; gap: 13px 23px; margin-block: 13px; }
+.weekly-choices fieldset { min-width: 0; margin: 0; padding: 10px 0 0; border: 0; border-top: 1px solid var(--line); }
+.weekly-choices legend { padding-inline-end: 7px; font-size: .875rem; font-weight: 700; }
+.choice-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.choice-chip { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; padding: 4px 7px; border: 1px solid var(--line); border-radius: 7px; font-size: .875rem; cursor: pointer; }
+.choice-chip:has(input:checked) { background: var(--selected); border-color: var(--selected-line); font-weight: 670; }
+.choice-chip input { width: 16px; height: 16px; margin: 0; }
+.choice-chip span[data-color]::before { display: inline-block; content: ""; width: .63em; height: .63em; margin-right: 4px; border-radius: 50%; background: var(--swatch); }
+[data-color="blue"] { --swatch: #496caa; }
+[data-color="red"] { --swatch: #c34450; }
+[data-color="purple"] { --swatch: #8460a4; }
+[data-color="orange"] { --swatch: #ce7b38; }
+[data-color="yellow"] { --swatch: #e5b13c; }
+[data-color="green"] { --swatch: #518652; }
+[data-color="mixed"] { --swatch: conic-gradient(#c34450 33%, #e5b13c 33% 66%, #518652 66%); }
+.avoid-panel { border-block: 1px solid var(--line); }
+#custom-foods { margin-bottom: 10px; }
+.custom-food-editor { display: grid; align-items: end; gap: 8px; margin-bottom: 8px; }
+.custom-food-editor input, .custom-food-editor select { width: 100%; font-size: 1rem; }
+.custom-food-editor button { justify-self: start; }
+.custom-food-choice { display: flex; gap: 4px; max-width: 100%; }
+.custom-food-choice label { min-width: 0; overflow-wrap: anywhere; }
+#custom-food-list:not(:empty) { margin-bottom: 9px; }
+.custom-food-review { display: flex; align-items: center; gap: 7px; min-height: 44px; margin-bottom: 8px; font-size: .875rem; }
+.shanghai-finish { margin: 0 0 10px; }
+.draft-actions, .delivery-actions, .list-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.draft-actions { margin-top: 15px; }
+.status { margin-block: 8px; font-size: .875rem; }
+.status[data-error] { color: var(--notice); }
+#weekly-results { margin-top: 19px; scroll-margin-top: 12px; }
+.section-top h2 { font-size: 1.6rem; line-height: 1.2; letter-spacing: -.03em; }
+.section-top p { margin-top: 6px; color: var(--muted); font-size: .875rem; }
+.week-screen-picker { display: flex; gap: 6px; margin-block: 14px; }
+.week-screen-picker button { min-height: 44px; padding: 7px 13px; border: 1px solid var(--line); border-radius: 9px; background: var(--card); font-size: .875rem; font-weight: 700; }
+.week-screen-picker [aria-pressed="true"] { background: var(--ink); color: white; border-color: var(--ink); }
+.shopping-screen-count { display: inline-block; min-width: 1.5em; text-align: center; }
+.menu-layout { display: grid; align-items: start; gap: 16px; margin-top: 14px; }
+.dishes { display: grid; gap: 10px; }
+.dish, .shopping { min-width: 0; padding: 17px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+.day-line { color: var(--label); font-size: .875rem; }
+.weekly-dish h3 { margin-top: 3px; font-size: 1.05rem; line-height: 1.4; }
+.dinner-summary { margin-top: 5px; color: var(--muted); font-size: .875rem; }
+.dinner-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px; }
+.weekly-dish .swap { padding-inline: 10px; }
+.weekly-dish[id] { scroll-margin-top: 16px; }
+.weekly-dish h3, .recipe-detail p, .prep-items strong, #saved-meal-list a, #weekly-items label { overflow-wrap: anywhere; }
+.recipe-detail summary { min-height: 44px; padding-block: 10px; color: var(--link); cursor: pointer; font-size: .875rem; font-weight: 660; }
+.recipe-detail p { font-size: .9375rem; }
+.recipe-detail p + p, .recipe-detail .pin { margin-top: 8px; }
+.pin[aria-pressed="true"] { color: #315b42; border-color: #aec6b3; background: #ecf4e8; }
+.night-off { background: transparent; }
+.meal-order-note, .meal-finish { margin-bottom: 12px; color: var(--muted); font-size: .875rem; }
+.meal-finish { margin-block: 9px 0; }
+.saved-meals ul { margin: 0 0 9px; padding: 0; list-style: none; }
+.saved-meals li + li { border-top: 1px solid var(--line); }
+.saved-meals li a { display: flex; align-items: center; min-height: 44px; font-size: .875rem; }
+.week-shortcuts { display: grid; gap: 12px; }
+.daily-servings, .review-dinners { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin-bottom: 12px; }
+.daily-servings label, .review-dinners label { display: grid; min-width: 0; gap: 3px; font-size: .875rem; }
+.review-result { display: grid; gap: 7px; margin-bottom: 12px; font-size: .875rem; }
+.review-result a { justify-self: start; }
+.prep-items { display: grid; gap: 5px; margin: 0 0 9px; padding: 0; list-style: none; }
+.prep-items li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 7px; font-size: .875rem; }
+.prep-items span { color: var(--muted); }
+.shopping h3 { font-size: 1.15rem; }
+.shopping-intro { margin-top: 6px; }
+.list-tools { justify-content: space-between; margin-bottom: 10px; font-size: .875rem; }
+.delivery { margin-bottom: 12px; }
+.copy-list-text { display: block; width: 100%; min-height: 120px; margin-block: 8px; border: 1px solid var(--control-line); border-radius: 8px; padding: 9px; background: var(--card); font-size: 1rem; }
+#week-copy-status:not(:empty) { padding: 8px 10px; border-radius: 7px; background: var(--blue); }
+#open-amazon { margin-top: 6px; }
+#weekly-items h4 { margin-top: 14px; font-size: .875rem; }
+#weekly-items ul { margin: 0; padding: 0; list-style: none; }
+#weekly-items li { padding-block: 9px; border-bottom: 1px solid var(--line); }
+#weekly-items label { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; min-height: 44px; gap: 8px; cursor: pointer; font-size: .9375rem; }
+#weekly-items input { width: 17px; height: 17px; margin: 0; }
+.amount { color: var(--muted); font-size: .875rem; }
+.pantry-tag { display: none; padding-inline: 4px; margin-left: 5px; border-radius: 4px; color: #315b42; background: #ecf4e8; font-size: .8125rem; }
+input:checked + span .pantry-tag { display: inline; }
+.buy-links { display: flex; flex-wrap: wrap; justify-content: end; gap: 0 14px; }
+.buy-item { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; }
+#weekly-items li:has(input:checked) .buy-links { display: none; }
+.nutrition-guides { margin-top: 22px; }
+.nutrition-guides a { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; }
+.nutrition-guides ul { padding-left: 19px; }
+.additional-guides summary { min-height: 44px; padding-block: 10px; cursor: pointer; font-size: .875rem; }
+.fine { font-size: .875rem; color: var(--muted); }
+.site-footer { display: flex; flex-wrap: wrap; margin-top: 24px; padding-block: 6px 18px; border-top: 1px solid var(--line); }
+.site-footer-nav { display: flex; flex-wrap: wrap; gap: 0 18px; }
+.site-footer a { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; }
+@media (max-width: 759px) {
+  #weekly-results[data-screen="menu"] #weekly-shopping, #weekly-results[data-screen="shopping"] #weekly-menu { display: none; }
+}
+@media (min-width: 640px) {
+  .shell { width: min(1120px, 100% - 56px); }
+  .draft-settings, .weekly-choices, .week-shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .custom-food-editor { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; }
+  .daily-servings, .review-dinners { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 760px) {
+  .header-inner { min-height: 71px; }
+  .menu-layout { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 20px; }
+  .week-screen-picker { display: none; }
+}
+@media print {
+  @page { margin: 13mm; }
+  :root { color: #182126; background: white; }
+  .site-header, .week-links, #week-form, .week-intro-actions, .saved-meals, .plan-tools, .week-screen-picker, .site-footer,
+  .week-review, .recipe-detail summary, .recipe-detail .pin, .weekly-dish .swap, .delivery, .list-tools, .buy-links, .copy-list-text { display: none !important; }
+  .shell { width: 100%; }
+  .week-intro { padding: 0 0 12px; border: 0; background: none; }
+  .week-intro h1 { font-size: 26pt; }
+  .menu-layout { display: block; }
+  #weekly-menu, #weekly-shopping { display: block !important; }
+  .dish, .shopping { padding: 9px 0; border: 0; border-bottom: 1px solid #ccc; }
+  .dish, .shopping li { break-inside: avoid; }
+  .shopping { margin-top: 18px; }
+}

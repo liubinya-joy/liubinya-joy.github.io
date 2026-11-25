@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f6faff">
+  <title>Weekly meal planner · JoyBinya</title>
+  <meta name="description" content="Plan a week of family dinners, prepare a grocery list and review your meals with JoyBinya.">
+  <link rel="icon" href="./favicon.png" type="image/png">
+  <link rel="stylesheet" href="./week.css">
+  <script src="./week-copy.js" defer></script>
+  <script src="./week-data.js" defer></script>
+  <script src="./week.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a href="./index.html" class="wordmark" aria-label="JoyBinya">Joy<span>Binya</span></a>
+      <nav class="header-nav" aria-label="Meal planning" data-aria-label="mealNavigation">
+        <a href="#saved-meals" data-text="savedMeals">Saved meals</a>
+      </nav>
+      <div class="language"><label for="language" class="visually-hidden">Language / 语言 / 語言</label><select id="language">
+        <option value="en">English</option><option value="zh">简体中文</option><option value="yue">廣東話</option>
+      </select></div>
+    </div>
+  </header>
+  <main class="shell week">
+    <nav class="week-links">
+      <a class="back" href="./index.html" data-text="back">‹ Build one meal</a>
+    </nav>
+    <section class="week-intro" aria-labelledby="week-heading">
+      <p class="kicker">JoyBinya Meal Guide</p>
+      <h1 id="week-heading" data-text="weekTitle">This week’s menu</h1>
+      <p data-text="weekIntro">Seven dinners for your household, with one shopping list.</p>
+      <a id="current-week-link" class="back" href="./week.html" data-text="backCurrentWeek" hidden>‹ This week’s menu</a>
+      <p id="next-week-note" class="fine" hidden></p>
+      <div class="week-intro-actions">
+        <button type="submit" form="week-form" value="quick" class="button primary" id="quick-week" data-text="generateWeek" disabled>Generate this week’s menu</button>
+        <button type="button" id="edit-preferences" class="quiet-button" aria-expanded="false" aria-controls="week-form" data-text="editWeekFood" disabled>Household preferences</button>
+      </div>
+    </section>
+    <details id="week-review" class="week-detail week-review" hidden>
+      <summary data-text="reviewTitle">Weekly dinner review</summary>
+      <p data-text="reviewHint">Mark the dinners you’ve had. The review uses dinners you confirm as planned.</p>
+      <div id="review-dinners" class="review-dinners"></div>
+      <div class="review-result">
+        <p id="review-count" aria-live="polite"></p>
+        <p id="review-idea" hidden></p>
+        <a id="review-add" class="button small-button" href="./week.html?week=next" data-text="reviewAdd" hidden>Add to next week’s menu</a>
+        <p id="review-storage" class="fine" role="status"></p>
+      </div>
+    </details>
+    <details id="saved-meals" class="week-detail saved-meals">
+      <summary data-text="savedMeals">Saved meals</summary>
+      <p id="saved-meals-empty" data-text="savedMealsEmpty">Choose “Keep dinner” in a recipe to find it here.</p>
+      <ul id="saved-meal-list" hidden></ul>
+    </details>
+    <form id="week-form" class="draft" hidden>
+      <p class="fine preference-storage" data-text="preferenceStorage">Your household preferences stay in this browser and are used the next time you plan.</p>
+      <div class="draft-settings week-settings">
+        <label><span data-text="householdServings">Usual number of people</span><select name="guests"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></label>
+        <label><span data-text="cuisine">Regional flavor</span><select name="cuisine" id="cuisines"></select></label>
+      </div>
+      <div class="weekly-choices" id="week-ingredients"></div>
+      <details class="avoid-panel" id="custom-foods">
+        <summary data-text="customFoodTitle">Other ingredients</summary>
+        <div class="custom-food-editor">
+          <label><span data-text="customFoodName">Ingredient name</span><input id="custom-food-name" type="text" maxlength="50" enterkeyhint="done"></label>
+          <label><span data-text="customFoodGroup">Category</span><select id="custom-food-group"></select></label>
+          <button class="small-button" id="custom-food-add" type="button" data-text="customFoodAdd">Add ingredient</button>
+        </div>
+        <p class="status" id="custom-food-status" role="status"></p>
+        <div id="custom-food-list" class="choice-row"></div>
+        <label class="custom-food-review" hidden><input id="custom-food-confirm" type="checkbox"><span data-text="customFoodReview">I checked that these added ingredients fit our restrictions.</span></label>
+      </details>
+      <div id="shanghai-finish" class="shanghai-finish" hidden>
+        <label class="choice-chip"><input name="pancake" type="checkbox" checked>
+          <span data-text="shanghaiPancake">Scallion pancake as an after-dinner bite once this week</span>
+        </label>
+        <p id="pancake-restriction" class="fine" data-text="pancakeRestricted" hidden>Skipped when you avoid scallions or gluten.</p>
+      </div>
+      <details class="avoid-panel">
+        <summary data-text="avoidTitle">Dietary restrictions</summary>
+        <div class="weekly-choices" id="week-restrictions"></div>
+      </details>
+      <div class="draft-actions">
+        <button class="button primary" type="submit" value="generate" data-text="applyWeekPreferences">Apply and plan</button>
+        <button class="small-button" type="submit" value="save" data-text="saveWeek">Save household preferences</button>
+      </div>
+    </form>
+    <p class="status" id="week-status" role="status"></p>
+    <section id="weekly-results" aria-labelledby="dinner-title" data-screen="menu" hidden>
+      <div class="section-top">
+        <div>
+          <h2 id="dinner-title" tabindex="-1" data-text="sevenDinners">This week’s plan</h2>
+          <p id="week-overview"></p>
+        </div>
+      </div>
+      <div class="week-screen-picker" role="group" aria-labelledby="dinner-title">
+        <button type="button" data-screen-choice="menu" aria-controls="weekly-menu" aria-pressed="true" data-text="screenMenu">Menu</button>
+        <button type="button" data-screen-choice="shopping" aria-controls="weekly-shopping" aria-pressed="false">
+          <span data-text="screenShopping">Shopping</span> <span id="shopping-screen-count" class="shopping-screen-count"></span>
+        </button>
+      </div>
+      <details class="week-detail plan-tools">
+        <summary data-text="planTools">Adjust or share</summary>
+        <div class="week-shortcuts">
+          <details class="week-detail" id="dinner-counts">
+            <summary data-text="changeNightGuests">Adjust portions by day</summary>
+            <p data-text="guestsHint">Set a day to 0 for leftovers or plans out.</p>
+            <div id="daily-servings" class="daily-servings"></div>
+          </details>
+          <details class="week-detail" id="shared-prep" hidden>
+            <summary data-text="sharedPrep">Ingredients to prep together</summary>
+            <ul id="prep-items" class="prep-items"></ul>
+          </details>
+        </div>
+        <div class="delivery-actions">
+          <button type="button" class="small-button" id="print-week" data-text="printWeek">Print / Save PDF</button>
+          <button type="button" class="small-button" id="download-week" data-text="downloadWeek">Download text</button>
+                  </div>
+      </details>
+      <div class="menu-layout">
+        <div id="weekly-menu">
+          <p id="week-carb-note" class="meal-order-note" data-text="carbOrder">Start with vegetables, then protein. Save a small portion of dessert or refined starch for the end.</p>
+          <div class="dishes" id="weekly-dishes"></div>
+        </div>
+        <aside class="shopping" id="weekly-shopping" aria-labelledby="weekly-shopping-title">
+          <h3 id="weekly-shopping-title" data-text="shopTitle">Shopping list</h3>
+          <p class="shopping-intro" data-text="shopIntro">Check the ingredients you already have. The copied list includes the items still to buy.</p>
+          <div class="list-tools"><span id="week-remaining" aria-live="polite"></span><button id="week-copy" type="button" class="small-button" data-text="copy">Copy list</button></div>
+          <div class="delivery">
+            <div class="delivery-actions">
+              <button id="amazon-copy" type="button" class="small-button" data-text="copyForAmazon" aria-controls="week-copy-text">Copy full list for Amazon</button>
+              <a class="button small-button" href="https://www.wholefoodsmarket.com/grocery" target="_blank" rel="noopener" data-text="openWholeFoods">Shop at Whole Foods ↗</a>
+            </div>
+            <p class="status" id="week-copy-status" role="status"></p>
+            <a class="button small-button" id="open-amazon" href="https://www.amazon.com/" target="_blank" rel="noopener" data-text="openAmazon" hidden>Open Amazon ↗</a>
+            <textarea id="week-copy-text" class="copy-list-text" readonly hidden aria-label="Shopping list text" data-aria-label="shopTitle"></textarea>
+            <p class="fine" data-text="amazonListHint">Copy all ingredients and quantities in English to paste into Amazon. At Whole Foods, use Find beside each ingredient.</p>
+          </div>
+          <div id="weekly-items"></div>
+        </aside>
+      </div>
+    </section>
+    <details id="resources" class="nutrition-guides">
+      <summary data-text="nutritionResources">Healthy habits &amp; guides</summary>
+      <div id="nutrition-links">
+        <ul>
+          <li><a data-text="habitsGuide" href="https://joybinya.com/meal/#routine" target="_blank" rel="noopener">JoyBinya · Eating habits and after-meal walk timer</a></li>
+          <li><a data-text="guidePlate" href="https://professional.diabetes.org/sites/dpro/files/2025-05/PE25-Plan-Your-Plate-FINAL-5-22-25.pdf" target="_blank" rel="noopener">ADA · Diabetes Plate Method (PDF)</a></li>
+          <li><a data-text="guideProtein" href="https://diabetes.org/food-nutrition/reading-food-labels/protein" target="_blank" rel="noopener">ADA · Protein food choices</a></li>
+          <li><a data-text="guideHeart" href="https://www.heart.org/en/healthy-living/healthy-eating/plant-forward-eating" target="_blank" rel="noopener">American Heart Association · Plant-forward eating</a></li>
+          <li><a data-text="guideMayo" href="https://www.mayoclinic.org/diseases-conditions/diabetes/in-depth/diabetes-diet/art-20044295" target="_blank" rel="noopener">Mayo Clinic · Healthy eating for diabetes</a></li>
+        </ul>
+        <details id="more-resources" class="additional-guides">
+          <summary data-text="moreGuides">More references</summary>
+          <ul>
+            <li><a data-text="guideDga" href="https://realfood.gov/guidelines" target="_blank" rel="noopener">U.S. Dietary Guidelines, 2025–2030</a></li>
+            <li><a data-text="guidePlateHistory" href="https://www.dietaryguidelines.gov/sites/default/files/2020-12/DGA_2020-2025_StartSimple_withMyPlate_English_BW.pdf" target="_blank" rel="noopener">MyPlate · 2020–2025 handout (PDF)</a></li>
+            <li><a data-text="guideDri" href="https://www.nal.usda.gov/human-nutrition-and-food-safety/dri-calculator" target="_blank" rel="noopener">USDA · Macronutrient reference calculator</a></li>
+          </ul>
+        </details>
+      </div>
+    </details>
+    <p id="week-live" role="status" class="visually-hidden"></p>
+    <p class="fine"><span data-text="disclaimer">Use these menus as a general nutrition reference and ask your clinician for personal medical advice.</span> <a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart" target="_blank" rel="noopener" data-text="usda">USDA cooking temperatures ↗</a></p>
+  </main>
+  <footer class="shell site-footer">
+    <nav class="site-footer-nav" aria-label="About and contact" data-aria-label="contactNavigation">
+      <a href="https://joybinya.com/#about" data-text="aboutLink">About me</a>
+    </nav>
+  </footer>
+</body>
+</html>
